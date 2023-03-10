@@ -34,17 +34,15 @@ class MessageBubbleDetailsWidget extends StatelessWidget {
           const SizedBox(width: 10),
           Text(
             name!,
-            style: themeFontStyle.numbersTextStyle.copyWith(
-              fontSize: 16,
+            style: themeFontStyle.userNameChatPageTextStyle.copyWith(
+              color: AppColors.grey,
             ),
           ),
           const SizedBox(width: 20),
         },
         Text(
           hour,
-          style: themeFontStyle.numbersTextStyle.copyWith(
-            fontSize: 15,
-          ),
+          style: themeFontStyle.hourTextStyle,
         ),
       ],
     );

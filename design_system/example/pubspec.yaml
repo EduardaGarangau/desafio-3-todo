@@ -37,7 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   design_system: 
     path: ../
-  google_fonts: ^4.0.3
+
 
 dev_dependencies:
   flutter_test:

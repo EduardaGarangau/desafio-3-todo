@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class UserImageWidget extends StatelessWidget {
   final String? userImageUrl;
   final double radiusSize;
-  final String badgeNumber;
+  final String? badgeNumber;
   final bool hasBadge;
 
   const UserImageWidget({
@@ -28,11 +28,10 @@ class UserImageWidget extends StatelessWidget {
         ),
         if (hasBadge)
           Positioned(
-            top: 25,
-            left: 23,
+            top: 32,
+            left: 33,
             child: BadgeWidget(
-              radius: 10,
-              number: badgeNumber,
+              number: badgeNumber!,
               selected: true,
             ),
           ),

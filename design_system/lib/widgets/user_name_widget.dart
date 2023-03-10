@@ -5,10 +5,12 @@ import '../design_system.dart';
 class UserNameWidget extends StatelessWidget {
   final String name;
   final bool hasOnlineFlag;
+  final double? nameFontSize;
 
   const UserNameWidget({
     required this.name,
     required this.hasOnlineFlag,
+    this.nameFontSize,
     super.key,
   });
 
@@ -20,9 +22,10 @@ class UserNameWidget extends StatelessWidget {
       children: [
         Text(
           name,
-          style: hasOnlineFlag
-              ? themeTextStyle.nameTextStyle
-              : themeTextStyle.nameTextStyle.copyWith(fontSize: 20),
+          style: nameFontSize == null
+              ? themeTextStyle.userNameTextStyle
+              : themeTextStyle.userNameTextStyle
+                  .copyWith(fontSize: nameFontSize),
         ),
         if (hasOnlineFlag) ...{
           const SizedBox(width: 5),

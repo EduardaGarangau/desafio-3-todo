@@ -29,39 +29,33 @@ class AppBarWidget extends StatelessWidget {
         const SizedBox(width: 10),
         Text(
           name,
-          style: themeFontStyle.numbersTextStyle.copyWith(
-            fontSize: 16,
-            color: AppColors.white,
-          ),
+          style: themeFontStyle.userNameChatPageTextStyle,
         ),
         const SizedBox(width: 45),
         Container(
           height: size.height * 0.05,
           width: size.width * 0.08,
           decoration: BoxDecoration(
-            color: themeColors.badgeNotSelectedColor,
+            color: themeColors.appBarButtonColor,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Center(
             child: Text(
               'Agree to Offer',
-              style: themeFontStyle.messageAndTypesTextStyle.copyWith(
-                fontSize: 12,
-                color: AppColors.white,
-              ),
+              style: themeFontStyle.appBarButtonTextTextStyle,
             ),
           ),
         ),
         const SizedBox(width: 12),
         Icon(
           Icons.inbox_outlined,
-          color: themeColors.nameAndIconsWhiteColor,
+          color: themeColors.whiteIconsColor,
           size: 22,
         ),
         const SizedBox(width: 12),
         Icon(
           Icons.calendar_month_outlined,
-          color: themeColors.nameAndIconsWhiteColor,
+          color: themeColors.whiteIconsColor,
           size: 22,
         ),
       ],

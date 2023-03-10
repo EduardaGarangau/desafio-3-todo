@@ -9,7 +9,7 @@ class BottomNavigatorWidget extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Container(
-      height: size.height * 0.1,
+      height: size.height * 0.12,
       width: size.width,
       padding: const EdgeInsets.only(
         left: 20,
@@ -29,35 +29,25 @@ class BottomNavigatorWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: const [
-          ButtonWidget(
+          IconButtonWidget(
             icon: Icons.insert_drive_file_outlined,
-            text: null,
             selected: false,
-            badgeNumber: null,
           ),
-          ButtonWidget(
+          IconButtonWidget(
             icon: Icons.person_outline_rounded,
-            text: null,
             selected: false,
-            badgeNumber: null,
           ),
-          ButtonWidget(
+          IconButtonWidget(
             icon: Icons.insert_chart_outlined_rounded,
-            text: null,
             selected: false,
-            badgeNumber: null,
           ),
-          ButtonWidget(
+          IconButtonWidget(
             icon: Icons.chat_outlined,
-            text: null,
             selected: true,
-            badgeNumber: null,
           ),
-          ButtonWidget(
+          IconButtonWidget(
             icon: Icons.menu,
-            text: null,
             selected: false,
-            badgeNumber: null,
           ),
         ],
       ),

@@ -14,13 +14,13 @@ class SearchMessageWidget extends StatelessWidget {
         children: [
           Icon(
             Icons.search,
-            color: themeColors.greyTextAndIconColor,
+            color: themeColors.greyIconsColor,
             size: 25,
           ),
           const SizedBox(width: 10),
           Text(
             'Search',
-            style: themeTextStyle.inputTextStyle,
+            style: themeTextStyle.searchCardTextStyle,
           ),
         ],
       ),

@@ -8,6 +8,8 @@ class MessageCardWidget extends StatelessWidget {
   final String number;
   final String messageContent;
   final String messageHour;
+  final bool hasOnlineFlag;
+  final bool isMuted;
 
   const MessageCardWidget({
     required this.userImageUrl,
@@ -16,6 +18,8 @@ class MessageCardWidget extends StatelessWidget {
     required this.number,
     required this.messageContent,
     required this.messageHour,
+    required this.hasOnlineFlag,
+    required this.isMuted,
     super.key,
   });
 
@@ -23,6 +27,7 @@ class MessageCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
+    final themeColor = Theme.of(context).extension<ThemeColorsExtension>()!;
 
     return Container(
       height: size.height * 0.1,
@@ -37,7 +42,7 @@ class MessageCardWidget extends StatelessWidget {
         children: [
           UserImageWidget(
             userImageUrl: userImageUrl,
-            radiusSize: 22,
+            radiusSize: 28,
             badgeNumber: badgeNumber,
             hasBadge: true,
           ),
@@ -48,24 +53,24 @@ class MessageCardWidget extends StatelessWidget {
             children: [
               UserNameWidget(
                 name: name,
-                hasOnlineFlag: true,
+                hasOnlineFlag: hasOnlineFlag,
               ),
               const SizedBox(height: 5),
               Text(
                 number,
-                style: themeTextStyle.numbersTextStyle,
+                style: themeTextStyle.phoneNumberTextStyle,
               ),
               const SizedBox(height: 8),
               Text(
                 messageContent,
-                style: themeTextStyle.profileDetailsTextStyle,
+                style: themeTextStyle.messageContentTextStyle,
               ),
             ],
           ),
-          const SizedBox(width: 25),
+          const SizedBox(width: 4),
           Text(
             messageHour,
-            style: themeTextStyle.numbersTextStyle,
+            style: themeTextStyle.hourTextStyle,
           ),
         ],
       ),

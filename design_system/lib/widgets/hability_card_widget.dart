@@ -27,7 +27,7 @@ class HabilityCardWidget extends StatelessWidget {
       child: Center(
         child: Text(
           hability,
-          style: themeTextStyle.habilitiesAndTodoTitleStyle,
+          style: themeTextStyle.abilityTextStyle,
         ),
       ),
     );

@@ -15,20 +15,14 @@ class InputAndTodoContainer extends StatelessWidget {
     final theme = Theme.of(context).extension<ThemeColorsExtension>()!;
 
     return Container(
-      height: size.height * 0.08,
-      width: size.width,
-      margin: const EdgeInsets.only(
-        left: 20,
-        right: 20,
-        top: 40,
-        bottom: 10,
-      ),
+      height: size.height * 0.07,
+      width: size.width * 0.86,
       padding: const EdgeInsets.only(
         left: 20,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: theme.containerAndBottomNavColor,
+        borderRadius: BorderRadius.circular(15),
+        color: theme.searchCardColor,
       ),
       child: child,
     );

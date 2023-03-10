@@ -28,8 +28,8 @@ class MessageBubbleWidget extends StatelessWidget {
           // constraints: , // TODO
           decoration: BoxDecoration(
             color: isMessageReceived
-                ? themeColor.containerAndBottomNavColor
-                : themeColor.sendedMessageContainerColor,
+                ? themeColor.messageBubbleReceivedColor
+                : themeColor.messageBubbleSendedColor,
             borderRadius: isMessageReceived
                 ? const BorderRadius.only(
                     bottomLeft: Radius.circular(20),
@@ -45,8 +45,8 @@ class MessageBubbleWidget extends StatelessWidget {
           child: Center(
             child: Text(
               messageContent,
-              style: themeFontStyle.habilitiesAndTodoTitleStyle
-                  .copyWith(fontSize: 16),
+              style:
+                  themeFontStyle.messageContentTextStyle.copyWith(fontSize: 16),
               textAlign: TextAlign.start,
             ),
           ),

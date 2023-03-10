@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 import '../design_system.dart';
 
-class ExpandFilterWidget extends StatelessWidget {
+class FilterSectionWidget extends StatelessWidget {
   final String title;
 
-  const ExpandFilterWidget({
+  const FilterSectionWidget({
     required this.title,
     super.key,
   });
@@ -31,13 +31,11 @@ class ExpandFilterWidget extends StatelessWidget {
         children: [
           Text(
             title,
-            style: themeTextStyle.messageAndTypesTextStyle.copyWith(
-              fontSize: 16,
-            ),
+            style: themeTextStyle.filterSectionTextStyle,
           ),
           Icon(
             Icons.expand_more,
-            color: themeColor.greyColor,
+            color: themeColor.greyIconsColor,
           ),
         ],
       ),

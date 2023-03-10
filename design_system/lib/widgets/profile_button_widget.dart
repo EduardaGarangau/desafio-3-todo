@@ -22,7 +22,7 @@ class ProfileButtonWidget extends StatelessWidget {
       width: size.height * 0.08,
       decoration: BoxDecoration(
         color: isAvailable
-            ? themeColors.profileButtonColor
+            ? themeColors.profileButtonAvailableColor
             : themeColors.profileButtonUnvailableColor,
         borderRadius: BorderRadius.circular(20),
       ),
@@ -30,8 +30,8 @@ class ProfileButtonWidget extends StatelessWidget {
         icon,
         size: 25,
         color: isAvailable
-            ? themeColors.nameAndIconsWhiteColor
-            : themeColors.nameAndIconsWhiteColor.withOpacity(0.6),
+            ? themeColors.whiteIconsColor
+            : themeColors.whiteIconsColor.withOpacity(0.6),
       ),
     );
   }

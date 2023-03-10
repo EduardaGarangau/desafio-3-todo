@@ -4,12 +4,10 @@ import '../design_system.dart';
 
 class BadgeWidget extends StatelessWidget {
   final bool selected;
-  final double radius;
   final String number;
 
   const BadgeWidget({
     required this.number,
-    required this.radius,
     required this.selected,
     super.key,
   });
@@ -20,10 +18,10 @@ class BadgeWidget extends StatelessWidget {
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
 
     return CircleAvatar(
-      radius: radius,
+      radius: 12,
       backgroundColor: selected
-          ? themeColors.badgeAndProfileBGColor
-          : themeColors.badgeNotSelectedColor,
+          ? themeColors.badgeSelectedColor
+          : themeColors.badgeUnselectedColor,
       child: FittedBox(
         fit: BoxFit.cover,
         child: Center(
@@ -36,22 +34,3 @@ class BadgeWidget extends StatelessWidget {
     );
   }
 }
-
-// Container(
-//       height: size.height * 0.02,
-//       width: size.width * 0.02,
-//       decoration: BoxDecoration(
-//         borderRadius: BorderRadius.circular(100),
-//         color: selected
-//             ? themeColors.badgeAndProfileBGColor
-//             : themeColors.badgeNotSelectedColor,
-//       ),
-//       child: Center(
-//         child: Text(
-//           number,
-//           style: themeTextStyle.numbersTextStyle.copyWith(
-//             color: AppColors.white,
-//           ),
-//         ),
-//       ),
-//     );

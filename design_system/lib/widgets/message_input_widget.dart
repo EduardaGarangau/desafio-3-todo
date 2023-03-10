@@ -14,15 +14,14 @@ class MessageInputWidget extends StatelessWidget {
         children: [
           Text(
             'Fantastic! Lets do it!',
-            style: themeFontStyle.habilitiesAndTodoTitleStyle.copyWith(
-              color: themeColors.nameAndIconsWhiteColor,
-              fontSize: 17,
+            style: themeFontStyle.messageContentTextStyle.copyWith(
+              color: themeColors.whiteTextColor,
             ),
           ),
           const SizedBox(width: 50),
           Icon(
             Icons.emoji_emotions_outlined,
-            color: themeColors.nameAndIconsWhiteColor,
+            color: themeColors.whiteIconsColor,
             size: 25,
           ),
           const SizedBox(width: 5),
@@ -30,16 +29,14 @@ class MessageInputWidget extends StatelessWidget {
             angle: 77,
             child: Icon(
               Icons.link,
-              color: themeColors.nameAndIconsWhiteColor,
+              color: themeColors.whiteIconsColor,
               size: 25,
             ),
           ),
           const SizedBox(width: 10),
-          const ButtonWidget(
+          const IconButtonWidget(
             icon: Icons.send,
-            text: null,
             selected: true,
-            badgeNumber: '',
           ),
         ],
       ),
