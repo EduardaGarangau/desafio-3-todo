@@ -87,15 +87,16 @@ class CustomTheme {
           color: AppColors.grey,
         ),
         abilityTextStyle: const TextStyle(
-          fontSize: 15,
-          color: AppColors.white,
+          fontSize: 16,
+          color: Color.fromARGB(255, 92, 73, 73),
         ),
         taskTitleStyle: const TextStyle(
-          fontSize: 15,
+          fontSize: 16,
           color: AppColors.white,
+          letterSpacing: 0.3,
         ),
         taskDateStyle: const TextStyle(
-          fontSize: 13,
+          fontSize: 15,
           color: AppColors.grey,
         ),
         userNameChatPageTextStyle: const TextStyle(

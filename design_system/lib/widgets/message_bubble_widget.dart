@@ -18,14 +18,13 @@ class MessageBubbleWidget extends StatelessWidget {
     final themeColor = Theme.of(context).extension<ThemeColorsExtension>()!;
     final themeFontStyle = Theme.of(context).extension<TextStyleExtension>()!;
 
-    return Row(
-      mainAxisAlignment:
-          isMessageReceived ? MainAxisAlignment.start : MainAxisAlignment.end,
-      children: [
-        Container(
-          height: size.height * 0.08, // TODO altura nao definida
-          width: messageContent.length * 9,
-          // constraints: , // TODO
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        maxWidth: size.width * 0.2,
+      ),
+      child: IntrinsicHeight(
+        child: Container(
+          padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: isMessageReceived
                 ? themeColor.messageBubbleReceivedColor
@@ -45,13 +44,18 @@ class MessageBubbleWidget extends StatelessWidget {
           child: Center(
             child: Text(
               messageContent,
-              style:
-                  themeFontStyle.messageContentTextStyle.copyWith(fontSize: 16),
+              style: themeFontStyle.messageContentTextStyle.copyWith(
+                fontSize: 16,
+                color: themeColor.whiteTextColor,
+              ),
               textAlign: TextAlign.start,
+              maxLines: 10,
+              softWrap: true,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         ),
-      ],
+      ),
     );
   }
 }

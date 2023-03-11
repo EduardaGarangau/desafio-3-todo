@@ -90,7 +90,7 @@ class WidgetbookHotReload extends StatelessWidget {
               name: 'User Image',
               useCases: [
                 WidgetbookUseCase(
-                  name: 'User Image with Badge',
+                  name: 'with badge',
                   builder: (context) {
                     return const UserImageWidget(
                       userImageUrl: null,
@@ -101,7 +101,7 @@ class WidgetbookHotReload extends StatelessWidget {
                   },
                 ),
                 WidgetbookUseCase(
-                  name: 'User Image without Badge',
+                  name: 'without badge',
                   builder: (context) {
                     return const UserImageWidget(
                       userImageUrl: null,
@@ -128,7 +128,7 @@ class WidgetbookHotReload extends StatelessWidget {
               name: 'User Name',
               useCases: [
                 WidgetbookUseCase(
-                  name: 'User name with online flag',
+                  name: 'with online flag',
                   builder: (context) {
                     return const UserNameWidget(
                       name: 'John Tornton',
@@ -137,7 +137,7 @@ class WidgetbookHotReload extends StatelessWidget {
                   },
                 ),
                 WidgetbookUseCase(
-                  name: 'User name without online flag',
+                  name: 'without online flag',
                   builder: (context) {
                     return const UserNameWidget(
                       name: 'Russel Hue',
@@ -152,7 +152,7 @@ class WidgetbookHotReload extends StatelessWidget {
               name: 'Message Card',
               useCases: [
                 WidgetbookUseCase(
-                  name: 'Message Card with online flag',
+                  name: 'with online flag',
                   builder: (context) {
                     return const MessageCardWidget(
                       userImageUrl: null,
@@ -167,7 +167,7 @@ class WidgetbookHotReload extends StatelessWidget {
                   },
                 ),
                 WidgetbookUseCase(
-                  name: 'Message Card without online flag',
+                  name: 'without online flag',
                   builder: (context) {
                     return const MessageCardWidget(
                       userImageUrl: null,
@@ -187,7 +187,7 @@ class WidgetbookHotReload extends StatelessWidget {
               name: 'Icon Button',
               useCases: [
                 WidgetbookUseCase(
-                  name: 'Icon Button selected',
+                  name: 'selected',
                   builder: (context) {
                     return const IconButtonWidget(
                       icon: Icons.chat_outlined,
@@ -196,7 +196,7 @@ class WidgetbookHotReload extends StatelessWidget {
                   },
                 ),
                 WidgetbookUseCase(
-                  name: 'Icon Button unselected',
+                  name: 'unselected',
                   builder: (context) {
                     return const IconButtonWidget(
                       icon: Icons.insert_chart_outlined_rounded,
@@ -213,6 +213,162 @@ class WidgetbookHotReload extends StatelessWidget {
                   name: 'Bottom Navigator',
                   builder: (context) {
                     return const BottomNavigatorWidget();
+                  },
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Profile Button',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'available',
+                  builder: (context) {
+                    return const ProfileButtonWidget(
+                      icon: Icons.phone_in_talk_outlined,
+                      isAvailable: true,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'unvailable',
+                  builder: (context) {
+                    return const ProfileButtonWidget(
+                      icon: Icons.video_camera_front_rounded,
+                      isAvailable: false,
+                    );
+                  },
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Ability Card',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'medium word',
+                  builder: (context) {
+                    return const AbilityCardWidget(
+                      ability: 'Project Manager',
+                      cardColor: AppColors.mediumPurple,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'large word',
+                  builder: (context) {
+                    return const AbilityCardWidget(
+                      ability: 'Java Script Manager',
+                      cardColor: AppColors.lightPink,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'small word',
+                  builder: (context) {
+                    return const AbilityCardWidget(
+                      ability: 'QA',
+                      cardColor: AppColors.darkGreen,
+                    );
+                  },
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'To-do Card',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'undone',
+                  builder: (context) {
+                    return TodoCardWidget(
+                      title: 'Interview with Lead Designer',
+                      date: DateTime.now(),
+                      done: false,
+                      onTap: () {},
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'done',
+                  builder: (context) {
+                    return TodoCardWidget(
+                      title: 'Interview with Lead Designer',
+                      date: DateTime.now(),
+                      done: true,
+                      onTap: () {},
+                    );
+                  },
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'AppBar',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'AppBar',
+                  builder: (context) {
+                    return const AppBarWidget(
+                      name: 'Russel Hue',
+                      userImageUrl: null,
+                    );
+                  },
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Message Bubble Details',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'received',
+                  builder: (context) {
+                    return const MessageBubbleDetailsWidget(
+                      userImageUrl: null,
+                      name: 'Russel Hue',
+                      hour: '13:32',
+                      isMessageReceived: true,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'sended',
+                  builder: (context) {
+                    return const MessageBubbleDetailsWidget(
+                      userImageUrl: null,
+                      name: null,
+                      hour: '13:52',
+                      isMessageReceived: false,
+                    );
+                  },
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Message Bubble',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'received',
+                  builder: (context) {
+                    return const MessageBubbleWidget(
+                      messageContent: 'How does it sound for you?',
+                      isMessageReceived: true,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'sended',
+                  builder: (context) {
+                    return const MessageBubbleWidget(
+                      messageContent: 'Yes, that sounds good!',
+                      isMessageReceived: false,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'larger message',
+                  builder: (context) {
+                    return const MessageBubbleWidget(
+                      messageContent:
+                          'How does it sound for you? How does it sound for you?',
+                      isMessageReceived: true,
+                    );
                   },
                 ),
               ],

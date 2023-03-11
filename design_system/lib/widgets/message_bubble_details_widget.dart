@@ -42,7 +42,9 @@ class MessageBubbleDetailsWidget extends StatelessWidget {
         },
         Text(
           hour,
-          style: themeFontStyle.hourTextStyle,
+          style: themeFontStyle.hourTextStyle.copyWith(
+            fontSize: 15,
+          ),
         ),
       ],
     );
