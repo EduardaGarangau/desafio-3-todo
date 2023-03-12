@@ -81,6 +81,38 @@ class WidgetbookHotReload extends StatelessWidget {
                   builder: (context) {
                     return const FilterSectionWidget(
                       title: 'Unread',
+                      messages: [
+                        MessageCardWidget(
+                          userImageUrl: null,
+                          name: 'John Tornton',
+                          badgeNumber: '5',
+                          number: '+(1) 345-123-5467',
+                          messageContent: 'Maybe on Friday? Can you show...',
+                          messageHour: '12:30',
+                          hasOnlineFlag: true,
+                          isMuted: true,
+                        ),
+                        MessageCardWidget(
+                          userImageUrl: null,
+                          name: 'John Tornton',
+                          badgeNumber: '5',
+                          number: '+(1) 345-123-5467',
+                          messageContent: 'Maybe on Friday? Can you show...',
+                          messageHour: '12:30',
+                          hasOnlineFlag: true,
+                          isMuted: true,
+                        ),
+                        MessageCardWidget(
+                          userImageUrl: null,
+                          name: 'John Tornton',
+                          badgeNumber: '5',
+                          number: '+(1) 345-123-5467',
+                          messageContent: 'Maybe on Friday? Can you show...',
+                          messageHour: '12:30',
+                          hasOnlineFlag: true,
+                          isMuted: true,
+                        ),
+                      ],
                     );
                   },
                 ),
@@ -369,6 +401,17 @@ class WidgetbookHotReload extends StatelessWidget {
                           'How does it sound for you? How does it sound for you?',
                       isMessageReceived: true,
                     );
+                  },
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Message Input Card',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'card',
+                  builder: (context) {
+                    return const MessageInputWidget();
                   },
                 ),
               ],

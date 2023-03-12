@@ -6,6 +6,7 @@ class MessageInputWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final themeFontStyle = Theme.of(context).extension<TextStyleExtension>()!;
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
 
@@ -18,7 +19,7 @@ class MessageInputWidget extends StatelessWidget {
               color: themeColors.whiteTextColor,
             ),
           ),
-          const SizedBox(width: 50),
+          const SizedBox(width: 100),
           Icon(
             Icons.emoji_emotions_outlined,
             color: themeColors.whiteIconsColor,
@@ -34,9 +35,23 @@ class MessageInputWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 10),
-          const IconButtonWidget(
-            icon: Icons.send,
-            selected: true,
+          Container(
+            height: size.height * 0.05,
+            width: size.width * 0.03,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: themeColors.bottomNavButtonSelectedColor,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.send,
+                  size: 25,
+                  color: themeColors.blackIconsColor,
+                ),
+              ],
+            ),
           ),
         ],
       ),
