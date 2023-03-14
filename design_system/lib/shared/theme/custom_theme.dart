@@ -65,7 +65,7 @@ class CustomTheme {
           color: AppColors.white,
         ),
         filterSectionTextStyle: const TextStyle(
-          fontSize: 16,
+          fontSize: 17,
           color: AppColors.grey,
         ),
         userNameTextStyle: const TextStyle(

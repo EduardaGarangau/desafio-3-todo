@@ -36,10 +36,10 @@ class AppBarWidget extends StatelessWidget {
             name,
             style: themeFontStyle.userNameChatPageTextStyle,
           ),
-          const SizedBox(width: 55),
+          const SizedBox(width: 50),
           Container(
             height: size.height * 0.05,
-            width: size.width * 0.08,
+            width: size.width * 0.23,
             decoration: BoxDecoration(
               color: themeColors.appBarButtonColor,
               borderRadius: BorderRadius.circular(10),
@@ -51,13 +51,13 @@ class AppBarWidget extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: 10),
           Icon(
             Icons.inbox_outlined,
             color: themeColors.whiteIconsColor,
             size: 22,
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: 10),
           Icon(
             Icons.calendar_month_outlined,
             color: themeColors.whiteIconsColor,
