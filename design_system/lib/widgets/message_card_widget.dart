@@ -30,7 +30,7 @@ class MessageCardWidget extends StatelessWidget {
     final themeColor = Theme.of(context).extension<ThemeColorsExtension>()!;
 
     return Container(
-      height: size.height * 0.1,
+      height: size.height * 0.11,
       width: size.width,
       padding: const EdgeInsets.only(
         top: 10,
@@ -42,7 +42,7 @@ class MessageCardWidget extends StatelessWidget {
         children: [
           UserImageWidget(
             userImageUrl: userImageUrl,
-            radiusSize: 28,
+            radiusSize: 27,
             badgeNumber: badgeNumber,
             hasBadge: true,
           ),
@@ -60,7 +60,7 @@ class MessageCardWidget extends StatelessWidget {
                 number,
                 style: themeTextStyle.phoneNumberTextStyle,
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 12),
               Text(
                 messageContent,
                 style: themeTextStyle.messageContentTextStyle,

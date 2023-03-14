@@ -28,8 +28,8 @@ class UserImageWidget extends StatelessWidget {
         ),
         if (hasBadge)
           Positioned(
-            top: 32,
-            left: 33,
+            top: 31,
+            left: 31,
             child: BadgeWidget(
               number: badgeNumber!,
               selected: true,

@@ -88,7 +88,7 @@ class CustomTheme {
         ),
         abilityTextStyle: const TextStyle(
           fontSize: 16,
-          color: Color.fromARGB(255, 92, 73, 73),
+          color: AppColors.white,
         ),
         taskTitleStyle: const TextStyle(
           fontSize: 16,
