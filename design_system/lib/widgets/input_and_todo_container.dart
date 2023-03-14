@@ -16,7 +16,7 @@ class InputAndTodoContainer extends StatelessWidget {
 
     return Container(
       height: size.height * 0.07,
-      width: size.width * 0.86,
+      width: size.width * 0.9,
       padding: const EdgeInsets.only(
         left: 20,
       ),

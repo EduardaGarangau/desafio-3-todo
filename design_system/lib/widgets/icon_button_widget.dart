@@ -22,8 +22,8 @@ class IconButtonWidget extends StatelessWidget {
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
 
     return Container(
-      height: size.height * 0.07,
-      width: size.width * 0.04,
+      height: size.height * 0.06,
+      width: 50,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         color: selected
@@ -35,7 +35,7 @@ class IconButtonWidget extends StatelessWidget {
         children: [
           Icon(
             icon,
-            size: 28,
+            size: 26,
             color: selected
                 ? themeColors.blackIconsColor
                 : themeColors.greyIconsColor,

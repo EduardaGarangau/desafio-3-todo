@@ -112,11 +112,11 @@ class CustomTheme {
           color: AppColors.grey,
         ),
         filterButtonSelectedTextStyle: const TextStyle(
-          fontSize: 14,
+          fontSize: 17,
           color: AppColors.black,
         ),
         filterButtonUnselectedTextStyle: const TextStyle(
-          fontSize: 14,
+          fontSize: 17,
           color: AppColors.grey,
         ),
       ),

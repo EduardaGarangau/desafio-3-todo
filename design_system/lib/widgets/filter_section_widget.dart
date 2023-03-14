@@ -26,7 +26,7 @@ class _FilterSectionWidgetState extends State<FilterSectionWidget> {
     final size = MediaQuery.of(context).size;
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
     final themeColor = Theme.of(context).extension<ThemeColorsExtension>()!;
-    double messagesHeight = (widget.messages.length * 100) + 10;
+    double messagesHeight = (widget.messages.length * size.height * 0.12) + 10;
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 600),
