@@ -19,7 +19,7 @@ class MessageInputWidget extends StatelessWidget {
               color: themeColors.whiteTextColor,
             ),
           ),
-          const SizedBox(width: 100),
+          const SizedBox(width: 80),
           Icon(
             Icons.emoji_emotions_outlined,
             color: themeColors.whiteIconsColor,
@@ -34,10 +34,10 @@ class MessageInputWidget extends StatelessWidget {
               size: 25,
             ),
           ),
-          const SizedBox(width: 10),
+          const SizedBox(width: 5),
           Container(
             height: size.height * 0.05,
-            width: size.width * 0.03,
+            width: 40,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: themeColors.bottomNavButtonSelectedColor,
@@ -47,7 +47,7 @@ class MessageInputWidget extends StatelessWidget {
               children: [
                 Icon(
                   Icons.send,
-                  size: 25,
+                  size: 23,
                   color: themeColors.blackIconsColor,
                 ),
               ],

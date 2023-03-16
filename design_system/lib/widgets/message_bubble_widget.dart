@@ -25,7 +25,7 @@ class MessageBubbleWidget extends StatelessWidget {
         Container(
           constraints: BoxConstraints(
             minWidth: size.width * 0.01,
-            maxWidth: size.width * 0.2,
+            maxWidth: size.width * 0.6,
           ),
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(

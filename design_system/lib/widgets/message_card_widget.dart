@@ -27,10 +27,9 @@ class MessageCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
-    final themeColor = Theme.of(context).extension<ThemeColorsExtension>()!;
 
     return Container(
-      height: size.height * 0.11,
+      height: size.height * 0.10,
       width: size.width,
       padding: const EdgeInsets.only(
         top: 10,
@@ -48,29 +47,35 @@ class MessageCardWidget extends StatelessWidget {
           ),
           const SizedBox(width: 15),
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              UserNameWidget(
-                name: name,
-                hasOnlineFlag: hasOnlineFlag,
+              SizedBox(
+                width: size.width * 0.72,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    UserNameWidget(
+                      name: name,
+                      hasOnlineFlag: hasOnlineFlag,
+                    ),
+                    Text(
+                      messageHour,
+                      style: themeTextStyle.hourTextStyle,
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 5),
               Text(
                 number,
                 style: themeTextStyle.phoneNumberTextStyle,
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 8),
               Text(
                 messageContent,
                 style: themeTextStyle.messageContentTextStyle,
               ),
             ],
-          ),
-          const SizedBox(width: 4),
-          Text(
-            messageHour,
-            style: themeTextStyle.hourTextStyle,
           ),
         ],
       ),

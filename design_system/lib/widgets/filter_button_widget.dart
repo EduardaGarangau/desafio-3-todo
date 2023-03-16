@@ -22,41 +22,43 @@ class FilterButtonWidget extends StatelessWidget {
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
     final size = MediaQuery.of(context).size;
 
-    return Container(
-      constraints: BoxConstraints(
-        minHeight: size.height * 0.06,
-        minWidth: size.width * 0.08,
-        maxWidth: size.width * 0.085,
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: selected
-            ? themeColors.filterButtonSelectedColor
-            : themeColors.filterButtonUnselectedColor,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            icon,
-            size: 25,
-            color: selected
-                ? themeColors.blackIconsColor
-                : themeColors.greyIconsColor,
-          ),
-          const SizedBox(width: 8),
-          Text(
-            title,
-            style: selected
-                ? themeTextStyle.filterButtonSelectedTextStyle
-                : themeTextStyle.filterButtonUnselectedTextStyle,
-          ),
-          const SizedBox(width: 5),
-          BadgeWidget(
-            number: badgeNumber,
-            selected: selected,
-          ),
-        ],
+    return UnconstrainedBox(
+      child: Container(
+        height: size.height * 0.05,
+        padding: const EdgeInsets.only(
+          left: 15,
+          right: 15,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: selected
+              ? themeColors.filterButtonSelectedColor
+              : themeColors.filterButtonUnselectedColor,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: 25,
+              color: selected
+                  ? themeColors.blackIconsColor
+                  : themeColors.greyIconsColor,
+            ),
+            const SizedBox(width: 8),
+            Text(
+              title,
+              style: selected
+                  ? themeTextStyle.filterButtonSelectedTextStyle
+                  : themeTextStyle.filterButtonUnselectedTextStyle,
+            ),
+            const SizedBox(width: 5),
+            BadgeWidget(
+              number: badgeNumber,
+              selected: selected,
+            ),
+          ],
+        ),
       ),
     );
   }

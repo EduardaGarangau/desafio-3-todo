@@ -5,11 +5,13 @@ import '../design_system.dart';
 
 class FilterSectionWidget extends StatefulWidget {
   final String title;
-  final List<MessageCardWidget> messages;
+  final int messagesLength;
+  final Widget messagesCardList;
 
   const FilterSectionWidget({
     required this.title,
-    required this.messages,
+    required this.messagesLength,
+    required this.messagesCardList,
     super.key,
   });
 
@@ -26,7 +28,7 @@ class _FilterSectionWidgetState extends State<FilterSectionWidget> {
     final size = MediaQuery.of(context).size;
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
     final themeColor = Theme.of(context).extension<ThemeColorsExtension>()!;
-    double messagesHeight = (widget.messages.length * 100) + 10;
+    final messagesHeight = (widget.messagesLength * size.height * 0.12) + 10;
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 600),
@@ -71,15 +73,7 @@ class _FilterSectionWidgetState extends State<FilterSectionWidget> {
           AnimatedContainer(
             duration: const Duration(milliseconds: 600),
             height: _expanded ? messagesHeight : 0,
-            child: ListView.separated(
-              separatorBuilder: (context, index) => const SizedBox(
-                height: 20,
-              ),
-              itemCount: widget.messages.length,
-              itemBuilder: (context, index) {
-                return widget.messages[index];
-              },
-            ),
+            child: widget.messagesCardList,
           ),
         ],
       ),

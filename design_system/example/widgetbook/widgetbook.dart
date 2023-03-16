@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
@@ -73,51 +75,51 @@ class WidgetbookHotReload extends StatelessWidget {
                 ),
               ],
             ),
-            WidgetbookComponent(
-              name: 'Filter Sections',
-              useCases: [
-                WidgetbookUseCase(
-                  name: 'Filter Section',
-                  builder: (context) {
-                    return const FilterSectionWidget(
-                      title: 'Unread',
-                      messages: [
-                        MessageCardWidget(
-                          userImageUrl: null,
-                          name: 'John Tornton',
-                          badgeNumber: '5',
-                          number: '+(1) 345-123-5467',
-                          messageContent: 'Maybe on Friday? Can you show...',
-                          messageHour: '12:30',
-                          hasOnlineFlag: true,
-                          isMuted: true,
-                        ),
-                        MessageCardWidget(
-                          userImageUrl: null,
-                          name: 'John Tornton',
-                          badgeNumber: '5',
-                          number: '+(1) 345-123-5467',
-                          messageContent: 'Maybe on Friday? Can you show...',
-                          messageHour: '12:30',
-                          hasOnlineFlag: true,
-                          isMuted: true,
-                        ),
-                        MessageCardWidget(
-                          userImageUrl: null,
-                          name: 'John Tornton',
-                          badgeNumber: '5',
-                          number: '+(1) 345-123-5467',
-                          messageContent: 'Maybe on Friday? Can you show...',
-                          messageHour: '12:30',
-                          hasOnlineFlag: true,
-                          isMuted: true,
-                        ),
-                      ],
-                    );
-                  },
-                ),
-              ],
-            ),
+            // WidgetbookComponent(
+            //   name: 'Filter Sections',
+            //   useCases: [
+            //     WidgetbookUseCase(
+            //       name: 'Filter Section',
+            //       builder: (context) {
+            //         return const FilterSectionWidget(
+            //           title: 'Unread',
+            //           messages: [
+            //             MessageCardWidget(
+            //               userImageUrl: null,
+            //               name: 'John Tornton',
+            //               badgeNumber: '5',
+            //               number: '+(1) 345-123-5467',
+            //               messageContent: 'Maybe on Friday? Can you show...',
+            //               messageHour: '12:30',
+            //               hasOnlineFlag: true,
+            //               isMuted: true,
+            //             ),
+            //             MessageCardWidget(
+            //               userImageUrl: null,
+            //               name: 'John Tornton',
+            //               badgeNumber: '5',
+            //               number: '+(1) 345-123-5467',
+            //               messageContent: 'Maybe on Friday? Can you show...',
+            //               messageHour: '12:30',
+            //               hasOnlineFlag: true,
+            //               isMuted: true,
+            //             ),
+            //             MessageCardWidget(
+            //               userImageUrl: null,
+            //               name: 'John Tornton',
+            //               badgeNumber: '5',
+            //               number: '+(1) 345-123-5467',
+            //               messageContent: 'Maybe on Friday? Can you show...',
+            //               messageHour: '12:30',
+            //               hasOnlineFlag: true,
+            //               isMuted: true,
+            //             ),
+            //           ],
+            //         );
+            //       },
+            //     ),
+            //   ],
+            // ),
             WidgetbookComponent(
               name: 'User Image',
               useCases: [
@@ -337,7 +339,7 @@ class WidgetbookHotReload extends StatelessWidget {
                 WidgetbookUseCase(
                   name: 'AppBar',
                   builder: (context) {
-                    return const AppBarWidget(
+                    return AppBarWidget(
                       name: 'Russel Hue',
                       userImageUrl: null,
                     );
