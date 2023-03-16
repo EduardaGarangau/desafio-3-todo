@@ -1,3 +1,4 @@
+import 'package:app/widgets/home_page/messages_list_widget.dart';
 import 'package:design_system/widgets/filter_section_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -14,9 +15,14 @@ class FiltersSectionWidget extends StatelessWidget {
       child: ListView.builder(
         itemCount: filtersSection.length,
         itemBuilder: (context, index) {
+          final filterSection = filtersSection[index];
+
           return FilterSectionWidget(
-            title: filtersSection[index].title,
-            messages: filtersSection[index].messages,
+            title: filterSection.title,
+            messagesLength: filterSection.messages.length,
+            messagesCardList: MessagesListWidget(
+              messages: filterSection.messages,
+            ),
           );
         },
       ),

@@ -1,12 +1,12 @@
 import 'package:app/models/filter_section_model.dart';
-import 'package:design_system/design_system.dart';
+import 'package:app/models/messages_card_model.dart';
 
 class FiltersSectionMock {
   static List<FilterSectionModel> filtersSection = [
     FilterSectionModel(
       title: 'Unread',
-      messages: const [
-        MessageCardWidget(
+      messages: [
+        MessageCardModel(
           userImageUrl: 'lib/assets/images/john_tornton.jpg',
           name: 'John Tornton',
           badgeNumber: '5',
@@ -16,7 +16,7 @@ class FiltersSectionMock {
           hasOnlineFlag: true,
           isMuted: false,
         ),
-        MessageCardWidget(
+        MessageCardModel(
           userImageUrl: 'lib/assets/images/amanda_buyns.jpg',
           name: 'Amanda Buyns',
           number: '+(1) 345-123-5467',
@@ -26,7 +26,7 @@ class FiltersSectionMock {
           hasOnlineFlag: false,
           isMuted: false,
         ),
-        MessageCardWidget(
+        MessageCardModel(
           userImageUrl: 'lib/assets/images/russel_hue.jpg',
           name: 'Russel Hue',
           number: '+(1) 345-123-5467',
@@ -40,8 +40,8 @@ class FiltersSectionMock {
     ),
     FilterSectionModel(
       title: 'From team',
-      messages: const [
-        MessageCardWidget(
+      messages: [
+        MessageCardModel(
           userImageUrl: 'lib/assets/images/john_newman.jpg',
           name: 'John Newman',
           number: '+(1) 345-123-5467',
@@ -55,8 +55,8 @@ class FiltersSectionMock {
     ),
     FilterSectionModel(
       title: 'From companies',
-      messages: const [
-        MessageCardWidget(
+      messages: [
+        MessageCardModel(
           userImageUrl: 'lib/assets/images/john_newman.jpg',
           name: 'John Newman',
           number: '+(1) 345-123-5467',

@@ -19,7 +19,7 @@ class MessageInputWidget extends StatelessWidget {
               color: themeColors.whiteTextColor,
             ),
           ),
-          const SizedBox(width: 100),
+          const SizedBox(width: 80),
           Icon(
             Icons.emoji_emotions_outlined,
             color: themeColors.whiteIconsColor,

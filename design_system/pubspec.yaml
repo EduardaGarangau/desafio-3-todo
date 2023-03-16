@@ -13,8 +13,6 @@ dependencies:
     sdk: flutter
   intl: ^0.18.0
   
-  app: 
-    path: ../app
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,3 @@
-import 'package:app/pages/chat_page.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -28,71 +27,57 @@ class MessageCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
-    final themeColor = Theme.of(context).extension<ThemeColorsExtension>()!;
 
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ChatPage(
-              userName: name,
-              userImageUrl: userImageUrl!,
-            ),
+    return Container(
+      height: size.height * 0.10,
+      width: size.width,
+      padding: const EdgeInsets.only(
+        top: 10,
+        left: 20,
+        right: 20,
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          UserImageWidget(
+            userImageUrl: userImageUrl,
+            radiusSize: 27,
+            badgeNumber: badgeNumber,
+            hasBadge: true,
           ),
-        );
-      },
-      child: Container(
-        height: size.height * 0.10,
-        width: size.width,
-        padding: const EdgeInsets.only(
-          top: 10,
-          left: 20,
-          right: 20,
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            UserImageWidget(
-              userImageUrl: userImageUrl,
-              radiusSize: 27,
-              badgeNumber: badgeNumber,
-              hasBadge: true,
-            ),
-            const SizedBox(width: 15),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: size.width * 0.72,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      UserNameWidget(
-                        name: name,
-                        hasOnlineFlag: hasOnlineFlag,
-                      ),
-                      Text(
-                        messageHour,
-                        style: themeTextStyle.hourTextStyle,
-                      ),
-                    ],
-                  ),
+          const SizedBox(width: 15),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: size.width * 0.72,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    UserNameWidget(
+                      name: name,
+                      hasOnlineFlag: hasOnlineFlag,
+                    ),
+                    Text(
+                      messageHour,
+                      style: themeTextStyle.hourTextStyle,
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 5),
-                Text(
-                  number,
-                  style: themeTextStyle.phoneNumberTextStyle,
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  messageContent,
-                  style: themeTextStyle.messageContentTextStyle,
-                ),
-              ],
-            ),
-          ],
-        ),
+              ),
+              const SizedBox(height: 5),
+              Text(
+                number,
+                style: themeTextStyle.phoneNumberTextStyle,
+              ),
+              const SizedBox(height: 8),
+              Text(
+                messageContent,
+                style: themeTextStyle.messageContentTextStyle,
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

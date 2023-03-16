@@ -14,25 +14,10 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final themeColor = Theme.of(context).extension<ThemeColorsExtension>()!;
-
     return Scaffold(
-      appBar: AppBar(
-        titleSpacing: 0,
-        toolbarHeight: size.height * 0.1,
-        title: AppBarWidget(
-          name: userName,
-          userImageUrl: userImageUrl,
-        ),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios_new,
-            size: 20,
-            color: themeColor.whiteIconsColor,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
+      appBar: AppBarWidget(
+        name: userName,
+        userImageUrl: userImageUrl,
       ),
       body: Column(
         children: [
