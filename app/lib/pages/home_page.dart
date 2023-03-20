@@ -1,3 +1,4 @@
+import 'package:app/pages/profile_page.dart';
 import 'package:app/widgets/home_page/filters_section_widget.dart';
 import 'package:app/widgets/home_page/filters_widget.dart';
 import 'package:design_system/design_system.dart';
@@ -15,8 +16,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: const [
-          Padding(
+        children: [
+          const Padding(
             padding: EdgeInsets.only(
               top: 30,
               bottom: 20,
@@ -25,10 +26,18 @@ class _HomePageState extends State<HomePage> {
             ),
             child: SearchMessageWidget(),
           ),
-          FiltersWidget(),
-          SizedBox(height: 10),
-          FiltersSectionWidget(),
-          BottomNavigatorWidget(),
+          const FiltersWidget(),
+          const SizedBox(height: 10),
+          const FiltersSectionWidget(),
+          InkWell(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ProfilePage(),
+              ),
+            ),
+            child: const BottomNavigatorWidget(),
+          ),
         ],
       ),
     );

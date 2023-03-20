@@ -19,6 +19,5 @@ export 'package:design_system/widgets/message_input_widget.dart';
 export 'package:design_system/widgets/online_flag_widget.dart';
 export 'package:design_system/widgets/profile_button_widget.dart';
 export 'package:design_system/widgets/search_message_widget.dart';
-export 'package:design_system/widgets/todo_card_widget.dart';
 export 'package:design_system/widgets/user_image_widget.dart';
 export 'package:design_system/widgets/user_name_widget.dart';

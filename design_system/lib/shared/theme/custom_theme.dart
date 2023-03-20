@@ -48,11 +48,11 @@ class CustomTheme {
         blackIconsColor: AppColors.black,
         greyIconsColor: AppColors.grey,
         abilitiesColors: [
-          AppColors.darkPurple,
           AppColors.mediumPurple,
+          AppColors.darkPurple,
           AppColors.darkGrey,
           AppColors.lightGreen,
-          AppColors.mediumPurple,
+          AppColors.lightPink,
         ],
       ),
       TextStyleExtension(

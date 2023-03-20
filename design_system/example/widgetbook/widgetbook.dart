@@ -306,33 +306,7 @@ class WidgetbookHotReload extends StatelessWidget {
                 ),
               ],
             ),
-            WidgetbookComponent(
-              name: 'To-do Card',
-              useCases: [
-                WidgetbookUseCase(
-                  name: 'undone',
-                  builder: (context) {
-                    return TodoCardWidget(
-                      title: 'Interview with Lead Designer',
-                      date: DateTime.now(),
-                      done: false,
-                      onTap: () {},
-                    );
-                  },
-                ),
-                WidgetbookUseCase(
-                  name: 'done',
-                  builder: (context) {
-                    return TodoCardWidget(
-                      title: 'Interview with Lead Designer',
-                      date: DateTime.now(),
-                      done: true,
-                      onTap: () {},
-                    );
-                  },
-                ),
-              ],
-            ),
+
             WidgetbookComponent(
               name: 'AppBar',
               useCases: [
