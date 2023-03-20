@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class TodoModel with ChangeNotifier {
+class TodoModel {
   final int id;
   final String title;
   final TimeOfDay time;
@@ -24,11 +24,6 @@ class TodoModel with ChangeNotifier {
 
   String get getTime {
     return '${time.hour}:${time.minute} ${time.period.toString().split('.')[1].toUpperCase()}';
-  }
-
-  void toggleDone() {
-    done = !done;
-    notifyListeners();
   }
 
   @override

@@ -1,11 +1,19 @@
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../models/todo_model.dart';
 
 class TodoCardWidget extends StatelessWidget {
+  final String title;
+  final String date;
+  final String time;
+  final bool isDone;
+  final Function() onTap;
+
   const TodoCardWidget({
+    required this.title,
+    required this.date,
+    required this.time,
+    required this.isDone,
+    required this.onTap,
     super.key,
   });
 
@@ -14,7 +22,6 @@ class TodoCardWidget extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
-    final todo = Provider.of<TodoModel>(context, listen: false);
 
     return Container(
       height: size.height * 0.08,
@@ -25,36 +32,34 @@ class TodoCardWidget extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: todo.done
+        color: isDone
             ? themeColors.taskDoneBGColor
             : themeColors.taskUndoneBGColor,
       ),
       child: Row(
         children: [
           InkWell(
-            onTap: () => todo.toggleDone(),
+            onTap: onTap,
             borderRadius: BorderRadius.circular(12),
-            child: Consumer<TodoModel>(
-              builder: (context, todo, _) => Container(
-                height: size.height * 0.05,
-                width: size.width * 0.11,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: themeColors.marginTaskColor,
-                    width: 1.5,
-                  ),
-                  borderRadius: BorderRadius.circular(12),
-                  color: todo.done
-                      ? themeColors.taskButtonDoneColor
-                      : themeColors.taskButtonUndoneColor,
+            child: Container(
+              height: size.height * 0.05,
+              width: size.width * 0.11,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: themeColors.marginTaskColor,
+                  width: 1.5,
                 ),
-                child: todo.done
-                    ? Icon(
-                        Icons.check,
-                        color: themeColors.blackIconsColor,
-                      )
-                    : null,
+                borderRadius: BorderRadius.circular(12),
+                color: isDone
+                    ? themeColors.taskButtonDoneColor
+                    : themeColors.taskButtonUndoneColor,
               ),
+              child: isDone
+                  ? Icon(
+                      Icons.check,
+                      color: themeColors.blackIconsColor,
+                    )
+                  : null,
             ),
           ),
           const SizedBox(width: 12),
@@ -63,19 +68,19 @@ class TodoCardWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                todo.title,
+                title,
                 style: themeTextStyle.taskTitleStyle,
               ),
               const SizedBox(height: 5),
               Row(
                 children: [
                   Text(
-                    todo.getDate,
+                    date,
                     style: themeTextStyle.taskDateStyle,
                   ),
                   const SizedBox(width: 2),
                   Text(
-                    todo.getTime,
+                    time,
                     style: themeTextStyle.taskDateStyle,
                   ),
                 ],

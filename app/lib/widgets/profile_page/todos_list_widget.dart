@@ -1,7 +1,6 @@
 import 'package:app/mocks/todos_mock.dart';
-import 'package:app/widgets/profile_page/todo_card_widget.dart';
+import 'package:design_system/widgets/todo_card_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class TodosListWidget extends StatelessWidget {
   const TodosListWidget({super.key});
@@ -13,15 +12,20 @@ class TodosListWidget extends StatelessWidget {
     return ListView.builder(
       itemCount: todos.length,
       itemBuilder: (context, index) {
-        return ChangeNotifierProvider.value(
-          value: todos[index],
-          child: const Padding(
-            padding: EdgeInsets.only(
-              top: 15,
-              left: 15,
-              right: 15,
-            ),
-            child: TodoCardWidget(),
+        final todo = todos[index];
+
+        return Padding(
+          padding: const EdgeInsets.only(
+            top: 15,
+            right: 10,
+            left: 10,
+          ),
+          child: TodoCardWidget(
+            title: todo.title,
+            date: todo.getDate,
+            time: todo.getTime,
+            isDone: todo.done,
+            onTap: () {}, //TODO
           ),
         );
       },
