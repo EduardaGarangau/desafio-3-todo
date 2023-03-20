@@ -30,4 +30,9 @@ class TodoModel with ChangeNotifier {
     done = !done;
     notifyListeners();
   }
+
+  @override
+  String toString() {
+    return 'Title: $title, Date: $getDate, Time: $getTime';
+  }
 }
