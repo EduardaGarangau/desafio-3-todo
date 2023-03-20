@@ -37,7 +37,7 @@ class TodoCardWidget extends StatelessWidget {
             child: Consumer<TodoModel>(
               builder: (context, todo, _) => Container(
                 height: size.height * 0.05,
-                width: size.width * 0.1,
+                width: size.width * 0.11,
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: themeColors.marginTaskColor,
