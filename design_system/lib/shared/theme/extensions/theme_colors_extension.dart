@@ -30,6 +30,7 @@ class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
   final Color whiteIconsColor;
   final Color blackIconsColor;
   final Color greyIconsColor;
+  final Color errorColor;
   final List<Color> abilitiesColors;
 
   ThemeColorsExtension({
@@ -56,6 +57,7 @@ class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
     required this.messageBubbleReceivedColor,
     required this.messageBubbleSendedColor,
     required this.blackTextColor,
+    required this.errorColor,
     required this.greyTextColor,
     required this.whiteTextColor,
     required this.whiteIconsColor,
@@ -86,6 +88,7 @@ class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
       bottomNavButtonSelectedColor: newColor ?? bottomNavButtonSelectedColor,
       bottomNavButtonUnselectedColor:
           newColor ?? bottomNavButtonUnselectedColor,
+      errorColor: newColor ?? errorColor,
       profileButtonAvailableColor: newColor ?? profileButtonAvailableColor,
       profileButtonUnvailableColor: newColor ?? profileButtonUnvailableColor,
       messageBubbleReceivedColor: newColor ?? messageBubbleReceivedColor,

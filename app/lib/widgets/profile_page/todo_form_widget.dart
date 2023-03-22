@@ -1,12 +1,12 @@
 // ignore_for_file: lines_longer_than_80_chars
 
 import 'dart:math';
-
-import 'package:app/mocks/todos_mock.dart';
 import 'package:app/models/todo_model.dart';
+import 'package:app/stores/todos_store.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class TodoFormWidget extends StatefulWidget {
   const TodoFormWidget({super.key});
@@ -55,7 +55,7 @@ class _TodoFormWidgetState extends State<TodoFormWidget> {
     });
   }
 
-  void _submitForm() {
+  _submitForm() async {
     final isValid = _formKey.currentState?.validate() ?? false;
 
     final taskDate = DateTime(
@@ -77,8 +77,10 @@ class _TodoFormWidgetState extends State<TodoFormWidget> {
       time: _time!,
       date: _date!,
     );
-    TodoMocks.todos.add(todo);
-    Navigator.of(context).pop();
+    await context
+        .read<TodosStore>()
+        .addTodo(todo)
+        .then((value) => Navigator.of(context).pop());
   }
 
   @override
@@ -86,6 +88,15 @@ class _TodoFormWidgetState extends State<TodoFormWidget> {
     final size = MediaQuery.of(context).size;
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
     final themeTextStyles = Theme.of(context).extension<TextStyleExtension>()!;
+
+    OutlineInputBorder _textFieldBorder() {
+      return OutlineInputBorder(
+        borderSide: BorderSide(
+          width: 2,
+          color: themeColors.profileBGColor,
+        ),
+      );
+    }
 
     return Container(
       color: Colors.white,
@@ -112,6 +123,15 @@ class _TodoFormWidgetState extends State<TodoFormWidget> {
               style: TextStyle(
                 color: themeColors.blackTextColor,
               ),
+              decoration: InputDecoration(
+                labelText: 'Title',
+                labelStyle: TextStyle(
+                  color: themeColors.profileBGColor,
+                ),
+                enabledBorder: _textFieldBorder(),
+                border: _textFieldBorder(),
+                focusedBorder: _textFieldBorder(),
+              ),
               keyboardType: TextInputType.name,
               validator: (_titleInput) {
                 final titleInput = _titleInput ?? '';
@@ -123,30 +143,6 @@ class _TodoFormWidgetState extends State<TodoFormWidget> {
                 return null;
               },
               onSaved: (titleInput) => _title = titleInput ?? '',
-              decoration: InputDecoration(
-                labelText: 'Title',
-                labelStyle: TextStyle(
-                  color: themeColors.profileBGColor,
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    width: 2,
-                    color: themeColors.profileBGColor,
-                  ),
-                ),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    width: 2,
-                    color: themeColors.profileBGColor,
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    width: 2,
-                    color: themeColors.profileBGColor,
-                  ),
-                ),
-              ),
             ),
             const SizedBox(height: 20),
             Row(

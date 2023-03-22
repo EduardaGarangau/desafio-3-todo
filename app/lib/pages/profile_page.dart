@@ -1,8 +1,12 @@
+import 'package:app/stores/todos_store.dart';
 import 'package:app/widgets/profile_page/profile_card_widget.dart';
 import 'package:app/widgets/profile_page/todo_form_widget.dart';
-import 'package:app/widgets/profile_page/todos_list_widget.dart';
 import 'package:design_system/design_system.dart';
+import 'package:design_system/widgets/todo_card_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../stores/todos_state.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -13,8 +17,17 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   @override
+  void initState() {
+    super.initState();
+    context.read<TodosStore>().fetchTodos();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
+    final store = context.watch<TodosStore>();
+    final state = store.value;
+    late Widget child;
 
     void _openTodoFormModal(BuildContext context) {
       showModalBottomSheet(
@@ -25,13 +38,45 @@ class _ProfilePageState extends State<ProfilePage> {
       );
     }
 
+    if (state is SuccessTodosState) {
+      child = Expanded(
+        child: ListView.builder(
+          itemCount: state.todos.length,
+          itemBuilder: (context, index) {
+            final todo = state.todos[index];
+
+            return Padding(
+              padding: const EdgeInsets.only(
+                top: 15,
+                right: 10,
+                left: 10,
+              ),
+              child: TodoCardWidget(
+                key: ValueKey(todo.id),
+                title: todo.title,
+                date: todo.getDate,
+                time: todo.getTime,
+                isDone: todo.done,
+                isLate: todo.isLate,
+                onTap: () => store.doneTodo(todo.id),
+              ),
+            );
+          },
+        ),
+      );
+    } else {
+      child = Center(
+        child: CircularProgressIndicator(
+          color: themeColors.profileBGColor,
+        ),
+      );
+    }
+
     return Scaffold(
       body: Column(
-        children: const [
-          ProfileCardWidget(),
-          Expanded(
-            child: TodosListWidget(),
-          ),
+        children: [
+          const ProfileCardWidget(),
+          child,
         ],
       ),
       floatingActionButton: FloatingActionButton(
