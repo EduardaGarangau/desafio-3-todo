@@ -1,4 +1,4 @@
-import 'package:app/desafio_3/models/message_model.dart';
+import '../domain/models/message_model.dart';
 
 class MessagesMock {
   static List<MessageModel> messages = [

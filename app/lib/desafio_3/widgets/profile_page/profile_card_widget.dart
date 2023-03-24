@@ -1,4 +1,4 @@
-import 'package:app/desafio_3/mocks/user_mock.dart';
+import 'package:app/desafio_4/mocks/user_mock.dart';
 import 'package:app/desafio_3/widgets/profile_page/bio_card_widget.dart';
 import 'package:app/desafio_3/widgets/profile_page/profile_abilities_card.dart';
 import 'package:app/desafio_3/widgets/profile_page/profile_buttons_list_widget.dart';

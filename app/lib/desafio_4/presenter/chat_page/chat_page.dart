@@ -1,4 +1,4 @@
-import 'package:app/desafio_3/widgets/chat_page/messages_widget.dart';
+import 'package:app/desafio_4/presenter/chat_page/chat_page_widgets/messages_widget.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +18,7 @@ class ChatPage extends StatelessWidget {
       appBar: AppBarWidget(
         name: userName,
         userImageUrl: userImageUrl,
+        isWebPlatform: false,
       ),
       body: Column(
         children: [
@@ -27,6 +28,7 @@ class ChatPage extends StatelessWidget {
           ),
           const Padding(
             padding: EdgeInsets.only(
+              top: 10,
               bottom: 20,
             ),
             child: MessageInputWidget(isWebPlatform: false),

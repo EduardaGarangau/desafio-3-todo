@@ -1,5 +1,6 @@
-import 'package:app/desafio_3/models/profile_button_model.dart';
 import 'package:flutter/material.dart';
+
+import '../domain/models/profile_button_model.dart';
 
 class ProfileButtonsMocks {
   static List<ProfileButtonModel> profileButtons = [

@@ -1,12 +1,13 @@
 // ignore_for_file: lines_longer_than_80_chars
 
 import 'dart:math';
-import 'package:app/desafio_3/models/todo_model.dart';
 import 'package:app/desafio_3/stores/todos_store.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+
+import '../../../desafio_4/domain/models/todo_model.dart';
 
 class TodoFormWidget extends StatefulWidget {
   const TodoFormWidget({super.key});

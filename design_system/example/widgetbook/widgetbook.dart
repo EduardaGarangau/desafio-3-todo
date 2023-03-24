@@ -344,6 +344,7 @@ class WidgetbookHotReload extends StatelessWidget {
                     return AppBarWidget(
                       name: 'Russel Hue',
                       userImageUrl: null,
+                      isWebPlatform: true,
                     );
                   },
                 ),

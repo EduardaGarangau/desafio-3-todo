@@ -1,5 +1,5 @@
-import 'package:app/desafio_3/mocks/messages_mock.dart';
-import 'package:app/desafio_3/widgets/chat_page/message_widget.dart';
+import 'package:app/desafio_4/mocks/messages_mock.dart';
+import 'package:app/desafio_4/presenter/chat_page/chat_page_widgets/message_widget.dart';
 import 'package:flutter/material.dart';
 
 class MessagesWidget extends StatelessWidget {

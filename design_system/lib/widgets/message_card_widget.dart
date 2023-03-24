@@ -31,7 +31,7 @@ class MessageCardWidget extends StatelessWidget {
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
 
     return Container(
-      height: size.height * 0.1,
+      height: isWebPlatform ? size.height * 0.11 : size.height * 0.1,
       width: isWebPlatform ? size.width * 0.3 : size.width,
       padding: const EdgeInsets.only(
         top: 10,

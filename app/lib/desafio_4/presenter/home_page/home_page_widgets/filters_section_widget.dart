@@ -1,18 +1,27 @@
-import 'package:app/desafio_3/widgets/home_page/messages_list_widget.dart';
+import 'package:app/desafio_4/presenter/home_page/home_page_widgets/messages_list_widget.dart';
 import 'package:design_system/widgets/filter_section_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../mocks/filters_section_model.dart';
+import '../../../mocks/filters_section_model.dart';
+import '../../../domain/models/messages_card_model.dart';
 
 class FiltersSectionWidget extends StatelessWidget {
-  const FiltersSectionWidget({super.key});
+  final bool isWebPlatform;
+  final Function(MessageCardModel)? selectedMessage;
+
+  const FiltersSectionWidget({
+    required this.isWebPlatform,
+    this.selectedMessage,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     final filtersSection = FiltersSectionMock.filtersSection;
 
     return Expanded(
-      child: ListView.builder(
+      child: ListView.separated(
+        separatorBuilder: (context, index) => const SizedBox(height: 10),
         itemCount: filtersSection.length,
         itemBuilder: (context, index) {
           final filterSection = filtersSection[index];
@@ -22,6 +31,8 @@ class FiltersSectionWidget extends StatelessWidget {
             messagesLength: filterSection.messages.length,
             messagesCardList: MessagesListWidget(
               messages: filterSection.messages,
+              isWebPlatform: isWebPlatform,
+              selectedMessage: selectedMessage,
             ),
           );
         },

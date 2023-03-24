@@ -1,9 +1,10 @@
 import 'dart:convert';
 
-import 'package:app/desafio_3/models/todo_model.dart';
 import 'package:app/desafio_3/services/i_todo_service.dart';
 import 'package:app/desafio_3/stores/todos_state.dart';
 import 'package:flutter/material.dart';
+
+import '../../desafio_4/domain/models/todo_model.dart';
 
 class TodosStore extends ValueNotifier<TodosState> {
   List<TodoModel> _todos = [];

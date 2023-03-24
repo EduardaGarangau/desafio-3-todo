@@ -1,4 +1,4 @@
-import 'package:app/desafio_3/models/user_model.dart';
+import '../domain/models/user_model.dart';
 
 class UserMock {
   static UserModel user = UserModel(

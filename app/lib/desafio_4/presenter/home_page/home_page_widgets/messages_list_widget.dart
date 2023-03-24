@@ -1,13 +1,17 @@
-import 'package:app/desafio_3/models/messages_card_model.dart';
-import 'package:app/desafio_3/pages/chat_page.dart';
+import 'package:app/desafio_4/domain/models/messages_card_model.dart';
+import 'package:app/desafio_4/presenter/chat_page/chat_page.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class MessagesListWidget extends StatelessWidget {
   final List<MessageCardModel> messages;
+  final bool isWebPlatform;
+  final Function(MessageCardModel)? selectedMessage;
 
   const MessagesListWidget({
     required this.messages,
+    required this.isWebPlatform,
+    required this.selectedMessage,
     super.key,
   });
 
@@ -23,15 +27,19 @@ class MessagesListWidget extends StatelessWidget {
 
         return InkWell(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ChatPage(
-                  userName: message.name,
-                  userImageUrl: message.userImageUrl,
+            if (!isWebPlatform) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChatPage(
+                    userName: message.name,
+                    userImageUrl: message.userImageUrl,
+                  ),
                 ),
-              ),
-            );
+              );
+            } else {
+              selectedMessage!(message);
+            }
           },
           child: MessageCardWidget(
             userImageUrl: message.userImageUrl,
@@ -42,7 +50,7 @@ class MessagesListWidget extends StatelessWidget {
             messageHour: message.messageHour,
             hasOnlineFlag: message.hasOnlineFlag,
             isMuted: message.isMuted,
-            isWebPlatform: false,
+            isWebPlatform: isWebPlatform,
           ),
         );
       },

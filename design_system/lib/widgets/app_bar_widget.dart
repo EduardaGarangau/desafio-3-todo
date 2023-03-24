@@ -4,11 +4,13 @@ import '../design_system.dart';
 class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
   final String? userImageUrl;
   final String name;
+  final bool isWebPlatform;
 
   AppBarWidget({
     Key? key,
     required this.userImageUrl,
     required this.name,
+    required this.isWebPlatform,
   }) : super(key: key);
 
   @override
@@ -18,7 +20,7 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
     final size = MediaQuery.of(context).size;
 
     return AppBar(
-      titleSpacing: 0,
+      titleSpacing: isWebPlatform ? 20 : 0,
       toolbarHeight: size.height * 0.1,
       title: Container(
         height: size.height * 0.04,
@@ -47,7 +49,7 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
                 children: [
                   Container(
                     height: size.height * 0.05,
-                    width: size.width * 0.23,
+                    width: isWebPlatform ? size.width * 0.1 : size.width * 0.23,
                     decoration: BoxDecoration(
                       color: themeColors.appBarButtonColor,
                       borderRadius: BorderRadius.circular(10),
@@ -77,14 +79,16 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
           ],
         ),
       ),
-      leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back_ios_new,
-          size: 20,
-          color: themeColors.whiteIconsColor,
-        ),
-        onPressed: () => Navigator.of(context).pop(),
-      ),
+      leading: isWebPlatform
+          ? null
+          : IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios_new,
+                size: 20,
+                color: themeColors.whiteIconsColor,
+              ),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
     );
   }
 
