@@ -6,6 +6,7 @@ class TodoCardWidget extends StatelessWidget {
   final String date;
   final String time;
   final bool isDone;
+  final bool isLate;
   final Function() onTap;
 
   const TodoCardWidget({
@@ -14,6 +15,7 @@ class TodoCardWidget extends StatelessWidget {
     required this.time,
     required this.isDone,
     required this.onTap,
+    required this.isLate,
     super.key,
   });
 
@@ -76,12 +78,20 @@ class TodoCardWidget extends StatelessWidget {
                 children: [
                   Text(
                     date,
-                    style: themeTextStyle.taskDateStyle,
+                    style: themeTextStyle.taskDateStyle.copyWith(
+                      color: isLate
+                          ? themeColors.errorColor
+                          : themeColors.greyTextColor,
+                    ),
                   ),
                   const SizedBox(width: 2),
                   Text(
                     time,
-                    style: themeTextStyle.taskDateStyle,
+                    style: themeTextStyle.taskDateStyle.copyWith(
+                      color: isLate
+                          ? themeColors.errorColor
+                          : themeColors.greyTextColor,
+                    ),
                   ),
                 ],
               ),

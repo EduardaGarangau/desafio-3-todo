@@ -18,4 +18,5 @@ class AppColors {
   static const white = Color(0xFFFFFFFF);
   static const darkPink = Color(0xFFB784F6);
   static const transparent = Colors.transparent;
+  static const errorColor = Color(0xFFBE3A25);
 }

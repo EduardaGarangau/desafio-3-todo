@@ -19,21 +19,77 @@ class FilterSectionWidget extends StatefulWidget {
   State<FilterSectionWidget> createState() => _FilterSectionWidgetState();
 }
 
-class _FilterSectionWidgetState extends State<FilterSectionWidget> {
-  double turns = 0.0;
+class _FilterSectionWidgetState extends State<FilterSectionWidget>
+    with SingleTickerProviderStateMixin {
   bool _expanded = false;
+  late Size size;
+  late double messagesHeight;
+  late AnimationController? _controller;
+  late Animation<Size>? _heightAnimation;
+  late Animation<Size>? _heightMessagesAnimation;
+  late Animation<double>? _turnAnimation;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    size = MediaQuery.of(context).size;
+    messagesHeight = (widget.messagesLength * size.height * 0.12) + 10;
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 600),
+    );
+
+    _heightAnimation = Tween<Size>(
+      begin: Size(double.infinity, size.height * 0.03),
+      end: Size(double.infinity, messagesHeight + size.height * 0.03),
+    ).animate(
+      CurvedAnimation(
+        parent: _controller!,
+        curve: Curves.linear,
+      ),
+    );
+
+    _heightMessagesAnimation = Tween<Size>(
+      begin: const Size(double.infinity, 0),
+      end: Size(double.infinity, messagesHeight),
+    ).animate(
+      CurvedAnimation(
+        parent: _controller!,
+        curve: Curves.linear,
+      ),
+    );
+
+    _turnAnimation = Tween<double>(
+      begin: 0.0,
+      end: 0.5,
+    ).animate(_controller!);
+    _heightAnimation?.addListener(() {
+      setState(() {});
+    });
+
+    _heightMessagesAnimation?.addListener(() {
+      setState(() {});
+    });
+
+    _turnAnimation?.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller?.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
     final themeColor = Theme.of(context).extension<ThemeColorsExtension>()!;
-    final messagesHeight = (widget.messagesLength * size.height * 0.12) + 10;
 
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 600),
-      height:
-          _expanded ? messagesHeight + size.height * 0.03 : size.height * 0.03,
+    return Container(
+      height: _heightAnimation?.value.height,
       child: Column(
         children: [
           Container(
@@ -55,12 +111,13 @@ class _FilterSectionWidgetState extends State<FilterSectionWidget> {
                   onTap: () {
                     setState(() {
                       _expanded = !_expanded;
-                      _expanded ? turns = 0.5 : turns = 0.0;
+                      _expanded
+                          ? _controller?.forward()
+                          : _controller?.reverse();
                     });
                   },
-                  child: AnimatedRotation(
-                    turns: turns,
-                    duration: const Duration(milliseconds: 300),
+                  child: RotationTransition(
+                    turns: _turnAnimation!,
                     child: Icon(
                       Icons.expand_more,
                       color: themeColor.greyIconsColor,
@@ -70,9 +127,8 @@ class _FilterSectionWidgetState extends State<FilterSectionWidget> {
               ],
             ),
           ),
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 600),
-            height: _expanded ? messagesHeight : 0,
+          Container(
+            height: _heightMessagesAnimation?.value.height,
             child: widget.messagesCardList,
           ),
         ],

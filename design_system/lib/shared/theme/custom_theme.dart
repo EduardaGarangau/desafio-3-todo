@@ -54,6 +54,7 @@ class CustomTheme {
           AppColors.lightGreen,
           AppColors.lightPink,
         ],
+        errorColor: AppColors.errorColor,
       ),
       TextStyleExtension(
         searchCardTextStyle: const TextStyle(

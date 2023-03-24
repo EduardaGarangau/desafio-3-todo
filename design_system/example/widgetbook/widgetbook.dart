@@ -18,9 +18,19 @@ class WidgetbookHotReload extends StatelessWidget {
               name: 'Search Message',
               useCases: [
                 WidgetbookUseCase(
-                  name: 'Search Message Card',
+                  name: 'Search Message Card - Desktop',
                   builder: (context) {
-                    return const SearchMessageWidget();
+                    return const SearchMessageWidget(
+                      isWebPlatform: true,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'Search Message Card - Mobile',
+                  builder: (context) {
+                    return const SearchMessageWidget(
+                      isWebPlatform: false,
+                    );
                   },
                 ),
               ],
@@ -197,6 +207,7 @@ class WidgetbookHotReload extends StatelessWidget {
                       messageHour: '12:30',
                       hasOnlineFlag: true,
                       isMuted: true,
+                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -212,6 +223,23 @@ class WidgetbookHotReload extends StatelessWidget {
                       messageHour: '11:29',
                       hasOnlineFlag: false,
                       isMuted: false,
+                      isWebPlatform: false,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'Message Card - Desktop',
+                  builder: (context) {
+                    return const MessageCardWidget(
+                      userImageUrl: null,
+                      name: 'Amanda Buyns',
+                      badgeNumber: '2',
+                      number: '+(1) 345-123-5467',
+                      messageContent: 'See you tomorrow. Ask them ab...',
+                      messageHour: '11:29',
+                      hasOnlineFlag: false,
+                      isMuted: false,
+                      isWebPlatform: true,
                     );
                   },
                 ),
@@ -316,6 +344,7 @@ class WidgetbookHotReload extends StatelessWidget {
                     return AppBarWidget(
                       name: 'Russel Hue',
                       userImageUrl: null,
+                      isWebPlatform: true,
                     );
                   },
                 ),
@@ -385,9 +414,19 @@ class WidgetbookHotReload extends StatelessWidget {
               name: 'Message Input Card',
               useCases: [
                 WidgetbookUseCase(
-                  name: 'card',
+                  name: 'Message Input Card - Desktop',
                   builder: (context) {
-                    return const MessageInputWidget();
+                    return const MessageInputWidget(
+                      isWebPlatform: true,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'Message Input Card - Mobile',
+                  builder: (context) {
+                    return const MessageInputWidget(
+                      isWebPlatform: false,
+                    );
                   },
                 ),
               ],
@@ -396,7 +435,9 @@ class WidgetbookHotReload extends StatelessWidget {
         ),
       ],
       devices: const [
-        Apple.iPhone13,
+        Samsung.s21ultra,
+        Apple.iPhoneSE2020,
+        Desktop.desktop1440p,
       ],
       appInfo: AppInfo(name: 'Chat and To-Do app'),
       themes: [

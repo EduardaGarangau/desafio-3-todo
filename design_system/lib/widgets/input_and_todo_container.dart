@@ -2,10 +2,12 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class InputAndTodoContainer extends StatelessWidget {
+  final double width;
   final Widget child;
 
   const InputAndTodoContainer({
     required this.child,
+    required this.width,
     super.key,
   });
 
@@ -16,9 +18,10 @@ class InputAndTodoContainer extends StatelessWidget {
 
     return Container(
       height: size.height * 0.07,
-      width: size.width * 0.9,
+      width: width,
       padding: const EdgeInsets.only(
         left: 20,
+        right: 10,
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
