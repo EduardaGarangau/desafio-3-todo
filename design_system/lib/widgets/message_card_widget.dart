@@ -10,6 +10,7 @@ class MessageCardWidget extends StatelessWidget {
   final String messageHour;
   final bool hasOnlineFlag;
   final bool isMuted;
+  final bool isWebPlatform;
 
   const MessageCardWidget({
     required this.userImageUrl,
@@ -20,6 +21,7 @@ class MessageCardWidget extends StatelessWidget {
     required this.messageHour,
     required this.hasOnlineFlag,
     required this.isMuted,
+    required this.isWebPlatform,
     super.key,
   });
 
@@ -29,14 +31,15 @@ class MessageCardWidget extends StatelessWidget {
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
 
     return Container(
-      height: size.height * 0.10,
-      width: size.width,
+      height: size.height * 0.1,
+      width: isWebPlatform ? size.width * 0.3 : size.width,
       padding: const EdgeInsets.only(
         top: 10,
         left: 20,
         right: 20,
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           UserImageWidget(
@@ -45,37 +48,38 @@ class MessageCardWidget extends StatelessWidget {
             badgeNumber: badgeNumber,
             hasBadge: true,
           ),
-          const SizedBox(width: 15),
+          SizedBox(
+            width: isWebPlatform ? size.width * 0.005 : size.width * 0.02,
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                width: size.width * 0.72,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    UserNameWidget(
-                      name: name,
-                      hasOnlineFlag: hasOnlineFlag,
-                    ),
-                    Text(
-                      messageHour,
-                      style: themeTextStyle.hourTextStyle,
-                    ),
-                  ],
-                ),
+              UserNameWidget(
+                name: name,
+                hasOnlineFlag: hasOnlineFlag,
               ),
-              const SizedBox(height: 5),
+              SizedBox(height: size.height * 0.009),
               Text(
                 number,
                 style: themeTextStyle.phoneNumberTextStyle,
               ),
-              const SizedBox(height: 8),
+              SizedBox(height: size.height * 0.011),
               Text(
                 messageContent,
                 style: themeTextStyle.messageContentTextStyle,
               ),
             ],
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  messageHour,
+                  style: themeTextStyle.hourTextStyle,
+                ),
+              ],
+            ),
           ),
         ],
       ),

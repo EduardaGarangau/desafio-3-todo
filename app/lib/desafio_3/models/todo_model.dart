@@ -10,6 +10,7 @@ class TodoModel {
   final TimeOfDay time;
   final DateTime date;
   bool done;
+  //deixar imutável e usar copyWith para mudar o valor do atributo
 
   TodoModel({
     required this.id,

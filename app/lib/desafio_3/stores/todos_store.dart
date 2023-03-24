@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:app/models/todo_model.dart';
-import 'package:app/services/i_todo_service.dart';
-import 'package:app/stores/todos_state.dart';
+import 'package:app/desafio_3/models/todo_model.dart';
+import 'package:app/desafio_3/services/i_todo_service.dart';
+import 'package:app/desafio_3/stores/todos_state.dart';
 import 'package:flutter/material.dart';
 
 class TodosStore extends ValueNotifier<TodosState> {
@@ -22,7 +22,6 @@ class TodosStore extends ValueNotifier<TodosState> {
       _sortedTodos();
     }
     value = SuccessTodosState(todos: _todos);
-    notifyListeners();
   }
 
   Future<void> addTodo(TodoModel todo) async {

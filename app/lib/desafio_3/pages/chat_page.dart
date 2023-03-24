@@ -1,4 +1,4 @@
-import 'package:app/widgets/chat_page/messages_widget.dart';
+import 'package:app/desafio_3/widgets/chat_page/messages_widget.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +29,7 @@ class ChatPage extends StatelessWidget {
             padding: EdgeInsets.only(
               bottom: 20,
             ),
-            child: MessageInputWidget(),
+            child: MessageInputWidget(isWebPlatform: false),
           ),
         ],
       ),

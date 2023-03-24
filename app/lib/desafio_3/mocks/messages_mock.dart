@@ -1,4 +1,4 @@
-import 'package:app/models/message_model.dart';
+import 'package:app/desafio_3/models/message_model.dart';
 
 class MessagesMock {
   static List<MessageModel> messages = [
@@ -22,5 +22,15 @@ class MessagesMock {
       isMessageReceived: false,
       messageContent: 'Wow! This look is amazing, I love it. Thanks',
     ),
-  ];
+    MessageModel(
+      hour: '13:53',
+      isMessageReceived: true,
+      messageContent: 'Good! Send you their visual',
+    ),
+    MessageModel(
+      hour: '14:00',
+      isMessageReceived: false,
+      messageContent: 'Wow! This look is amazing, I love it. Thanks',
+    ),
+  ].reversed.toList();
 }

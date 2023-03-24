@@ -1,4 +1,4 @@
-import 'package:app/mocks/profile_buttons_mocks.dart';
+import 'package:app/desafio_3/mocks/profile_buttons_mocks.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 

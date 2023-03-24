@@ -1,6 +1,6 @@
-import 'package:app/stores/todos_store.dart';
-import 'package:app/widgets/profile_page/profile_card_widget.dart';
-import 'package:app/widgets/profile_page/todo_form_widget.dart';
+import 'package:app/desafio_3/stores/todos_store.dart';
+import 'package:app/desafio_3/widgets/profile_page/profile_card_widget.dart';
+import 'package:app/desafio_3/widgets/profile_page/todo_form_widget.dart';
 import 'package:design_system/design_system.dart';
 import 'package:design_system/widgets/todo_card_widget.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
     final state = store.value;
     late Widget child;
 
+    //todo tirar do build
     void _openTodoFormModal(BuildContext context) {
       showModalBottomSheet(
         context: context,
@@ -52,7 +53,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 left: 10,
               ),
               child: TodoCardWidget(
-                key: ValueKey(todo.id),
                 title: todo.title,
                 date: todo.getDate,
                 time: todo.getTime,

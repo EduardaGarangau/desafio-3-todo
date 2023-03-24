@@ -1,4 +1,4 @@
-import 'package:app/models/filter_model.dart';
+import 'package:app/desafio_3/models/filter_model.dart';
 import 'package:flutter/material.dart';
 
 class FiltersMock {

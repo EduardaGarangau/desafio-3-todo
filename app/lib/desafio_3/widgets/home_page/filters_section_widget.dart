@@ -1,4 +1,4 @@
-import 'package:app/widgets/home_page/messages_list_widget.dart';
+import 'package:app/desafio_3/widgets/home_page/messages_list_widget.dart';
 import 'package:design_system/widgets/filter_section_widget.dart';
 import 'package:flutter/material.dart';
 

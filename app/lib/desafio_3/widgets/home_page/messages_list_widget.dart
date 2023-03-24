@@ -1,5 +1,5 @@
-import 'package:app/models/messages_card_model.dart';
-import 'package:app/pages/chat_page.dart';
+import 'package:app/desafio_3/models/messages_card_model.dart';
+import 'package:app/desafio_3/pages/chat_page.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -42,6 +42,7 @@ class MessagesListWidget extends StatelessWidget {
             messageHour: message.messageHour,
             hasOnlineFlag: message.hasOnlineFlag,
             isMuted: message.isMuted,
+            isWebPlatform: false,
           ),
         );
       },

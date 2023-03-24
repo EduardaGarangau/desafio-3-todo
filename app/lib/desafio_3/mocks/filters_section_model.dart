@@ -1,5 +1,5 @@
-import 'package:app/models/filter_section_model.dart';
-import 'package:app/models/messages_card_model.dart';
+import 'package:app/desafio_3/models/filter_section_model.dart';
+import 'package:app/desafio_3/models/messages_card_model.dart';
 
 class FiltersSectionMock {
   static List<FilterSectionModel> filtersSection = [

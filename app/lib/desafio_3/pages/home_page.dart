@@ -1,6 +1,6 @@
-import 'package:app/pages/profile_page.dart';
-import 'package:app/widgets/home_page/filters_section_widget.dart';
-import 'package:app/widgets/home_page/filters_widget.dart';
+import 'package:app/desafio_3/pages/profile_page.dart';
+import 'package:app/desafio_3/widgets/home_page/filters_section_widget.dart';
+import 'package:app/desafio_3/widgets/home_page/filters_widget.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
               left: 20,
               right: 20,
             ),
-            child: SearchMessageWidget(),
+            child: SearchMessageWidget(isWebPlatform: false),
           ),
           const FiltersWidget(),
           const SizedBox(height: 10),

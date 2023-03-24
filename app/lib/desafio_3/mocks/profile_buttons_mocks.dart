@@ -1,4 +1,4 @@
-import 'package:app/models/profile_button_model.dart';
+import 'package:app/desafio_3/models/profile_button_model.dart';
 import 'package:flutter/material.dart';
 
 class ProfileButtonsMocks {

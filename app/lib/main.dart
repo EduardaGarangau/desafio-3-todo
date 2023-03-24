@@ -1,6 +1,6 @@
-import 'package:app/pages/home_page.dart';
-import 'package:app/services/shared_preferences_todo_service.dart';
-import 'package:app/stores/todos_store.dart';
+import 'package:app/desafio_3/pages/home_page.dart';
+import 'package:app/desafio_3/services/shared_preferences_todo_service.dart';
+import 'package:app/desafio_3/stores/todos_store.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

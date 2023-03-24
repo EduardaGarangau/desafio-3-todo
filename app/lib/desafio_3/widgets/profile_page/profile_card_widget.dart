@@ -1,8 +1,8 @@
-import 'package:app/mocks/user_mock.dart';
-import 'package:app/widgets/profile_page/bio_card_widget.dart';
-import 'package:app/widgets/profile_page/profile_abilities_card.dart';
-import 'package:app/widgets/profile_page/profile_buttons_list_widget.dart';
-import 'package:app/widgets/profile_page/profile_header_widget.dart';
+import 'package:app/desafio_3/mocks/user_mock.dart';
+import 'package:app/desafio_3/widgets/profile_page/bio_card_widget.dart';
+import 'package:app/desafio_3/widgets/profile_page/profile_abilities_card.dart';
+import 'package:app/desafio_3/widgets/profile_page/profile_buttons_list_widget.dart';
+import 'package:app/desafio_3/widgets/profile_page/profile_header_widget.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
