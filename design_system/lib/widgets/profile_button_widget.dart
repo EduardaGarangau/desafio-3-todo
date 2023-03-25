@@ -5,10 +5,12 @@ import '../design_system.dart';
 class ProfileButtonWidget extends StatelessWidget {
   final IconData icon;
   final bool isAvailable;
+  final bool isWebPlatform;
 
   const ProfileButtonWidget({
     required this.icon,
     required this.isAvailable,
+    required this.isWebPlatform,
     super.key,
   });
 

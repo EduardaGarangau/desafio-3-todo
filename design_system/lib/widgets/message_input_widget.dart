@@ -16,7 +16,7 @@ class MessageInputWidget extends StatelessWidget {
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
 
     return InputAndTodoContainer(
-      width: isWebPlatform ? size.width * 0.68 : size.width * 0.9,
+      width: isWebPlatform ? size.width * 0.3 : size.width * 0.9,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -42,6 +42,19 @@ class MessageInputWidget extends StatelessWidget {
                   size: 25,
                 ),
               ),
+              if (isWebPlatform) ...{
+                Icon(
+                  Icons.image_outlined,
+                  color: themeColors.whiteIconsColor,
+                  size: 25,
+                ),
+                const SizedBox(width: 5),
+                Icon(
+                  Icons.link,
+                  color: themeColors.whiteIconsColor,
+                  size: 25,
+                ),
+              },
               const SizedBox(width: 5),
               Container(
                 height: size.height * 0.05,

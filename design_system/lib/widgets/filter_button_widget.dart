@@ -5,14 +5,16 @@ import '../design_system.dart';
 class FilterButtonWidget extends StatelessWidget {
   final IconData icon;
   final String title;
-  final String badgeNumber;
+  final String? badgeNumber;
   final bool selected;
+  final bool isWebPlatform;
 
   const FilterButtonWidget({
     required this.icon,
     required this.title,
-    required this.badgeNumber,
+    this.badgeNumber,
     required this.selected,
+    required this.isWebPlatform,
     super.key,
   });
 
@@ -24,7 +26,8 @@ class FilterButtonWidget extends StatelessWidget {
 
     return UnconstrainedBox(
       child: Container(
-        height: size.height * 0.05,
+        height: isWebPlatform ? size.height * 0.07 : size.height * 0.05,
+        width: isWebPlatform ? size.width * 0.11 : null,
         padding: const EdgeInsets.only(
           left: 15,
           right: 15,
@@ -35,30 +38,60 @@ class FilterButtonWidget extends StatelessWidget {
               ? themeColors.filterButtonSelectedColor
               : themeColors.filterButtonUnselectedColor,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              icon,
-              size: 25,
-              color: selected
-                  ? themeColors.blackIconsColor
-                  : themeColors.greyIconsColor,
-            ),
-            const SizedBox(width: 8),
-            Text(
-              title,
-              style: selected
-                  ? themeTextStyle.filterButtonSelectedTextStyle
-                  : themeTextStyle.filterButtonUnselectedTextStyle,
-            ),
-            const SizedBox(width: 5),
-            BadgeWidget(
-              number: badgeNumber,
-              selected: selected,
-            ),
-          ],
-        ),
+        child: isWebPlatform
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        icon,
+                        size: 25,
+                        color: selected
+                            ? themeColors.blackIconsColor
+                            : themeColors.greyIconsColor,
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        title,
+                        style: selected
+                            ? themeTextStyle.filterButtonSelectedTextStyle
+                            : themeTextStyle.filterButtonUnselectedTextStyle,
+                      ),
+                    ],
+                  ),
+                  Text(
+                    badgeNumber ?? '',
+                    style: selected
+                        ? themeTextStyle.filterButtonSelectedTextStyle
+                        : themeTextStyle.filterButtonUnselectedTextStyle,
+                  ),
+                ],
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    icon,
+                    size: 25,
+                    color: selected
+                        ? themeColors.blackIconsColor
+                        : themeColors.greyIconsColor,
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    title,
+                    style: selected
+                        ? themeTextStyle.filterButtonSelectedTextStyle
+                        : themeTextStyle.filterButtonUnselectedTextStyle,
+                  ),
+                  const SizedBox(width: 5),
+                  BadgeWidget(
+                    number: badgeNumber!,
+                    selected: selected,
+                  ),
+                ],
+              ),
       ),
     );
   }

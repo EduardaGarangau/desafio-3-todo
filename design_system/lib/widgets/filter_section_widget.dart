@@ -7,11 +7,13 @@ class FilterSectionWidget extends StatefulWidget {
   final String title;
   final int messagesLength;
   final Widget messagesCardList;
+  final bool isWebPlatform;
 
   const FilterSectionWidget({
     required this.title,
     required this.messagesLength,
     required this.messagesCardList,
+    required this.isWebPlatform,
     super.key,
   });
 
@@ -42,7 +44,7 @@ class _FilterSectionWidgetState extends State<FilterSectionWidget>
 
     _heightAnimation = Tween<Size>(
       begin: Size(double.infinity, size.height * 0.03),
-      end: Size(double.infinity, messagesHeight + size.height * 0.03),
+      end: Size(double.infinity, messagesHeight + size.height * 0.035),
     ).animate(
       CurvedAnimation(
         parent: _controller!,
@@ -93,7 +95,7 @@ class _FilterSectionWidgetState extends State<FilterSectionWidget>
       child: Column(
         children: [
           Container(
-            width: size.width,
+            width: widget.isWebPlatform ? size.width * 0.2 : size.width,
             height: size.height * 0.03,
             padding: const EdgeInsets.only(
               left: 20,

@@ -30,6 +30,7 @@ class MessageBubbleDetailsWidget extends StatelessWidget {
             radiusSize: 14,
             badgeNumber: '',
             hasBadge: false,
+            isWebPlatform: false, //todo
           ),
           const SizedBox(width: 10),
           Text(

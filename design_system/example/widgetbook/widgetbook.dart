@@ -18,7 +18,7 @@ class WidgetbookHotReload extends StatelessWidget {
               name: 'Search Message',
               useCases: [
                 WidgetbookUseCase(
-                  name: 'Search Message Card - Desktop',
+                  name: 'Search Message Card - Web',
                   builder: (context) {
                     return const SearchMessageWidget(
                       isWebPlatform: true,
@@ -69,6 +69,7 @@ class WidgetbookHotReload extends StatelessWidget {
                       title: 'All',
                       badgeNumber: '35',
                       selected: true,
+                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -80,6 +81,31 @@ class WidgetbookHotReload extends StatelessWidget {
                       title: 'Live Chat',
                       badgeNumber: '2',
                       selected: false,
+                      isWebPlatform: false,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'Web Filter Button - selected',
+                  builder: (context) {
+                    return const FilterButtonWidget(
+                      icon: Icons.chat_outlined,
+                      title: 'All',
+                      badgeNumber: '35',
+                      selected: true,
+                      isWebPlatform: true,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'Web Filter Button - unselected',
+                  builder: (context) {
+                    return const FilterButtonWidget(
+                      icon: Icons.video_chat_outlined,
+                      title: 'Live Chat',
+                      badgeNumber: '2',
+                      selected: false,
+                      isWebPlatform: true,
                     );
                   },
                 ),
@@ -141,6 +167,7 @@ class WidgetbookHotReload extends StatelessWidget {
                       radiusSize: 28,
                       badgeNumber: '5',
                       hasBadge: true,
+                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -152,6 +179,7 @@ class WidgetbookHotReload extends StatelessWidget {
                       radiusSize: 40,
                       badgeNumber: null,
                       hasBadge: false,
+                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -254,6 +282,7 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const IconButtonWidget(
                       icon: Icons.chat_outlined,
                       selected: true,
+                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -263,6 +292,29 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const IconButtonWidget(
                       icon: Icons.insert_chart_outlined_rounded,
                       selected: false,
+                      isWebPlatform: false,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'Web Icon Button - selected',
+                  builder: (context) {
+                    return const IconButtonWidget(
+                      icon: Icons.chat_outlined,
+                      title: 'Chats',
+                      selected: true,
+                      isWebPlatform: true,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'Web Icon Button - unselected',
+                  builder: (context) {
+                    return const IconButtonWidget(
+                      icon: Icons.insert_chart_outlined_rounded,
+                      title: 'Statistic',
+                      selected: false,
+                      isWebPlatform: true,
                     );
                   },
                 ),
@@ -426,6 +478,54 @@ class WidgetbookHotReload extends StatelessWidget {
                   builder: (context) {
                     return const MessageInputWidget(
                       isWebPlatform: false,
+                    );
+                  },
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Web Header Icon',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'without notifications',
+                  builder: (context) {
+                    return const WebHeaderIconWidget(
+                      icon: Icons.local_phone_outlined,
+                      hasNotifications: false,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'with notifications',
+                  builder: (context) {
+                    return const WebHeaderIconWidget(
+                      icon: Icons.notifications_none,
+                      hasNotifications: true,
+                    );
+                  },
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Name Header',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Name Header',
+                  builder: (context) {
+                    return const WebNameHeaderWidget(
+                      userName: 'John Tornton',
+                      userPhoneNumber: '+(1) 345-123-5467',
+                      userImageUrl: null,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'Longer Name Header',
+                  builder: (context) {
+                    return const WebNameHeaderWidget(
+                      userName: 'Amanda Bynes',
+                      userPhoneNumber: '+(1) 345-123-5467',
+                      userImageUrl: null,
                     );
                   },
                 ),

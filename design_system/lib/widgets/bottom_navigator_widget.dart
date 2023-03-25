@@ -33,22 +33,27 @@ class BottomNavigatorWidget extends StatelessWidget {
                   IconButtonWidget(
                     icon: Icons.insert_drive_file_outlined,
                     selected: false,
+                    isWebPlatform: false,
                   ),
                   IconButtonWidget(
                     icon: Icons.person_outline_rounded,
                     selected: false,
+                    isWebPlatform: false,
                   ),
                   IconButtonWidget(
                     icon: Icons.insert_chart_outlined_rounded,
                     selected: false,
+                    isWebPlatform: false,
                   ),
                   IconButtonWidget(
                     icon: Icons.chat_outlined,
                     selected: true,
+                    isWebPlatform: false,
                   ),
                   IconButtonWidget(
                     icon: Icons.menu,
                     selected: false,
+                    isWebPlatform: false,
                   ),
                 ],
               ),

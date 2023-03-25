@@ -37,6 +37,7 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
               radiusSize: 14,
               badgeNumber: '',
               hasBadge: false,
+              isWebPlatform: isWebPlatform,
             ),
             const SizedBox(width: 10),
             Text(

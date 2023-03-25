@@ -16,7 +16,7 @@ class SearchMessageWidget extends StatelessWidget {
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
 
     return InputAndTodoContainer(
-      width: isWebPlatform ? size.width * 0.3 : size.width * 0.9,
+      width: isWebPlatform ? size.width * 0.18 : size.width * 0.9,
       child: Row(
         children: [
           Icon(

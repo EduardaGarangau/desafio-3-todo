@@ -44,6 +44,7 @@ class CustomTheme {
         blackTextColor: AppColors.black,
         greyTextColor: AppColors.grey,
         whiteTextColor: AppColors.white,
+        yellowTextColor: AppColors.amber,
         whiteIconsColor: AppColors.white,
         blackIconsColor: AppColors.black,
         greyIconsColor: AppColors.grey,

@@ -31,8 +31,8 @@ class MessageCardWidget extends StatelessWidget {
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
 
     return Container(
-      height: isWebPlatform ? size.height * 0.11 : size.height * 0.1,
-      width: isWebPlatform ? size.width * 0.3 : size.width,
+      height: isWebPlatform ? size.height * 0.11 : size.height * 0.105,
+      width: isWebPlatform ? size.width * 0.2 : size.width,
       padding: const EdgeInsets.only(
         top: 10,
         left: 20,
@@ -44,12 +44,13 @@ class MessageCardWidget extends StatelessWidget {
         children: [
           UserImageWidget(
             userImageUrl: userImageUrl,
-            radiusSize: 27,
+            radiusSize: isWebPlatform ? 23 : 27,
             badgeNumber: badgeNumber,
             hasBadge: true,
+            isWebPlatform: isWebPlatform,
           ),
           SizedBox(
-            width: isWebPlatform ? size.width * 0.005 : size.width * 0.02,
+            width: isWebPlatform ? size.width * 0.005 : size.width * 0.01,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,9 +65,17 @@ class MessageCardWidget extends StatelessWidget {
                 style: themeTextStyle.phoneNumberTextStyle,
               ),
               SizedBox(height: size.height * 0.011),
-              Text(
-                messageContent,
-                style: themeTextStyle.messageContentTextStyle,
+              Container(
+                constraints: BoxConstraints(
+                  maxWidth:
+                      isWebPlatform ? size.width * 0.11 : size.width * 0.2,
+                ),
+                child: Text(
+                  messageContent,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: true,
+                  style: themeTextStyle.messageContentTextStyle,
+                ),
               ),
             ],
           ),

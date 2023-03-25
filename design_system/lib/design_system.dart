@@ -21,3 +21,5 @@ export 'package:design_system/widgets/profile_button_widget.dart';
 export 'package:design_system/widgets/search_message_widget.dart';
 export 'package:design_system/widgets/user_image_widget.dart';
 export 'package:design_system/widgets/user_name_widget.dart';
+export 'package:design_system/widgets/web_header_icon_widget.dart';
+export 'package:design_system/widgets/web_name_header_widget.dart';

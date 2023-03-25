@@ -26,11 +26,13 @@ class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
   final Color messageBubbleSendedColor;
   final Color blackTextColor;
   final Color greyTextColor;
+  final Color yellowTextColor;
   final Color whiteTextColor;
   final Color whiteIconsColor;
   final Color blackIconsColor;
   final Color greyIconsColor;
   final Color errorColor;
+
   final List<Color> abilitiesColors;
 
   ThemeColorsExtension({
@@ -64,6 +66,7 @@ class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
     required this.blackIconsColor,
     required this.greyIconsColor,
     required this.abilitiesColors,
+    required this.yellowTextColor,
   });
 
   @override
@@ -95,6 +98,7 @@ class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
       messageBubbleSendedColor: newColor ?? messageBubbleSendedColor,
       blackTextColor: newColor ?? blackTextColor,
       greyTextColor: newColor ?? greyTextColor,
+      yellowTextColor: newColor ?? yellowTextColor,
       whiteTextColor: newColor ?? whiteTextColor,
       whiteIconsColor: newColor ?? whiteIconsColor,
       blackIconsColor: newColor ?? blackIconsColor,

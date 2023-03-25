@@ -19,6 +19,7 @@ class _WebHomePageState extends State<WebHomePage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
 
     void selectMessage(MessageCardModel message) {
       setState(() {
@@ -63,8 +64,13 @@ class _WebHomePageState extends State<WebHomePage> {
                     userName: _message.name,
                     userImageUrl: _message.userImageUrl,
                   )
-                : const Center(
-                    child: Text('Nenhuma mensagem'),
+                : Center(
+                    child: Text(
+                      'Nenhuma mensagem',
+                      style: themeTextStyle.userNameTextStyle.copyWith(
+                        fontSize: 20,
+                      ),
+                    ),
                   ),
           ),
         ],
