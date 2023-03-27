@@ -15,25 +15,37 @@ class ChatWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        AppBarWidget(
-          userImageUrl: userImageUrl,
-          name: userName,
-          isWebPlatform: true,
+    final size = MediaQuery.of(context).size;
+
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: 20,
+      ),
+      child: Container(
+        width: size.width * 0.43,
+        height: size.height,
+        color: Color(0xFF1D1E24),
+        child: Column(
+          children: [
+            AppBarWidget(
+              userImageUrl: userImageUrl,
+              name: userName,
+              isWebPlatform: true,
+            ),
+            MessagesWidget(
+              userImageUrl: userImageUrl,
+              name: userName,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(
+                top: 20,
+                bottom: 20,
+              ),
+              child: MessageInputWidget(isWebPlatform: true),
+            ),
+          ],
         ),
-        MessagesWidget(
-          userImageUrl: userImageUrl,
-          name: userName,
-        ),
-        const Padding(
-          padding: EdgeInsets.only(
-            top: 10,
-            bottom: 20,
-          ),
-          child: MessageInputWidget(isWebPlatform: true),
-        ),
-      ],
+      ),
     );
   }
 }

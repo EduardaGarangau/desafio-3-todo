@@ -22,6 +22,14 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       titleSpacing: isWebPlatform ? 20 : 0,
       toolbarHeight: size.height * 0.1,
+      shape: isWebPlatform
+          ? const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+            )
+          : null,
       title: Container(
         height: size.height * 0.04,
         padding: const EdgeInsets.only(
@@ -40,6 +48,17 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
               isWebPlatform: isWebPlatform,
             ),
             const SizedBox(width: 10),
+            if (isWebPlatform)
+              Row(
+                children: [
+                  Text(
+                    'Conversation with ',
+                    style: themeFontStyle.abilityTextStyle.copyWith(
+                      color: themeColors.greyTextColor,
+                    ),
+                  ),
+                ],
+              ),
             Text(
               name,
               style: themeFontStyle.userNameChatPageTextStyle,

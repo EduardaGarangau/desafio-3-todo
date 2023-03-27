@@ -5,10 +5,12 @@ import '../design_system.dart';
 class AbilityCardWidget extends StatelessWidget {
   final String ability;
   final Color cardColor;
+  final bool isWebPlatform;
 
   const AbilityCardWidget({
     required this.ability,
     required this.cardColor,
+    required this.isWebPlatform,
     super.key,
   });
 
@@ -19,7 +21,7 @@ class AbilityCardWidget extends StatelessWidget {
 
     return UnconstrainedBox(
       child: Container(
-        height: size.height * 0.04,
+        height: isWebPlatform ? size.height * 0.03 : size.height * 0.04,
         padding: const EdgeInsets.only(
           left: 10,
           right: 10,
@@ -31,7 +33,11 @@ class AbilityCardWidget extends StatelessWidget {
         child: Center(
           child: Text(
             ability,
-            style: themeTextStyle.abilityTextStyle,
+            style: isWebPlatform
+                ? themeTextStyle.abilityTextStyle.copyWith(
+                    fontSize: 12,
+                  )
+                : themeTextStyle.abilityTextStyle,
           ),
         ),
       ),

@@ -11,7 +11,6 @@ class SharedPreferencesTodoService extends ITodoService {
   @override
   Future<void> saveData(String key, List<String> todos) async {
     final sharedPreferences = await SharedPreferences.getInstance();
-    var list = sharedPreferences.getStringList(key) ?? [];
     await sharedPreferences.setStringList(key, todos);
   }
 }

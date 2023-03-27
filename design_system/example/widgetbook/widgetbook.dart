@@ -177,7 +177,6 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const UserImageWidget(
                       userImageUrl: null,
                       radiusSize: 40,
-                      badgeNumber: null,
                       hasBadge: false,
                       isWebPlatform: false,
                     );
@@ -340,6 +339,7 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const ProfileButtonWidget(
                       icon: Icons.phone_in_talk_outlined,
                       isAvailable: true,
+                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -349,6 +349,7 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const ProfileButtonWidget(
                       icon: Icons.video_camera_front_rounded,
                       isAvailable: false,
+                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -363,6 +364,7 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const AbilityCardWidget(
                       ability: 'Project Manager',
                       cardColor: AppColors.mediumPurple,
+                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -372,6 +374,7 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const AbilityCardWidget(
                       ability: 'Java Script Manager',
                       cardColor: AppColors.lightPink,
+                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -381,6 +384,7 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const AbilityCardWidget(
                       ability: 'QA',
                       cardColor: AppColors.darkGreen,
+                      isWebPlatform: false,
                     );
                   },
                 ),

@@ -60,14 +60,14 @@ class WebNameHeaderWidget extends StatelessWidget {
                 Text(
                   '${_getPeriodOfDay()}${_getFirstName()}',
                   style: themeTextStyles.abilityTextStyle.copyWith(
-                    fontSize: 16,
+                    fontSize: 15,
                   ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 6),
                 Text(
                   userPhoneNumber,
                   style: themeTextStyles.phoneNumberTextStyle.copyWith(
-                    fontSize: 15,
+                    fontSize: 13,
                   ),
                 ),
               ],
@@ -75,7 +75,7 @@ class WebNameHeaderWidget extends StatelessWidget {
             const SizedBox(width: 15),
             UserImageWidget(
               userImageUrl: userImageUrl,
-              radiusSize: 26,
+              radiusSize: 22,
               hasBadge: false,
               isWebPlatform: true,
             ),

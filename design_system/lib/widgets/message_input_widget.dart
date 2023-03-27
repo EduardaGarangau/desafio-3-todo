@@ -16,7 +16,7 @@ class MessageInputWidget extends StatelessWidget {
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
 
     return InputAndTodoContainer(
-      width: isWebPlatform ? size.width * 0.3 : size.width * 0.9,
+      width: isWebPlatform ? size.width * 0.4 : size.width * 0.9,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

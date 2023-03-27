@@ -8,6 +8,7 @@ class TodoCardWidget extends StatelessWidget {
   final bool isDone;
   final bool isLate;
   final Function() onTap;
+  final bool isWebPlatform;
 
   const TodoCardWidget({
     required this.title,
@@ -16,6 +17,7 @@ class TodoCardWidget extends StatelessWidget {
     required this.isDone,
     required this.onTap,
     required this.isLate,
+    required this.isWebPlatform,
     super.key,
   });
 
@@ -27,7 +29,7 @@ class TodoCardWidget extends StatelessWidget {
 
     return Container(
       height: size.height * 0.08,
-      width: size.width * 0.86,
+      width: isWebPlatform ? size.width * 0.2 : size.width * 0.86,
       alignment: Alignment.centerLeft,
       padding: const EdgeInsets.only(
         left: 20,

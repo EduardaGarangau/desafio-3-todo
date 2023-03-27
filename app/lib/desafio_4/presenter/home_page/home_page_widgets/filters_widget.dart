@@ -23,6 +23,7 @@ class FiltersWidget extends StatelessWidget {
           itemCount: filters.length,
           itemBuilder: (context, index) {
             return FilterButtonWidget(
+              isWebPlatform: false,
               icon: filters[index].icon,
               title: filters[index].title,
               badgeNumber: filters[index].badgeNumber,

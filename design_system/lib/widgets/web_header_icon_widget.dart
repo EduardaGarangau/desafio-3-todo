@@ -27,12 +27,12 @@ class WebHeaderIconWidget extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                size: 28,
+                size: 22,
                 color: themeColors.whiteIconsColor,
               ),
               if (hasNotifications)
                 const Positioned(
-                  left: 20,
+                  left: 18,
                   child: OnlineFlagWidget(),
                 ),
             ],

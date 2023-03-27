@@ -1,8 +1,8 @@
 import 'package:app/desafio_4/mocks/user_mock.dart';
-import 'package:app/desafio_3/widgets/profile_page/bio_card_widget.dart';
-import 'package:app/desafio_3/widgets/profile_page/profile_abilities_card.dart';
-import 'package:app/desafio_3/widgets/profile_page/profile_buttons_list_widget.dart';
-import 'package:app/desafio_3/widgets/profile_page/profile_header_widget.dart';
+import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/bio_card_widget.dart';
+import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/profile_abilities_card.dart';
+import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/profile_buttons_list_widget.dart';
+import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/profile_header_widget.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -39,11 +39,18 @@ class ProfileCardWidget extends StatelessWidget {
               name: user.name,
               phone: user.phone,
               isOnline: user.isOnline,
+              isWebPlatform: false,
             ),
             const SizedBox(height: 10),
-            const ProfileButtonsListWidget(),
-            BioCardWidget(bio: user.bio),
-            ProfileAbilitiesCard(abilities: user.habilities),
+            const ProfileButtonsListWidget(isWebPlatform: false),
+            BioCardWidget(
+              bio: user.bio,
+              isWebPlatform: false,
+            ),
+            ProfileAbilitiesCard(
+              abilities: user.habilities,
+              isWebPlatform: false,
+            ),
           ],
         ),
       ),

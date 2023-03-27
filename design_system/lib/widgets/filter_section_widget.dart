@@ -5,14 +5,14 @@ import '../design_system.dart';
 
 class FilterSectionWidget extends StatefulWidget {
   final String title;
-  final int messagesLength;
-  final Widget messagesCardList;
+  final int listLength;
+  final Widget widgetList;
   final bool isWebPlatform;
 
   const FilterSectionWidget({
     required this.title,
-    required this.messagesLength,
-    required this.messagesCardList,
+    required this.listLength,
+    required this.widgetList,
     required this.isWebPlatform,
     super.key,
   });
@@ -35,7 +35,7 @@ class _FilterSectionWidgetState extends State<FilterSectionWidget>
   void didChangeDependencies() {
     super.didChangeDependencies();
     size = MediaQuery.of(context).size;
-    messagesHeight = (widget.messagesLength * size.height * 0.12) + 10;
+    messagesHeight = (widget.listLength * size.height * 0.12) + 10;
 
     _controller = AnimationController(
       vsync: this,
@@ -66,6 +66,7 @@ class _FilterSectionWidgetState extends State<FilterSectionWidget>
       begin: 0.0,
       end: 0.5,
     ).animate(_controller!);
+
     _heightAnimation?.addListener(() {
       setState(() {});
     });
@@ -131,7 +132,7 @@ class _FilterSectionWidgetState extends State<FilterSectionWidget>
           ),
           Container(
             height: _heightMessagesAnimation?.value.height,
-            child: widget.messagesCardList,
+            child: widget.widgetList,
           ),
         ],
       ),

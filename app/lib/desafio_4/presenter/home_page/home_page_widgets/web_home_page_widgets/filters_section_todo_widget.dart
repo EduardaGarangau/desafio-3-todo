@@ -1,21 +1,19 @@
-import 'package:app/desafio_3/stores/todos_store.dart';
-import 'package:app/desafio_3/widgets/profile_page/profile_card_widget.dart';
-import 'package:app/desafio_3/widgets/profile_page/todo_form_widget.dart';
-import 'package:design_system/design_system.dart';
+import 'package:design_system/shared/theme/extensions/theme_colors_extension.dart';
 import 'package:design_system/widgets/todo_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../stores/todos_state.dart';
+import '../../../../../desafio_3/stores/todos_state.dart';
+import '../../../../../desafio_3/stores/todos_store.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+class TodosWidget extends StatefulWidget {
+  const TodosWidget({super.key});
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  State<TodosWidget> createState() => _TodosWidgetState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _TodosWidgetState extends State<TodosWidget> {
   @override
   void initState() {
     super.initState();
@@ -28,16 +26,6 @@ class _ProfilePageState extends State<ProfilePage> {
     final store = context.watch<TodosStore>();
     final state = store.value;
     late Widget child;
-
-    //todo tirar do build
-    void _openTodoFormModal(BuildContext context) {
-      showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return const TodoFormWidget();
-        },
-      );
-    }
 
     if (state is SuccessTodosState) {
       child = Expanded(
@@ -58,6 +46,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 time: todo.getTime,
                 isDone: todo.done,
                 isLate: todo.isLate,
+                isWebPlatform: false,
                 onTap: () => store.doneTodo(todo.id),
               ),
             );
@@ -72,21 +61,6 @@ class _ProfilePageState extends State<ProfilePage> {
       );
     }
 
-    return Scaffold(
-      body: Column(
-        children: [
-          const ProfileCardWidget(),
-          child,
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: themeColors.profileBGColor,
-        child: Icon(
-          Icons.add,
-          color: themeColors.whiteIconsColor,
-        ),
-        onPressed: () => _openTodoFormModal(context),
-      ),
-    );
+    return child;
   }
 }

@@ -5,6 +5,7 @@ export 'package:design_system/shared/theme/extensions/text_style_extension.dart'
 export 'package:design_system/shared/theme/extensions/theme_colors_extension.dart';
 export 'package:design_system/shared/utils/app_colors.dart';
 export 'package:design_system/widgets/ability_card_widget.dart';
+export 'package:design_system/widgets/app_bar_web_widget.dart';
 export 'package:design_system/widgets/app_bar_widget.dart';
 export 'package:design_system/widgets/badge_widget.dart';
 export 'package:design_system/widgets/bottom_navigator_widget.dart';

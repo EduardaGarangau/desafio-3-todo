@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 
 class BioCardWidget extends StatelessWidget {
   final String bio;
+  final bool isWebPlatform;
 
   const BioCardWidget({
+    required this.isWebPlatform,
     required this.bio,
     super.key,
   });
@@ -15,8 +17,8 @@ class BioCardWidget extends StatelessWidget {
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
 
     return Container(
-      alignment: Alignment.center,
-      width: size.width * 0.5,
+      alignment: isWebPlatform ? Alignment.centerLeft : Alignment.center,
+      width: isWebPlatform ? size.width * 0.13 : size.width * 0.5,
       constraints: BoxConstraints(
         maxHeight: size.height * 0.1,
       ),
@@ -25,9 +27,9 @@ class BioCardWidget extends StatelessWidget {
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
         softWrap: true,
-        textAlign: TextAlign.center,
+        textAlign: isWebPlatform ? TextAlign.start : TextAlign.center,
         style: themeTextStyle.userBioTextStyle.copyWith(
-          fontSize: 17,
+          fontSize: isWebPlatform ? 14 : 17,
           color: Colors.white60,
         ),
       ),

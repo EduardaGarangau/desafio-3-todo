@@ -20,17 +20,17 @@ class ProfileButtonWidget extends StatelessWidget {
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
 
     return Container(
-      height: size.height * 0.03,
-      width: size.width * 0.14,
+      height: isWebPlatform ? size.height * 0.03 : size.height * 0.03,
+      width: isWebPlatform ? size.width * 0.03 : size.width * 0.14,
       decoration: BoxDecoration(
         color: isAvailable
             ? themeColors.profileButtonAvailableColor
             : themeColors.profileButtonUnvailableColor,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(isWebPlatform ? 12 : 20),
       ),
       child: Icon(
         icon,
-        size: 28,
+        size: isWebPlatform ? 20 : 28,
         color: isAvailable
             ? themeColors.whiteIconsColor
             : themeColors.whiteIconsColor.withOpacity(0.6),

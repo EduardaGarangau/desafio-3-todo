@@ -23,40 +23,28 @@ class IconButtonWidget extends StatelessWidget {
 
     return isWebPlatform
         ? Container(
-            height: size.height * 0.14,
+            height: size.height * 0.25,
             constraints: BoxConstraints(
               minWidth: size.width * 0.007,
             ),
             child: Column(
               children: [
-                Container(
-                  height: size.height * 0.01,
-                  decoration: BoxDecoration(
-                    color: selected
-                        ? themeColors.bottomNavButtonSelectedColor
-                        : themeColors.bottomNavButtonUnselectedColor,
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 35),
+                const SizedBox(height: 87),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
                       icon,
-                      size: 27,
+                      size: 24,
                       color: selected
                           ? themeColors.yellowTextColor
                           : themeColors.greyIconsColor,
                     ),
-                    const SizedBox(width: 15),
+                    const SizedBox(width: 8),
                     Text(
                       title!,
                       style: themeTextStyles.abilityTextStyle.copyWith(
-                        fontSize: 18,
+                        fontSize: 15,
                         color: selected
                             ? themeColors.yellowTextColor
                             : themeColors.greyTextColor,

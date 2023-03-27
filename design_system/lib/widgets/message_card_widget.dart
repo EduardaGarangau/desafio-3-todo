@@ -50,7 +50,7 @@ class MessageCardWidget extends StatelessWidget {
             isWebPlatform: isWebPlatform,
           ),
           SizedBox(
-            width: isWebPlatform ? size.width * 0.005 : size.width * 0.01,
+            width: isWebPlatform ? size.width * 0.005 : size.width * 0.025,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,7 +59,7 @@ class MessageCardWidget extends StatelessWidget {
                 name: name,
                 hasOnlineFlag: hasOnlineFlag,
               ),
-              SizedBox(height: size.height * 0.009),
+              SizedBox(height: size.height * 0.007),
               Text(
                 number,
                 style: themeTextStyle.phoneNumberTextStyle,
@@ -68,7 +68,7 @@ class MessageCardWidget extends StatelessWidget {
               Container(
                 constraints: BoxConstraints(
                   maxWidth:
-                      isWebPlatform ? size.width * 0.11 : size.width * 0.2,
+                      isWebPlatform ? size.width * 0.11 : size.width * 0.8,
                 ),
                 child: Text(
                   messageContent,

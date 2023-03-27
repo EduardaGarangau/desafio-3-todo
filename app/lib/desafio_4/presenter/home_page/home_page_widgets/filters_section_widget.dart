@@ -2,7 +2,7 @@ import 'package:app/desafio_4/presenter/home_page/home_page_widgets/messages_lis
 import 'package:design_system/widgets/filter_section_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../../mocks/filters_section_model.dart';
+import '../../../mocks/filters_section_mock.dart';
 import '../../../domain/models/messages_card_model.dart';
 
 class FiltersSectionWidget extends StatelessWidget {
@@ -28,8 +28,9 @@ class FiltersSectionWidget extends StatelessWidget {
 
           return FilterSectionWidget(
             title: filterSection.title,
-            messagesLength: filterSection.messages.length,
-            messagesCardList: MessagesListWidget(
+            listLength: filterSection.messages.length,
+            isWebPlatform: false,
+            widgetList: MessagesListWidget(
               messages: filterSection.messages,
               isWebPlatform: isWebPlatform,
               selectedMessage: selectedMessage,
