@@ -2,29 +2,31 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class SearchMessageWidget extends StatelessWidget {
-  final bool isWebPlatform;
+  final double width;
+  final double height;
 
   const SearchMessageWidget({
-    required this.isWebPlatform,
+    this.width = 350.0,
+    this.height = 60.0,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
 
     return InputAndTodoContainer(
-      width: isWebPlatform ? size.width * 0.3 : size.width * 0.9,
+      width: width,
+      height: height,
       child: Row(
         children: [
           Icon(
             Icons.search,
             color: themeColors.greyIconsColor,
-            size: 25,
+            size: height * 0.5,
           ),
-          const SizedBox(width: 10),
+          SizedBox(width: width * 0.02),
           Text(
             'Search',
             style: themeTextStyle.searchCardTextStyle,

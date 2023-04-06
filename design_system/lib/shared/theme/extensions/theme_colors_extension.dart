@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
   final Color appBarButtonColor;
+  final Color webBackgroundColor;
   final Color searchCardColor;
   final Color sendMessageCardColor;
   final Color bottomNavigatorColor;
@@ -26,6 +27,7 @@ class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
   final Color messageBubbleSendedColor;
   final Color blackTextColor;
   final Color greyTextColor;
+  final Color yellowTextColor;
   final Color whiteTextColor;
   final Color whiteIconsColor;
   final Color blackIconsColor;
@@ -35,6 +37,7 @@ class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
 
   ThemeColorsExtension({
     required this.appBarButtonColor,
+    required this.webBackgroundColor,
     required this.searchCardColor,
     required this.sendMessageCardColor,
     required this.bottomNavigatorColor,
@@ -64,12 +67,14 @@ class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
     required this.blackIconsColor,
     required this.greyIconsColor,
     required this.abilitiesColors,
+    required this.yellowTextColor,
   });
 
   @override
   ThemeExtension<ThemeColorsExtension> copyWith({Color? newColor}) {
     return ThemeColorsExtension(
       appBarButtonColor: newColor ?? appBarButtonColor,
+      webBackgroundColor: newColor ?? webBackgroundColor,
       searchCardColor: newColor ?? searchCardColor,
       sendMessageCardColor: newColor ?? sendMessageCardColor,
       bottomNavigatorColor: newColor ?? bottomNavigatorColor,
@@ -95,6 +100,7 @@ class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
       messageBubbleSendedColor: newColor ?? messageBubbleSendedColor,
       blackTextColor: newColor ?? blackTextColor,
       greyTextColor: newColor ?? greyTextColor,
+      yellowTextColor: newColor ?? yellowTextColor,
       whiteTextColor: newColor ?? whiteTextColor,
       whiteIconsColor: newColor ?? whiteIconsColor,
       blackIconsColor: newColor ?? blackIconsColor,

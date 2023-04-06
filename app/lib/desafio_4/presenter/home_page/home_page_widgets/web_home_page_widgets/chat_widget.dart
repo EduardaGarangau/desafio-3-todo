@@ -1,7 +1,6 @@
+import 'package:app/desafio_4/presenter/chat_page/chat_page_widgets/messages_widget.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
-
-import '../../../chat_page/chat_page_widgets/messages_widget.dart';
 
 class ChatWidget extends StatelessWidget {
   final String userName;
@@ -15,25 +14,44 @@ class ChatWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        AppBarWidget(
-          userImageUrl: userImageUrl,
-          name: userName,
-          isWebPlatform: true,
+    final size = MediaQuery.of(context).size;
+
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: 20,
+      ),
+      child: Container(
+        width: size.width * 0.45,
+        height: size.height,
+        color: const Color(0xFF1D1E24),
+        child: Column(
+          children: [
+            ChatAppBarWidget.web(
+              userImageUrl: userImageUrl,
+              userName: userName,
+              height: size.height * 0.1,
+              titleHeight: size.height * 0.04,
+              buttonWidth: size.width * 0.1,
+            ),
+            MessagesWidget(
+              userImageUrl: userImageUrl,
+              name: userName,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 20,
+                bottom: 20,
+              ),
+              child: MessageInputWidget(
+                width: size.width * 0.43,
+                buttonHeight: size.height * 0.1,
+                buttonWidth: size.width * 0.05,
+                isWebPlatform: true,
+              ),
+            ),
+          ],
         ),
-        MessagesWidget(
-          userImageUrl: userImageUrl,
-          name: userName,
-        ),
-        const Padding(
-          padding: EdgeInsets.only(
-            top: 10,
-            bottom: 20,
-          ),
-          child: MessageInputWidget(isWebPlatform: true),
-        ),
-      ],
+      ),
     );
   }
 }

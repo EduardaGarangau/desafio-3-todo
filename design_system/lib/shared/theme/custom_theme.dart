@@ -20,6 +20,7 @@ class CustomTheme {
     extensions: <ThemeExtension<dynamic>>[
       ThemeColorsExtension(
         appBarButtonColor: AppColors.grey,
+        webBackgroundColor: AppColors.black,
         searchCardColor: AppColors.almostBlack,
         sendMessageCardColor: AppColors.almostBlack,
         bottomNavigatorColor: AppColors.almostBlack,
@@ -44,6 +45,7 @@ class CustomTheme {
         blackTextColor: AppColors.black,
         greyTextColor: AppColors.grey,
         whiteTextColor: AppColors.white,
+        yellowTextColor: AppColors.amber,
         whiteIconsColor: AppColors.white,
         blackIconsColor: AppColors.black,
         greyIconsColor: AppColors.grey,

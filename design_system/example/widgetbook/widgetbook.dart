@@ -18,19 +18,15 @@ class WidgetbookHotReload extends StatelessWidget {
               name: 'Search Message',
               useCases: [
                 WidgetbookUseCase(
-                  name: 'Search Message Card - Desktop',
+                  name: 'Search Message Card - Web',
                   builder: (context) {
-                    return const SearchMessageWidget(
-                      isWebPlatform: true,
-                    );
+                    return const SearchMessageWidget();
                   },
                 ),
                 WidgetbookUseCase(
                   name: 'Search Message Card - Mobile',
                   builder: (context) {
-                    return const SearchMessageWidget(
-                      isWebPlatform: false,
-                    );
+                    return const SearchMessageWidget();
                   },
                 ),
               ],
@@ -64,7 +60,7 @@ class WidgetbookHotReload extends StatelessWidget {
                 WidgetbookUseCase(
                   name: 'selected',
                   builder: (context) {
-                    return const FilterButtonWidget(
+                    return FilterButtonWidget.mobile(
                       icon: Icons.chat_outlined,
                       title: 'All',
                       badgeNumber: '35',
@@ -75,10 +71,30 @@ class WidgetbookHotReload extends StatelessWidget {
                 WidgetbookUseCase(
                   name: 'unselected',
                   builder: (context) {
-                    return const FilterButtonWidget(
+                    return FilterButtonWidget.mobile(
                       icon: Icons.video_chat_outlined,
                       title: 'Live Chat',
                       badgeNumber: '2',
+                      selected: false,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'Web Filter Button - selected',
+                  builder: (context) {
+                    return FilterButtonWidget.web(
+                      icon: Icons.chat_outlined,
+                      title: 'All',
+                      selected: true,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'Web Filter Button - unselected',
+                  builder: (context) {
+                    return FilterButtonWidget.web(
+                      icon: Icons.video_chat_outlined,
+                      title: 'Live Chat',
                       selected: false,
                     );
                   },
@@ -141,6 +157,7 @@ class WidgetbookHotReload extends StatelessWidget {
                       radiusSize: 28,
                       badgeNumber: '5',
                       hasBadge: true,
+                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -150,8 +167,8 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const UserImageWidget(
                       userImageUrl: null,
                       radiusSize: 40,
-                      badgeNumber: null,
                       hasBadge: false,
+                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -254,6 +271,7 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const IconButtonWidget(
                       icon: Icons.chat_outlined,
                       selected: true,
+                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -263,6 +281,29 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const IconButtonWidget(
                       icon: Icons.insert_chart_outlined_rounded,
                       selected: false,
+                      isWebPlatform: false,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'Web Icon Button - selected',
+                  builder: (context) {
+                    return const IconButtonWidget(
+                      icon: Icons.chat_outlined,
+                      title: 'Chats',
+                      selected: true,
+                      isWebPlatform: true,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'Web Icon Button - unselected',
+                  builder: (context) {
+                    return const IconButtonWidget(
+                      icon: Icons.insert_chart_outlined_rounded,
+                      title: 'Statistic',
+                      selected: false,
+                      isWebPlatform: true,
                     );
                   },
                 ),
@@ -288,6 +329,7 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const ProfileButtonWidget(
                       icon: Icons.phone_in_talk_outlined,
                       isAvailable: true,
+                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -297,6 +339,7 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const ProfileButtonWidget(
                       icon: Icons.video_camera_front_rounded,
                       isAvailable: false,
+                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -311,6 +354,7 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const AbilityCardWidget(
                       ability: 'Project Manager',
                       cardColor: AppColors.mediumPurple,
+                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -320,6 +364,7 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const AbilityCardWidget(
                       ability: 'Java Script Manager',
                       cardColor: AppColors.lightPink,
+                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -329,6 +374,7 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const AbilityCardWidget(
                       ability: 'QA',
                       cardColor: AppColors.darkGreen,
+                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -426,6 +472,54 @@ class WidgetbookHotReload extends StatelessWidget {
                   builder: (context) {
                     return const MessageInputWidget(
                       isWebPlatform: false,
+                    );
+                  },
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Web Header Icon',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'without notifications',
+                  builder: (context) {
+                    return const WebHeaderIconWidget(
+                      icon: Icons.local_phone_outlined,
+                      hasNotifications: false,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'with notifications',
+                  builder: (context) {
+                    return const WebHeaderIconWidget(
+                      icon: Icons.notifications_none,
+                      hasNotifications: true,
+                    );
+                  },
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Name Header',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Name Header',
+                  builder: (context) {
+                    return const WebNameHeaderWidget(
+                      userName: 'John Tornton',
+                      userPhoneNumber: '+(1) 345-123-5467',
+                      userImageUrl: null,
+                    );
+                  },
+                ),
+                WidgetbookUseCase(
+                  name: 'Longer Name Header',
+                  builder: (context) {
+                    return const WebNameHeaderWidget(
+                      userName: 'Amanda Bynes',
+                      userPhoneNumber: '+(1) 345-123-5467',
+                      userImageUrl: null,
                     );
                   },
                 ),

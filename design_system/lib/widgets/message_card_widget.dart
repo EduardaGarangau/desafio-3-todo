@@ -10,7 +10,11 @@ class MessageCardWidget extends StatelessWidget {
   final String messageHour;
   final bool hasOnlineFlag;
   final bool isMuted;
-  final bool isWebPlatform;
+  final double height;
+  final double width;
+  final double positionedImage;
+  final double maxWidthConstraints;
+  final double imageSpacing;
 
   const MessageCardWidget({
     required this.userImageUrl,
@@ -21,7 +25,11 @@ class MessageCardWidget extends StatelessWidget {
     required this.messageHour,
     required this.hasOnlineFlag,
     required this.isMuted,
-    required this.isWebPlatform,
+    this.height = 100,
+    this.width = 100,
+    this.positionedImage = 26,
+    this.maxWidthConstraints = 400,
+    this.imageSpacing = 15,
     super.key,
   });
 
@@ -31,8 +39,8 @@ class MessageCardWidget extends StatelessWidget {
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
 
     return Container(
-      height: isWebPlatform ? size.height * 0.11 : size.height * 0.1,
-      width: isWebPlatform ? size.width * 0.3 : size.width,
+      height: height,
+      width: width,
       padding: const EdgeInsets.only(
         top: 10,
         left: 20,
@@ -44,13 +52,12 @@ class MessageCardWidget extends StatelessWidget {
         children: [
           UserImageWidget(
             userImageUrl: userImageUrl,
-            radiusSize: 27,
+            radiusSize: height * 0.27,
             badgeNumber: badgeNumber,
             hasBadge: true,
+            positionedSize: positionedImage,
           ),
-          SizedBox(
-            width: isWebPlatform ? size.width * 0.005 : size.width * 0.02,
-          ),
+          SizedBox(width: imageSpacing),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -58,15 +65,22 @@ class MessageCardWidget extends StatelessWidget {
                 name: name,
                 hasOnlineFlag: hasOnlineFlag,
               ),
-              SizedBox(height: size.height * 0.009),
+              SizedBox(height: size.height * 0.007),
               Text(
                 number,
                 style: themeTextStyle.phoneNumberTextStyle,
               ),
               SizedBox(height: size.height * 0.011),
-              Text(
-                messageContent,
-                style: themeTextStyle.messageContentTextStyle,
+              Container(
+                constraints: BoxConstraints(
+                  maxWidth: maxWidthConstraints,
+                ),
+                child: Text(
+                  messageContent,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: true,
+                  style: themeTextStyle.messageContentTextStyle,
+                ),
               ),
             ],
           ),

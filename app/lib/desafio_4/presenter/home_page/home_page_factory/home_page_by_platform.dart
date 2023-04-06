@@ -7,12 +7,17 @@ class HomePageByPlatform extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final maxWidth = constraints.maxWidth;
 
-    if (size.width > 500) {
-      return const WebHomePage();
-    } else {
-      return const MobileHomePage();
-    }
+        //TODO: colocar a lógica em um widget separado
+        if (maxWidth < 2000.0 && maxWidth > 637) {
+          return const WebHomePage();
+        } else {
+          return const MobileHomePage();
+        }
+      },
+    );
   }
 }

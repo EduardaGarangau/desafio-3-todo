@@ -1,29 +1,31 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/profile_header_widget.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
-class ProfileHeaderWidget extends StatelessWidget {
+class ProfileHeaderMobileWidget extends StatelessWidget
+    implements ProfileHeaderWidget {
   final String imageUrl;
   final String name;
   final String phone;
   final bool isOnline;
+  final double height;
 
-  const ProfileHeaderWidget({
-    Key? key,
+  const ProfileHeaderMobileWidget({
+    super.key,
     required this.imageUrl,
     required this.name,
     required this.phone,
     required this.isOnline,
-  }) : super(key: key);
+    this.height = 113,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
 
     return SizedBox(
-      height: size.height * 0.17,
+      height: height,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,8 +41,7 @@ class ProfileHeaderWidget extends StatelessWidget {
             children: [
               UserImageWidget(
                 userImageUrl: imageUrl,
-                radiusSize: 40,
-                badgeNumber: '',
+                radiusSize: height * 0.25,
                 hasBadge: false,
               ),
               const SizedBox(height: 10),
@@ -62,7 +63,7 @@ class ProfileHeaderWidget extends StatelessWidget {
             children: [
               const SizedBox(height: 3),
               Icon(
-                size: 30,
+                size: height * 0.2,
                 Icons.menu,
                 color: themeColors.whiteIconsColor,
               ),

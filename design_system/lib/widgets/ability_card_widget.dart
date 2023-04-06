@@ -5,21 +5,24 @@ import '../design_system.dart';
 class AbilityCardWidget extends StatelessWidget {
   final String ability;
   final Color cardColor;
+  final double height;
+  final double? fontSize;
 
   const AbilityCardWidget({
     required this.ability,
     required this.cardColor,
+    this.height = 50,
+    this.fontSize = 16,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
-    final size = MediaQuery.of(context).size;
 
     return UnconstrainedBox(
       child: Container(
-        height: size.height * 0.04,
+        height: height,
         padding: const EdgeInsets.only(
           left: 10,
           right: 10,
@@ -31,7 +34,9 @@ class AbilityCardWidget extends StatelessWidget {
         child: Center(
           child: Text(
             ability,
-            style: themeTextStyle.abilityTextStyle,
+            style: themeTextStyle.abilityTextStyle.copyWith(
+              fontSize: fontSize,
+            ),
           ),
         ),
       ),

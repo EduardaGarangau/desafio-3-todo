@@ -2,21 +2,29 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class MessageInputWidget extends StatelessWidget {
+  final double height;
+  final double width;
+  final double buttonHeight;
+  final double buttonWidth;
   final bool isWebPlatform;
 
   const MessageInputWidget({
-    required this.isWebPlatform,
+    this.width = 300,
+    this.height = 70,
+    this.isWebPlatform = false,
+    this.buttonHeight = 10,
+    this.buttonWidth = 10,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final themeFontStyle = Theme.of(context).extension<TextStyleExtension>()!;
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
 
     return InputAndTodoContainer(
-      width: isWebPlatform ? size.width * 0.68 : size.width * 0.9,
+      height: height,
+      width: width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -31,7 +39,7 @@ class MessageInputWidget extends StatelessWidget {
               Icon(
                 Icons.emoji_emotions_outlined,
                 color: themeColors.whiteIconsColor,
-                size: 25,
+                size: height * 0.35,
               ),
               const SizedBox(width: 5),
               Transform.rotate(
@@ -39,13 +47,26 @@ class MessageInputWidget extends StatelessWidget {
                 child: Icon(
                   Icons.link,
                   color: themeColors.whiteIconsColor,
-                  size: 25,
+                  size: height * 0.35,
                 ),
               ),
+              if (isWebPlatform) ...{
+                Icon(
+                  Icons.image_outlined,
+                  color: themeColors.whiteIconsColor,
+                  size: height * 0.35,
+                ),
+                const SizedBox(width: 5),
+                Icon(
+                  Icons.link,
+                  color: themeColors.whiteIconsColor,
+                  size: height * 0.35,
+                ),
+              },
               const SizedBox(width: 5),
               Container(
-                height: size.height * 0.05,
-                width: 40,
+                height: height * 0.7,
+                width: isWebPlatform ? width * 0.08 : width * 0.15,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   color: themeColors.bottomNavButtonSelectedColor,
@@ -55,7 +76,7 @@ class MessageInputWidget extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.send,
-                      size: 23,
+                      size: height * 0.35,
                       color: themeColors.blackIconsColor,
                     ),
                   ],

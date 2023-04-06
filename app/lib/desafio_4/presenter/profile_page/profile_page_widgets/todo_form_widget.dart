@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-import '../../../desafio_4/domain/models/todo_model.dart';
+import '../../../domain/models/todo_model.dart';
 
 class TodoFormWidget extends StatefulWidget {
   const TodoFormWidget({super.key});

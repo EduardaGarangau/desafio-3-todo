@@ -5,13 +5,15 @@ import '../design_system.dart';
 
 class FilterSectionWidget extends StatefulWidget {
   final String title;
-  final int messagesLength;
-  final Widget messagesCardList;
+  final Widget content;
+  final double height;
+  final double width;
 
   const FilterSectionWidget({
     required this.title,
-    required this.messagesLength,
-    required this.messagesCardList,
+    required this.content,
+    this.height = 50,
+    this.width = double.infinity,
     super.key,
   });
 
@@ -22,57 +24,30 @@ class FilterSectionWidget extends StatefulWidget {
 class _FilterSectionWidgetState extends State<FilterSectionWidget>
     with SingleTickerProviderStateMixin {
   bool _expanded = false;
-  late Size size;
-  late double messagesHeight;
   late AnimationController? _controller;
-  late Animation<Size>? _heightAnimation;
-  late Animation<Size>? _heightMessagesAnimation;
   late Animation<double>? _turnAnimation;
+  late Animation<double>? _contentAnimation;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    size = MediaQuery.of(context).size;
-    messagesHeight = (widget.messagesLength * size.height * 0.12) + 10;
+  void initState() {
+    super.initState();
 
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 600),
     );
 
-    _heightAnimation = Tween<Size>(
-      begin: Size(double.infinity, size.height * 0.03),
-      end: Size(double.infinity, messagesHeight + size.height * 0.03),
-    ).animate(
-      CurvedAnimation(
-        parent: _controller!,
-        curve: Curves.linear,
-      ),
-    );
-
-    _heightMessagesAnimation = Tween<Size>(
-      begin: const Size(double.infinity, 0),
-      end: Size(double.infinity, messagesHeight),
-    ).animate(
-      CurvedAnimation(
-        parent: _controller!,
-        curve: Curves.linear,
-      ),
+    _contentAnimation = CurvedAnimation(
+      parent: _controller!,
+      curve: Curves.fastOutSlowIn,
     );
 
     _turnAnimation = Tween<double>(
       begin: 0.0,
       end: 0.5,
     ).animate(_controller!);
-    _heightAnimation?.addListener(() {
-      setState(() {});
-    });
 
-    _heightMessagesAnimation?.addListener(() {
-      setState(() {});
-    });
-
-    _turnAnimation?.addListener(() {
+    _controller?.addListener(() {
       setState(() {});
     });
   }
@@ -88,51 +63,46 @@ class _FilterSectionWidgetState extends State<FilterSectionWidget>
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
     final themeColor = Theme.of(context).extension<ThemeColorsExtension>()!;
 
-    return Container(
-      height: _heightAnimation?.value.height,
-      child: Column(
-        children: [
-          Container(
-            width: size.width,
-            height: size.height * 0.03,
-            padding: const EdgeInsets.only(
-              left: 20,
-              right: 20,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  widget.title,
-                  style: themeTextStyle.filterSectionTextStyle,
-                ),
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      _expanded = !_expanded;
-                      _expanded
-                          ? _controller?.forward()
-                          : _controller?.reverse();
-                    });
-                  },
-                  child: RotationTransition(
-                    turns: _turnAnimation!,
-                    child: Icon(
-                      Icons.expand_more,
-                      color: themeColor.greyIconsColor,
-                    ),
+    return Column(
+      children: [
+        Container(
+          width: widget.width,
+          height: widget.height,
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                widget.title,
+                style: themeTextStyle.filterSectionTextStyle,
+              ),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    _expanded = !_expanded;
+                    _expanded ? _controller?.forward() : _controller?.reverse();
+                  });
+                },
+                child: RotationTransition(
+                  turns: _turnAnimation!,
+                  child: Icon(
+                    Icons.expand_more,
+                    color: themeColor.greyIconsColor,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          Container(
-            height: _heightMessagesAnimation?.value.height,
-            child: widget.messagesCardList,
-          ),
-        ],
-      ),
+        ),
+        SizeTransition(
+          sizeFactor: _contentAnimation!,
+          child: widget.content,
+        ),
+      ],
     );
   }
 }

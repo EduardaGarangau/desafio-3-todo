@@ -4,12 +4,17 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigatorWidget extends StatelessWidget {
-  const BottomNavigatorWidget({super.key});
+  final double height;
+  final double width;
+
+  const BottomNavigatorWidget({
+    super.key,
+    this.height = 150,
+    this.width = double.infinity,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
     return Stack(
       children: [
         ClipRRect(
@@ -17,8 +22,8 @@ class BottomNavigatorWidget extends StatelessWidget {
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 50, sigmaY: 50),
             child: Container(
-              height: size.height * 0.11,
-              width: size.width,
+              height: height,
+              width: width,
               padding: const EdgeInsets.only(
                 left: 20,
                 right: 10,
@@ -33,22 +38,27 @@ class BottomNavigatorWidget extends StatelessWidget {
                   IconButtonWidget(
                     icon: Icons.insert_drive_file_outlined,
                     selected: false,
+                    isWebPlatform: false,
                   ),
                   IconButtonWidget(
                     icon: Icons.person_outline_rounded,
                     selected: false,
+                    isWebPlatform: false,
                   ),
                   IconButtonWidget(
                     icon: Icons.insert_chart_outlined_rounded,
                     selected: false,
+                    isWebPlatform: false,
                   ),
                   IconButtonWidget(
                     icon: Icons.chat_outlined,
                     selected: true,
+                    isWebPlatform: false,
                   ),
                   IconButtonWidget(
                     icon: Icons.menu,
                     selected: false,
+                    isWebPlatform: false,
                   ),
                 ],
               ),

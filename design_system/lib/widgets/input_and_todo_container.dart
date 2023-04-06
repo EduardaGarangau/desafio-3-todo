@@ -3,21 +3,22 @@ import 'package:flutter/material.dart';
 
 class InputAndTodoContainer extends StatelessWidget {
   final double width;
+  final double height;
   final Widget child;
 
   const InputAndTodoContainer({
     required this.child,
     required this.width,
+    required this.height,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final theme = Theme.of(context).extension<ThemeColorsExtension>()!;
 
     return Container(
-      height: size.height * 0.07,
+      height: height,
       width: width,
       padding: const EdgeInsets.only(
         left: 20,

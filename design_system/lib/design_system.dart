@@ -5,9 +5,10 @@ export 'package:design_system/shared/theme/extensions/text_style_extension.dart'
 export 'package:design_system/shared/theme/extensions/theme_colors_extension.dart';
 export 'package:design_system/shared/utils/app_colors.dart';
 export 'package:design_system/widgets/ability_card_widget.dart';
-export 'package:design_system/widgets/app_bar_widget.dart';
+export 'package:design_system/widgets/app_bar_web_widget.dart';
 export 'package:design_system/widgets/badge_widget.dart';
 export 'package:design_system/widgets/bottom_navigator_widget.dart';
+export 'package:design_system/widgets/chat_app_bar_widget.dart';
 export 'package:design_system/widgets/filter_button_widget.dart';
 export 'package:design_system/widgets/filter_section_widget.dart';
 export 'package:design_system/widgets/icon_button_widget.dart';
@@ -21,3 +22,5 @@ export 'package:design_system/widgets/profile_button_widget.dart';
 export 'package:design_system/widgets/search_message_widget.dart';
 export 'package:design_system/widgets/user_image_widget.dart';
 export 'package:design_system/widgets/user_name_widget.dart';
+export 'package:design_system/widgets/web_header_icon_widget.dart';
+export 'package:design_system/widgets/web_name_header_widget.dart';

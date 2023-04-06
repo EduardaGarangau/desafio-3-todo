@@ -1,8 +1,8 @@
 import 'package:app/desafio_4/mocks/user_mock.dart';
-import 'package:app/desafio_3/widgets/profile_page/bio_card_widget.dart';
-import 'package:app/desafio_3/widgets/profile_page/profile_abilities_card.dart';
-import 'package:app/desafio_3/widgets/profile_page/profile_buttons_list_widget.dart';
-import 'package:app/desafio_3/widgets/profile_page/profile_header_widget.dart';
+import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/bio_card_widget.dart';
+import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/profile_abilities_card.dart';
+import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/profile_buttons_list_widget.dart';
+import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/profile_header_widget.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -34,16 +34,30 @@ class ProfileCardWidget extends StatelessWidget {
         ),
         child: Column(
           children: [
-            ProfileHeaderWidget(
+            ProfileHeaderWidget.mobile(
               imageUrl: user.imageUrl,
               name: user.name,
               phone: user.phone,
               isOnline: user.isOnline,
+              height: size.height * 0.17,
             ),
-            const SizedBox(height: 10),
-            const ProfileButtonsListWidget(),
-            BioCardWidget(bio: user.bio),
-            ProfileAbilitiesCard(abilities: user.habilities),
+            SizedBox(height: size.height * 0.002),
+            ProfileButtonsListWidget(
+              height: size.height * 0.065,
+              width: size.width,
+              paddingLeftRight: size.width * 0.125,
+              buttonsHeight: size.height * 0.03,
+              buttonsWidth: size.width * 0.13,
+            ),
+            BioCardWidget(
+              bio: user.bio,
+              isWebPlatform: false,
+            ),
+            ProfileAbilitiesCard(
+              abilities: user.habilities,
+              width: size.width * 0.8,
+              abilityCardHeight: size.height * 0.035,
+            ),
           ],
         ),
       ),

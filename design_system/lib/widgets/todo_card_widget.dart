@@ -8,6 +8,8 @@ class TodoCardWidget extends StatelessWidget {
   final bool isDone;
   final bool isLate;
   final Function() onTap;
+  final double height;
+  final double width;
 
   const TodoCardWidget({
     required this.title,
@@ -16,18 +18,19 @@ class TodoCardWidget extends StatelessWidget {
     required this.isDone,
     required this.onTap,
     required this.isLate,
+    this.height = 75,
+    this.width = 300,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
 
     return Container(
-      height: size.height * 0.08,
-      width: size.width * 0.86,
+      height: height,
+      width: width,
       alignment: Alignment.centerLeft,
       padding: const EdgeInsets.only(
         left: 20,
@@ -44,8 +47,8 @@ class TodoCardWidget extends StatelessWidget {
             onTap: onTap,
             borderRadius: BorderRadius.circular(12),
             child: Container(
-              height: size.height * 0.05,
-              width: size.width * 0.11,
+              height: height * 0.7,
+              width: width * 0.15,
               decoration: BoxDecoration(
                 border: Border.all(
                   color: themeColors.marginTaskColor,
