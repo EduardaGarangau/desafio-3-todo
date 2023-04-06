@@ -5,11 +5,19 @@ import 'package:flutter/material.dart';
 
 class ProfileAbilitiesCard extends StatelessWidget {
   final List<String> abilities;
-  final bool isWebPlatform;
+  final double width;
+  final double spacing;
+  final double runSpacing;
+  final double abilityCardHeight;
+  final double abilityCardFontSize;
 
   const ProfileAbilitiesCard({
     required this.abilities,
-    required this.isWebPlatform,
+    this.width = 300,
+    this.spacing = 15,
+    this.runSpacing = 10,
+    this.abilityCardHeight = 35,
+    this.abilityCardFontSize = 16,
     super.key,
   });
 
@@ -19,24 +27,27 @@ class ProfileAbilitiesCard extends StatelessWidget {
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
 
     return Container(
-      width: isWebPlatform ? size.width * 0.25 : size.width * 0.75,
+      width: width,
       constraints: BoxConstraints(
-        maxHeight: size.width * 0.2,
+        maxHeight: size.height * 0.1,
       ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Wrap(
-          spacing: isWebPlatform ? 6 : 15,
-          runSpacing: isWebPlatform ? 5 : 10,
-          direction: Axis.horizontal,
-          children: abilities.map((ability) {
-            return AbilityCardWidget(
-              ability: ability,
-              cardColor:
-                  themeColors.abilitiesColors[abilities.indexOf(ability)],
-              isWebPlatform: isWebPlatform,
-            );
-          }).toList(),
+      child: Center(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Wrap(
+            spacing: spacing,
+            runSpacing: runSpacing,
+            direction: Axis.horizontal,
+            children: abilities.map((ability) {
+              return AbilityCardWidget(
+                ability: ability,
+                cardColor:
+                    themeColors.abilitiesColors[abilities.indexOf(ability)],
+                fontSize: abilityCardFontSize,
+                height: abilityCardHeight,
+              );
+            }).toList(),
+          ),
         ),
       ),
     );

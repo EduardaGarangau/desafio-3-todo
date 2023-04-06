@@ -34,22 +34,29 @@ class ProfileCardWidget extends StatelessWidget {
         ),
         child: Column(
           children: [
-            ProfileHeaderWidget(
+            ProfileHeaderWidget.mobile(
               imageUrl: user.imageUrl,
               name: user.name,
               phone: user.phone,
               isOnline: user.isOnline,
-              isWebPlatform: false,
+              height: size.height * 0.17,
             ),
-            const SizedBox(height: 10),
-            const ProfileButtonsListWidget(isWebPlatform: false),
+            SizedBox(height: size.height * 0.002),
+            ProfileButtonsListWidget(
+              height: size.height * 0.065,
+              width: size.width,
+              paddingLeftRight: size.width * 0.125,
+              buttonsHeight: size.height * 0.03,
+              buttonsWidth: size.width * 0.13,
+            ),
             BioCardWidget(
               bio: user.bio,
               isWebPlatform: false,
             ),
             ProfileAbilitiesCard(
               abilities: user.habilities,
-              isWebPlatform: false,
+              width: size.width * 0.8,
+              abilityCardHeight: size.height * 0.035,
             ),
           ],
         ),

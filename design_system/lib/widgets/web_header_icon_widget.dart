@@ -22,7 +22,7 @@ class WebHeaderIconWidget extends StatelessWidget {
       width: size.width * 0.03,
       child: Center(
         child: SizedBox(
-          width: size.width * 0.02,
+          width: size.width * 0.04,
           child: Stack(
             children: [
               Icon(

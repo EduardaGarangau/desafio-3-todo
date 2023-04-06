@@ -20,17 +20,13 @@ class WidgetbookHotReload extends StatelessWidget {
                 WidgetbookUseCase(
                   name: 'Search Message Card - Web',
                   builder: (context) {
-                    return const SearchMessageWidget(
-                      isWebPlatform: true,
-                    );
+                    return const SearchMessageWidget();
                   },
                 ),
                 WidgetbookUseCase(
                   name: 'Search Message Card - Mobile',
                   builder: (context) {
-                    return const SearchMessageWidget(
-                      isWebPlatform: false,
-                    );
+                    return const SearchMessageWidget();
                   },
                 ),
               ],
@@ -64,48 +60,42 @@ class WidgetbookHotReload extends StatelessWidget {
                 WidgetbookUseCase(
                   name: 'selected',
                   builder: (context) {
-                    return const FilterButtonWidget(
+                    return FilterButtonWidget.mobile(
                       icon: Icons.chat_outlined,
                       title: 'All',
                       badgeNumber: '35',
                       selected: true,
-                      isWebPlatform: false,
                     );
                   },
                 ),
                 WidgetbookUseCase(
                   name: 'unselected',
                   builder: (context) {
-                    return const FilterButtonWidget(
+                    return FilterButtonWidget.mobile(
                       icon: Icons.video_chat_outlined,
                       title: 'Live Chat',
                       badgeNumber: '2',
                       selected: false,
-                      isWebPlatform: false,
                     );
                   },
                 ),
                 WidgetbookUseCase(
                   name: 'Web Filter Button - selected',
                   builder: (context) {
-                    return const FilterButtonWidget(
+                    return FilterButtonWidget.web(
                       icon: Icons.chat_outlined,
                       title: 'All',
-                      badgeNumber: '35',
                       selected: true,
-                      isWebPlatform: true,
                     );
                   },
                 ),
                 WidgetbookUseCase(
                   name: 'Web Filter Button - unselected',
                   builder: (context) {
-                    return const FilterButtonWidget(
+                    return FilterButtonWidget.web(
                       icon: Icons.video_chat_outlined,
                       title: 'Live Chat',
-                      badgeNumber: '2',
                       selected: false,
-                      isWebPlatform: true,
                     );
                   },
                 ),

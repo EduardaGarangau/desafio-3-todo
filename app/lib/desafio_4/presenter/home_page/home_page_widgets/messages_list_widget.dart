@@ -1,59 +1,53 @@
 import 'package:app/desafio_4/domain/models/messages_card_model.dart';
-import 'package:app/desafio_4/presenter/chat_page/chat_page.dart';
-import 'package:design_system/design_system.dart';
+import 'package:app/desafio_4/presenter/home_page/home_page_widgets/mobile_home_page/messages_list_mobile_widget.dart';
+import 'package:app/desafio_4/presenter/home_page/home_page_widgets/web_home_page_widgets/messages_list_web_widget.dart';
 import 'package:flutter/material.dart';
 
 class MessagesListWidget extends StatelessWidget {
-  final List<MessageCardModel> messages;
-  final bool isWebPlatform;
-  final Function(MessageCardModel)? selectedMessage;
+  factory MessagesListWidget.mobile({
+    required List<MessageCardModel> messages,
+    double height = 400,
+    double messageCardHeight = 100,
+    double messageCardWidth = 100,
+    double imageSpacing = 20,
+    double maxWidthConstraints = 400,
+    double positionedImage = 26,
+  }) {
+    return MessagesListMobileWidget(
+      messages: messages,
+      height: height,
+      imageSpacing: imageSpacing,
+      maxWidthConstraints: maxWidthConstraints,
+      messageCardHeight: messageCardHeight,
+      messageCardWidth: messageCardWidth,
+      positionedImage: positionedImage,
+    );
+  }
 
-  const MessagesListWidget({
-    required this.messages,
-    required this.isWebPlatform,
-    required this.selectedMessage,
-    super.key,
-  });
+  factory MessagesListWidget.web({
+    required Function(MessageCardModel) selectedMessage,
+    required List<MessageCardModel> messages,
+    double height = 400,
+    double messageCardHeight = 100,
+    double messageCardWidth = 100,
+    double imageSpacing = 20,
+    double maxWidthConstraints = 400,
+    double positionedImage = 26,
+  }) {
+    return MessagesListWebWidget(
+      selectedMessage: selectedMessage,
+      messages: messages,
+      height: height,
+      imageSpacing: imageSpacing,
+      maxWidthConstraints: maxWidthConstraints,
+      messageCardHeight: messageCardHeight,
+      messageCardWidth: messageCardWidth,
+      positionedImage: positionedImage,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      separatorBuilder: (context, index) => const SizedBox(
-        height: 20,
-      ),
-      itemCount: messages.length,
-      itemBuilder: (context, index) {
-        final message = messages[index];
-
-        return InkWell(
-          onTap: () {
-            if (!isWebPlatform) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ChatPage(
-                    userName: message.name,
-                    userImageUrl: message.userImageUrl,
-                  ),
-                ),
-              );
-            } else {
-              selectedMessage!(message);
-            }
-          },
-          child: MessageCardWidget(
-            userImageUrl: message.userImageUrl,
-            name: message.name,
-            badgeNumber: message.badgeNumber,
-            number: message.number,
-            messageContent: message.messageContent,
-            messageHour: message.messageHour,
-            hasOnlineFlag: message.hasOnlineFlag,
-            isMuted: message.isMuted,
-            isWebPlatform: isWebPlatform,
-          ),
-        );
-      },
-    );
+    throw UnimplementedError();
   }
 }

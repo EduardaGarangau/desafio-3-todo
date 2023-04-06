@@ -39,7 +39,7 @@ class WebNameHeaderWidget extends StatelessWidget {
     return Container(
       height: size.height * 0.14,
       constraints: BoxConstraints(
-        minWidth: size.width * 0.08,
+        minWidth: size.width * 0.01,
       ),
       child: Center(
         child: Row(
@@ -77,7 +77,6 @@ class WebNameHeaderWidget extends StatelessWidget {
               userImageUrl: userImageUrl,
               radiusSize: 22,
               hasBadge: false,
-              isWebPlatform: true,
             ),
           ],
         ),

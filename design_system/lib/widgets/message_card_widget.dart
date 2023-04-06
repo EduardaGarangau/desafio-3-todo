@@ -10,7 +10,11 @@ class MessageCardWidget extends StatelessWidget {
   final String messageHour;
   final bool hasOnlineFlag;
   final bool isMuted;
-  final bool isWebPlatform;
+  final double height;
+  final double width;
+  final double positionedImage;
+  final double maxWidthConstraints;
+  final double imageSpacing;
 
   const MessageCardWidget({
     required this.userImageUrl,
@@ -21,7 +25,11 @@ class MessageCardWidget extends StatelessWidget {
     required this.messageHour,
     required this.hasOnlineFlag,
     required this.isMuted,
-    required this.isWebPlatform,
+    this.height = 100,
+    this.width = 100,
+    this.positionedImage = 26,
+    this.maxWidthConstraints = 400,
+    this.imageSpacing = 15,
     super.key,
   });
 
@@ -31,8 +39,8 @@ class MessageCardWidget extends StatelessWidget {
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
 
     return Container(
-      height: isWebPlatform ? size.height * 0.11 : size.height * 0.105,
-      width: isWebPlatform ? size.width * 0.2 : size.width,
+      height: height,
+      width: width,
       padding: const EdgeInsets.only(
         top: 10,
         left: 20,
@@ -44,14 +52,12 @@ class MessageCardWidget extends StatelessWidget {
         children: [
           UserImageWidget(
             userImageUrl: userImageUrl,
-            radiusSize: isWebPlatform ? 23 : 27,
+            radiusSize: height * 0.27,
             badgeNumber: badgeNumber,
             hasBadge: true,
-            isWebPlatform: isWebPlatform,
+            positionedSize: positionedImage,
           ),
-          SizedBox(
-            width: isWebPlatform ? size.width * 0.005 : size.width * 0.025,
-          ),
+          SizedBox(width: imageSpacing),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -67,8 +73,7 @@ class MessageCardWidget extends StatelessWidget {
               SizedBox(height: size.height * 0.011),
               Container(
                 constraints: BoxConstraints(
-                  maxWidth:
-                      isWebPlatform ? size.width * 0.11 : size.width * 0.8,
+                  maxWidth: maxWidthConstraints,
                 ),
                 child: Text(
                   messageContent,

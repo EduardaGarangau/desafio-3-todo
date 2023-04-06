@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
   final Color appBarButtonColor;
+  final Color webBackgroundColor;
   final Color searchCardColor;
   final Color sendMessageCardColor;
   final Color bottomNavigatorColor;
@@ -32,11 +33,11 @@ class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
   final Color blackIconsColor;
   final Color greyIconsColor;
   final Color errorColor;
-
   final List<Color> abilitiesColors;
 
   ThemeColorsExtension({
     required this.appBarButtonColor,
+    required this.webBackgroundColor,
     required this.searchCardColor,
     required this.sendMessageCardColor,
     required this.bottomNavigatorColor,
@@ -73,6 +74,7 @@ class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
   ThemeExtension<ThemeColorsExtension> copyWith({Color? newColor}) {
     return ThemeColorsExtension(
       appBarButtonColor: newColor ?? appBarButtonColor,
+      webBackgroundColor: newColor ?? webBackgroundColor,
       searchCardColor: newColor ?? searchCardColor,
       sendMessageCardColor: newColor ?? sendMessageCardColor,
       bottomNavigatorColor: newColor ?? bottomNavigatorColor,

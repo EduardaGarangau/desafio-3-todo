@@ -1,37 +1,39 @@
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
-import '../design_system.dart';
 
-class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
+class ChatAppBarMobileWidget extends StatelessWidget
+    implements ChatAppBarWidget {
   final String? userImageUrl;
-  final String name;
-  final bool isWebPlatform;
+  final String userName;
+  final double toolBarHeight;
+  final double contentHeight;
+  final double buttonHeight;
+  final double buttonWidth;
+  final double leadingWidth;
+  final double spacingBetweenWidgets;
 
-  AppBarWidget({
-    Key? key,
+  const ChatAppBarMobileWidget({
     required this.userImageUrl,
-    required this.name,
-    required this.isWebPlatform,
-  }) : super(key: key);
+    required this.userName,
+    this.toolBarHeight = 50,
+    this.contentHeight = 10,
+    this.buttonHeight = 33,
+    this.buttonWidth = 86,
+    this.leadingWidth = 30,
+    this.spacingBetweenWidgets = 10,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     final themeFontStyle = Theme.of(context).extension<TextStyleExtension>()!;
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
-    final size = MediaQuery.of(context).size;
 
     return AppBar(
-      titleSpacing: isWebPlatform ? 20 : 0,
-      toolbarHeight: size.height * 0.1,
-      shape: isWebPlatform
-          ? const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              ),
-            )
-          : null,
+      toolbarHeight: toolBarHeight,
+      leadingWidth: leadingWidth,
       title: Container(
-        height: size.height * 0.04,
+        height: contentHeight,
         padding: const EdgeInsets.only(
           right: 10,
         ),
@@ -42,25 +44,13 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
           children: [
             UserImageWidget(
               userImageUrl: userImageUrl,
-              radiusSize: 14,
+              radiusSize: contentHeight / 2.2,
               badgeNumber: '',
               hasBadge: false,
-              isWebPlatform: isWebPlatform,
             ),
-            const SizedBox(width: 10),
-            if (isWebPlatform)
-              Row(
-                children: [
-                  Text(
-                    'Conversation with ',
-                    style: themeFontStyle.abilityTextStyle.copyWith(
-                      color: themeColors.greyTextColor,
-                    ),
-                  ),
-                ],
-              ),
+            SizedBox(width: spacingBetweenWidgets),
             Text(
-              name,
+              userName,
               style: themeFontStyle.userNameChatPageTextStyle,
             ),
             Expanded(
@@ -68,8 +58,8 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    height: size.height * 0.05,
-                    width: isWebPlatform ? size.width * 0.1 : size.width * 0.23,
+                    height: buttonHeight,
+                    width: buttonWidth,
                     decoration: BoxDecoration(
                       color: themeColors.appBarButtonColor,
                       borderRadius: BorderRadius.circular(10),
@@ -81,17 +71,17 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(width: spacingBetweenWidgets),
                   Icon(
                     Icons.inbox_outlined,
                     color: themeColors.whiteIconsColor,
-                    size: 22,
+                    size: contentHeight / 1.5,
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(width: spacingBetweenWidgets),
                   Icon(
                     Icons.calendar_month_outlined,
                     color: themeColors.whiteIconsColor,
-                    size: 22,
+                    size: contentHeight / 1.5,
                   ),
                 ],
               ),
@@ -99,16 +89,14 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
           ],
         ),
       ),
-      leading: isWebPlatform
-          ? null
-          : IconButton(
-              icon: Icon(
-                Icons.arrow_back_ios_new,
-                size: 20,
-                color: themeColors.whiteIconsColor,
-              ),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
+      leading: IconButton(
+        icon: Icon(
+          Icons.arrow_back_ios_new,
+          size: contentHeight / 1.5,
+          color: themeColors.whiteIconsColor,
+        ),
+        onPressed: () => Navigator.of(context).pop(),
+      ),
     );
   }
 

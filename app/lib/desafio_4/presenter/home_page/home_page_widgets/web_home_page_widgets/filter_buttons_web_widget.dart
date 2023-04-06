@@ -3,16 +3,26 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class FilterButtonsWebWidget extends StatelessWidget {
-  const FilterButtonsWebWidget({super.key});
+  final double height;
+  final double width;
+  final double buttonHeight;
+  final double buttonWidth;
+
+  const FilterButtonsWebWidget({
+    this.height = 700,
+    this.width = 200,
+    this.buttonHeight = 50,
+    this.buttonWidth = 160,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final filters = FiltersMock.filters;
 
     return Container(
-      width: size.width * 0.15,
-      height: size.height,
+      width: width,
+      height: height,
       padding: const EdgeInsets.only(top: 30),
       child: ListView.separated(
         separatorBuilder: (context, index) => const SizedBox(height: 20),
@@ -20,12 +30,13 @@ class FilterButtonsWebWidget extends StatelessWidget {
         itemBuilder: (context, index) {
           final filter = filters[index];
 
-          return FilterButtonWidget(
+          return FilterButtonWidget.web(
             icon: filter.icon,
             title: filter.title,
             selected: filter.selected,
             badgeNumber: filter.badgeNumber,
-            isWebPlatform: true,
+            height: buttonHeight,
+            width: buttonWidth,
           );
         },
       ),

@@ -12,7 +12,7 @@ class AppBarButtonsWidget extends StatelessWidget {
 
     return SizedBox(
       height: size.height * 0.25,
-      width: size.width * 0.5,
+      width: size.width * 0.35,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         separatorBuilder: (context, index) => const SizedBox(width: 20),

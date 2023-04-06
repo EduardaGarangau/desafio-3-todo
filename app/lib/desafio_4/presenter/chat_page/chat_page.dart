@@ -14,11 +14,17 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
-      appBar: AppBarWidget(
-        name: userName,
+      appBar: ChatAppBarWidget.mobile(
+        userName: userName,
         userImageUrl: userImageUrl,
-        isWebPlatform: false,
+        toolBarHeight: size.height * 0.1,
+        contentHeight: size.height * 0.05,
+        buttonHeight: size.height * 0.05,
+        buttonWidth: size.width * 0.23,
+        spacingBetweenWidgets: size.width * 0.011,
       ),
       body: Column(
         children: [
@@ -26,12 +32,14 @@ class ChatPage extends StatelessWidget {
             userImageUrl: userImageUrl,
             name: userName,
           ),
-          const Padding(
-            padding: EdgeInsets.only(
-              top: 10,
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 20,
               bottom: 20,
             ),
-            child: MessageInputWidget(isWebPlatform: false),
+            child: MessageInputWidget(
+              width: size.width * 0.9,
+            ),
           ),
         ],
       ),

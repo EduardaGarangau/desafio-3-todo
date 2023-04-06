@@ -22,13 +22,10 @@ class BadgeWidget extends StatelessWidget {
       backgroundColor: selected
           ? themeColors.badgeSelectedColor
           : themeColors.badgeUnselectedColor,
-      child: FittedBox(
-        fit: BoxFit.cover,
-        child: Center(
-          child: Text(
-            number,
-            style: themeTextStyle.badgeTextStyle,
-          ),
+      child: Center(
+        child: Text(
+          number,
+          style: themeTextStyle.badgeTextStyle,
         ),
       ),
     );

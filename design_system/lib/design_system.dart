@@ -6,9 +6,9 @@ export 'package:design_system/shared/theme/extensions/theme_colors_extension.dar
 export 'package:design_system/shared/utils/app_colors.dart';
 export 'package:design_system/widgets/ability_card_widget.dart';
 export 'package:design_system/widgets/app_bar_web_widget.dart';
-export 'package:design_system/widgets/app_bar_widget.dart';
 export 'package:design_system/widgets/badge_widget.dart';
 export 'package:design_system/widgets/bottom_navigator_widget.dart';
+export 'package:design_system/widgets/chat_app_bar_widget.dart';
 export 'package:design_system/widgets/filter_button_widget.dart';
 export 'package:design_system/widgets/filter_section_widget.dart';
 export 'package:design_system/widgets/icon_button_widget.dart';

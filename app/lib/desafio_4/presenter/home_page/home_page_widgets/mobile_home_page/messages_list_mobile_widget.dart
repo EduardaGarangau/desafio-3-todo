@@ -1,12 +1,11 @@
+import 'package:app/desafio_4/domain/models/messages_card_model.dart';
+import 'package:app/desafio_4/presenter/chat_page/chat_page.dart';
 import 'package:app/desafio_4/presenter/home_page/home_page_widgets/messages_list_widget.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../domain/models/messages_card_model.dart';
-
-class MessagesListWebWidget extends StatelessWidget
+class MessagesListMobileWidget extends StatelessWidget
     implements MessagesListWidget {
-  final Function(MessageCardModel) selectedMessage;
   final List<MessageCardModel> messages;
   final double height;
   final double messageCardHeight;
@@ -15,8 +14,7 @@ class MessagesListWebWidget extends StatelessWidget
   final double maxWidthConstraints;
   final double positionedImage;
 
-  const MessagesListWebWidget({
-    required this.selectedMessage,
+  const MessagesListMobileWidget({
     required this.messages,
     this.height = 400,
     this.messageCardWidth = 100,
@@ -41,7 +39,15 @@ class MessagesListWebWidget extends StatelessWidget
 
           return InkWell(
             onTap: () {
-              selectedMessage(message);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChatPage(
+                    userName: message.name,
+                    userImageUrl: message.userImageUrl,
+                  ),
+                ),
+              );
             },
             child: MessageCardWidget(
               userImageUrl: message.userImageUrl,

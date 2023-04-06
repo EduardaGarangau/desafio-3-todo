@@ -5,32 +5,35 @@ import '../design_system.dart';
 class ProfileButtonWidget extends StatelessWidget {
   final IconData icon;
   final bool isAvailable;
-  final bool isWebPlatform;
+  final double buttonHeight;
+  final double buttonWidth;
+  final double roundedBorderSize;
 
   const ProfileButtonWidget({
     required this.icon,
     required this.isAvailable,
-    required this.isWebPlatform,
+    this.buttonHeight = 50,
+    this.buttonWidth = 50,
+    this.roundedBorderSize = 20,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
 
     return Container(
-      height: isWebPlatform ? size.height * 0.03 : size.height * 0.03,
-      width: isWebPlatform ? size.width * 0.03 : size.width * 0.14,
+      height: buttonHeight,
+      width: buttonWidth,
       decoration: BoxDecoration(
         color: isAvailable
             ? themeColors.profileButtonAvailableColor
             : themeColors.profileButtonUnvailableColor,
-        borderRadius: BorderRadius.circular(isWebPlatform ? 12 : 20),
+        borderRadius: BorderRadius.circular(roundedBorderSize),
       ),
       child: Icon(
         icon,
-        size: isWebPlatform ? 20 : 28,
+        size: buttonHeight * 0.8,
         color: isAvailable
             ? themeColors.whiteIconsColor
             : themeColors.whiteIconsColor.withOpacity(0.6),

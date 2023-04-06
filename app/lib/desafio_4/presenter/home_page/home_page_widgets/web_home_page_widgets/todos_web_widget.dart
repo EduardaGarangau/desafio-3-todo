@@ -1,21 +1,20 @@
-import 'package:app/desafio_3/stores/todos_store.dart';
-import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/profile_card_widget.dart';
-import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/todo_form_widget.dart';
-import 'package:design_system/design_system.dart';
+import 'package:design_system/shared/theme/extensions/theme_colors_extension.dart';
 import 'package:design_system/widgets/todo_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../desafio_3/stores/todos_state.dart';
+import '../../../../../desafio_3/stores/todos_state.dart';
+import '../../../../../desafio_3/stores/todos_store.dart';
+import '../../../profile_page/profile_page_widgets/todo_form_widget.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+class TodosWebWidget extends StatefulWidget {
+  const TodosWebWidget({super.key});
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  State<TodosWebWidget> createState() => _TodosWebWidgetState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _TodosWebWidgetState extends State<TodosWebWidget> {
   @override
   void initState() {
     super.initState();
@@ -49,8 +48,8 @@ class _ProfilePageState extends State<ProfilePage> {
             return Padding(
               padding: const EdgeInsets.only(
                 top: 15,
-                right: 10,
-                left: 10,
+                right: 20,
+                left: 20,
               ),
               child: TodoCardWidget(
                 title: todo.title,
@@ -59,7 +58,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 isDone: todo.done,
                 isLate: todo.isLate,
                 height: size.height * 0.08,
-                width: size.width * 0.86,
+                width: size.width * 0.2,
                 onTap: () => store.doneTodo(todo.id),
               ),
             );
@@ -74,21 +73,6 @@ class _ProfilePageState extends State<ProfilePage> {
       );
     }
 
-    return Scaffold(
-      body: Column(
-        children: [
-          const ProfileCardWidget(),
-          child,
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: themeColors.profileBGColor,
-        child: Icon(
-          Icons.add,
-          color: themeColors.whiteIconsColor,
-        ),
-        onPressed: () => _openTodoFormModal(context),
-      ),
-    );
+    return child;
   }
 }

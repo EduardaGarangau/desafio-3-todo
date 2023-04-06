@@ -6,14 +6,14 @@ class UserImageWidget extends StatelessWidget {
   final double radiusSize;
   final String? badgeNumber;
   final bool hasBadge;
-  final bool isWebPlatform;
+  final double positionedSize;
 
   const UserImageWidget({
     required this.userImageUrl,
     required this.radiusSize,
-    this.badgeNumber,
     required this.hasBadge,
-    required this.isWebPlatform,
+    this.badgeNumber,
+    this.positionedSize = 30,
     super.key,
   });
 
@@ -30,8 +30,8 @@ class UserImageWidget extends StatelessWidget {
         ),
         if (hasBadge)
           Positioned(
-            top: isWebPlatform ? 22 : 30,
-            left: isWebPlatform ? 22 : 30,
+            top: positionedSize,
+            left: positionedSize,
             child: BadgeWidget(
               number: badgeNumber!,
               selected: true,
