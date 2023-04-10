@@ -17,6 +17,7 @@ class TextStyleExtension extends ThemeExtension<TextStyleExtension> {
   final TextStyle messageContentTextStyle;
   final TextStyle filterButtonSelectedTextStyle;
   final TextStyle filterButtonUnselectedTextStyle;
+  final TextStyle userNameProfile;
 
   TextStyleExtension({
     required this.searchCardTextStyle,
@@ -34,11 +35,13 @@ class TextStyleExtension extends ThemeExtension<TextStyleExtension> {
     required this.messageContentTextStyle,
     required this.filterButtonSelectedTextStyle,
     required this.filterButtonUnselectedTextStyle,
+    required this.userNameProfile,
   });
 
   @override
   ThemeExtension<TextStyleExtension> copyWith({TextStyle? newTextStyle}) {
     return TextStyleExtension(
+      userNameProfile: newTextStyle ?? userNameProfile,
       searchCardTextStyle: newTextStyle ?? searchCardTextStyle,
       badgeTextStyle: newTextStyle ?? badgeTextStyle,
       filterSectionTextStyle: newTextStyle ?? filterSectionTextStyle,
@@ -64,6 +67,6 @@ class TextStyleExtension extends ThemeExtension<TextStyleExtension> {
     covariant ThemeExtension<TextStyleExtension>? other,
     double t,
   ) {
-    throw UnimplementedError();
+    return t < 0.5 ? this : other!;
   }
 }

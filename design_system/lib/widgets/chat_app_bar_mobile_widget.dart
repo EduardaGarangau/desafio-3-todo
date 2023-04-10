@@ -1,5 +1,6 @@
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class ChatAppBarMobileWidget extends StatelessWidget
     implements ChatAppBarWidget {
@@ -38,7 +39,7 @@ class ChatAppBarMobileWidget extends StatelessWidget
           right: 10,
         ),
         decoration: BoxDecoration(
-          color: themeColors.blackTextColor,
+          color: themeColors.chatAppBarColor,
         ),
         child: Row(
           children: [
@@ -95,7 +96,7 @@ class ChatAppBarMobileWidget extends StatelessWidget
           size: contentHeight / 1.5,
           color: themeColors.whiteIconsColor,
         ),
-        onPressed: () => Navigator.of(context).pop(),
+        onPressed: () => Modular.to.pop(),
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:design_system/shared/theme/extensions/theme_colors_extension.dart';
 import 'package:design_system/widgets/todo_card_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../../desafio_3/stores/todos_state.dart';
 import '../../../../../desafio_3/stores/todos_store.dart';

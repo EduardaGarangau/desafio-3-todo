@@ -1,6 +1,7 @@
 import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/profile_header_widget.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class ProfileHeaderMobileWidget extends StatelessWidget
     implements ProfileHeaderWidget {
@@ -35,7 +36,7 @@ class ProfileHeaderMobileWidget extends StatelessWidget
               Icons.arrow_back_ios_new,
               color: themeColors.whiteIconsColor,
             ),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => Modular.to.pop(),
           ),
           Column(
             children: [

@@ -3,6 +3,7 @@ import 'package:app/desafio_4/presenter/chat_page/chat_page.dart';
 import 'package:app/desafio_4/presenter/home_page/home_page_widgets/messages_list_widget.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class MessagesListMobileWidget extends StatelessWidget
     implements MessagesListWidget {
@@ -39,14 +40,9 @@ class MessagesListMobileWidget extends StatelessWidget
 
           return InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ChatPage(
-                    userName: message.name,
-                    userImageUrl: message.userImageUrl,
-                  ),
-                ),
+              Modular.to.pushNamed(
+                '/chat/',
+                arguments: [message.name, message.userImageUrl],
               );
             },
             child: MessageCardWidget(

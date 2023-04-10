@@ -37,7 +37,7 @@ class ChatAppBarWebWidget extends StatelessWidget implements ChatAppBarWidget {
           right: 10,
         ),
         decoration: BoxDecoration(
-          color: themeColors.blackTextColor,
+          color: themeColors.chatAppBarColor,
         ),
         child: Row(
           children: [

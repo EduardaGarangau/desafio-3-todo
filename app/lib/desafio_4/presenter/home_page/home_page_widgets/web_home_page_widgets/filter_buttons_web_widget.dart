@@ -19,10 +19,12 @@ class FilterButtonsWebWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final filters = FiltersMock.filters;
+    final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
 
     return Container(
       width: width,
       height: height,
+      color: themeColors.filtersWebBackgroundColor,
       padding: const EdgeInsets.only(top: 30),
       child: ListView.separated(
         separatorBuilder: (context, index) => const SizedBox(height: 20),

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
+  final Color appBarWebColor;
   final Color appBarButtonColor;
   final Color webBackgroundColor;
   final Color searchCardColor;
@@ -25,17 +26,25 @@ class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
   final Color profileButtonUnvailableColor;
   final Color messageBubbleReceivedColor;
   final Color messageBubbleSendedColor;
+  final Color messageChatWebColor;
+  final Color chatBackgroundWeb;
   final Color blackTextColor;
   final Color greyTextColor;
   final Color yellowTextColor;
   final Color whiteTextColor;
+  final Color filtersWebBackgroundColor;
   final Color whiteIconsColor;
   final Color blackIconsColor;
   final Color greyIconsColor;
   final Color errorColor;
+  final Color chatAppBarColor;
+  final Color appBarButtonWeb;
   final List<Color> abilitiesColors;
 
   ThemeColorsExtension({
+    required this.chatBackgroundWeb,
+    required this.appBarButtonWeb,
+    required this.appBarWebColor,
     required this.appBarButtonColor,
     required this.webBackgroundColor,
     required this.searchCardColor,
@@ -59,10 +68,13 @@ class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
     required this.profileButtonUnvailableColor,
     required this.messageBubbleReceivedColor,
     required this.messageBubbleSendedColor,
+    required this.messageChatWebColor,
+    required this.chatAppBarColor,
     required this.blackTextColor,
     required this.errorColor,
     required this.greyTextColor,
     required this.whiteTextColor,
+    required this.filtersWebBackgroundColor,
     required this.whiteIconsColor,
     required this.blackIconsColor,
     required this.greyIconsColor,
@@ -73,6 +85,12 @@ class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
   @override
   ThemeExtension<ThemeColorsExtension> copyWith({Color? newColor}) {
     return ThemeColorsExtension(
+      filtersWebBackgroundColor: newColor ?? filtersWebBackgroundColor,
+      chatBackgroundWeb: newColor ?? chatBackgroundWeb,
+      messageChatWebColor: newColor ?? messageChatWebColor,
+      appBarButtonWeb: newColor ?? appBarButtonWeb,
+      appBarWebColor: newColor ?? appBarWebColor,
+      chatAppBarColor: newColor ?? chatAppBarColor,
       appBarButtonColor: newColor ?? appBarButtonColor,
       webBackgroundColor: newColor ?? webBackgroundColor,
       searchCardColor: newColor ?? searchCardColor,
@@ -114,6 +132,6 @@ class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
     covariant ThemeExtension<ThemeColorsExtension>? other,
     double t,
   ) {
-    throw UnimplementedError();
+    return t < 0.5 ? this : other!;
   }
 }

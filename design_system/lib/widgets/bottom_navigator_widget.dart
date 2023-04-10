@@ -15,6 +15,8 @@ class BottomNavigatorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
+
     return Stack(
       children: [
         ClipRRect(
@@ -30,7 +32,7 @@ class BottomNavigatorWidget extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: AppColors.almostBlack,
+                color: themeColors.bottomNavigatorColor,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

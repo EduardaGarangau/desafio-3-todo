@@ -15,6 +15,7 @@ class ChatWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
 
     return Padding(
       padding: const EdgeInsets.only(
@@ -23,7 +24,13 @@ class ChatWidget extends StatelessWidget {
       child: Container(
         width: size.width * 0.45,
         height: size.height,
-        color: const Color(0xFF1D1E24),
+        decoration: BoxDecoration(
+          color: themeColors.chatBackgroundWeb,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+        ),
         child: Column(
           children: [
             ChatAppBarWidget.web(

@@ -38,7 +38,7 @@ class IconButtonWidget extends StatelessWidget {
                   icon,
                   size: 24,
                   color: selected
-                      ? themeColors.yellowTextColor
+                      ? themeColors.appBarButtonWeb
                       : themeColors.greyIconsColor,
                 ),
                 const SizedBox(width: 8),
@@ -47,7 +47,7 @@ class IconButtonWidget extends StatelessWidget {
                   style: themeTextStyles.abilityTextStyle.copyWith(
                     fontSize: 15,
                     color: selected
-                        ? themeColors.yellowTextColor
+                        ? themeColors.filterButtonSelectedColor
                         : themeColors.greyTextColor,
                   ),
                 ),
