@@ -46,7 +46,7 @@ O Widget que foi feito com animação implícita.
 
 Refaça com animação explícita.
 
-## Passo 3
+## Passo 3 - OK
 
 Fazer a alteração entre web e mobile.
 
@@ -57,15 +57,15 @@ Tendo tomado sua decisão, se precisar de algum código para essa "gerência/alt
 Dica:
   - Teste o Telegram Desktop, tem esse mesmo comportamento.
 
-## Passo 4
+## Passo 4 - OK
 
 Construa a tela do web com o suporte caso se  ja Mobile/Desktop
 
-## Passo 5
+## Passo 5 - OK
 
 Insira o `FlutterModular`, faça as alterações necessárias.
 
-## Passo 5
+## Passo 5 
 
 Faça a alteração tema, tendo o switch entre claro e escuro.
 

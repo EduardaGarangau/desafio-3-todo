@@ -4,8 +4,8 @@ import 'dart:math';
 import 'package:app/desafio_3/stores/todos_store.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 
 import '../../../domain/models/todo_model.dart';
 

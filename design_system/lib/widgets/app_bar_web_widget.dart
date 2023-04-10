@@ -26,7 +26,7 @@ class AppBarWebWidget extends StatelessWidget with PreferredSizeWidget {
 
     return AppBar(
       toolbarHeight: height,
-      backgroundColor: AppColors.darkGrey,
+      backgroundColor: themeColors.appBarWebColor,
       title: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth > 1340) {

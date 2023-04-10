@@ -37,11 +37,12 @@ class _ChatAndProfileWidgetState extends State<ChatAndProfileWidget> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final themeTextStyle = Theme.of(context).extension<TextStyleExtension>()!;
+    final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
 
     return Container(
       width: size.width * 0.85,
       height: widget.height,
-      color: AppColors.darkGrey,
+      color: themeColors.messageChatWebColor,
       child: Row(
         children: [
           ChatListWebWidget(
@@ -75,9 +76,9 @@ class _ChatAndProfileWidgetState extends State<ChatAndProfileWidget> {
                       child: Container(
                         width: size.width * 0.85,
                         height: widget.height,
-                        decoration: const BoxDecoration(
-                          color: Color(0xFF1D1E24),
-                          borderRadius: BorderRadius.only(
+                        decoration: BoxDecoration(
+                          color: themeColors.appBarWebColor,
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(20),
                           ),
                         ),

@@ -1,6 +1,7 @@
 import 'package:app/desafio_4/presenter/home_page/home_page_widgets/mobile_home_page/filters_mobile_widget.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../profile_page/profile_page.dart';
 import '../home_page_widgets/filters_section_widget.dart';
@@ -40,12 +41,7 @@ class MobileHomePage extends StatelessWidget {
             positionedImage: 24,
           ),
           InkWell(
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const ProfilePage(),
-              ),
-            ),
+            onTap: () => Modular.to.pushNamed('/profile/'),
             child: BottomNavigatorWidget(
               height: size.height * 0.11,
             ),

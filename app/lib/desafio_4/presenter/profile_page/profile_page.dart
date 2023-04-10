@@ -4,7 +4,7 @@ import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/todo_f
 import 'package:design_system/design_system.dart';
 import 'package:design_system/widgets/todo_card_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../desafio_3/stores/todos_state.dart';
 

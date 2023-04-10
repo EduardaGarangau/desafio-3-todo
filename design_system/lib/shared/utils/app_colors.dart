@@ -19,4 +19,10 @@ class AppColors {
   static const darkPink = Color(0xFFB784F6);
   static const transparent = Colors.transparent;
   static const errorColor = Color(0xFFBE3A25);
+  static const blue = Color(0xFF168FD3);
+  static const lightBlue = Color(0xFFC6E8FF);
+  static const darkBlue = Color(0xFF0575C9);
+  static const mediumWhite = Color(0xFFFFFEFD);
+  static const lightGrey = Color(0xFFF2F1F0);
+  static const mediumBlack = Color(0xFF1D1E24);
 }
