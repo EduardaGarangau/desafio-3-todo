@@ -1,12 +1,13 @@
 // ignore_for_file: lines_longer_than_80_chars
 
 import 'dart:math';
-import 'package:app/desafio_3/stores/todos_store.dart';
+import 'package:app/desafio_4/domain/entities/task_entity.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../desafio_3/stores/todos_store.dart';
 import '../../../domain/models/todo_model.dart';
 
 class TodoFormWidget extends StatefulWidget {
@@ -78,6 +79,7 @@ class _TodoFormWidgetState extends State<TodoFormWidget> {
       time: _time!,
       date: _date!,
     );
+
     await context
         .read<TodosStore>()
         .addTodo(todo)
@@ -101,7 +103,7 @@ class _TodoFormWidgetState extends State<TodoFormWidget> {
 
     return Container(
       color: Colors.white,
-      height: size.height * 0.35,
+      height: size.height * 0.5,
       padding: const EdgeInsets.only(
         top: 20,
         right: 20,

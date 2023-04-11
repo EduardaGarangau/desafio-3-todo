@@ -65,7 +65,7 @@ Construa a tela do web com o suporte caso se  ja Mobile/Desktop
 
 Insira o `FlutterModular`, faça as alterações necessárias.
 
-## Passo 5 
+## Passo 5 - OK
 
 Faça a alteração tema, tendo o switch entre claro e escuro.
 
@@ -73,7 +73,7 @@ Quanto ao tema claro, use a criatividade e faça um tema bonito.
 
 Use `ValueNotifier` como reatividade.
 
-## Passo 6
+## Passo 6 - OK
 
 Faça o Fluxo de inserir uma task em Clean Arch(Flutterando)
 

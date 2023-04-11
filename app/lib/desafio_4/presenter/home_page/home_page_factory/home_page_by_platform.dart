@@ -1,9 +1,21 @@
 import 'package:app/desafio_4/presenter/home_page/home_page_factory/mobile_home_page.dart';
 import 'package:app/desafio_4/presenter/home_page/home_page_factory/web_home_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-class HomePageByPlatform extends StatelessWidget {
+class HomePageByPlatform extends StatefulWidget {
   const HomePageByPlatform({super.key});
+
+  @override
+  State<HomePageByPlatform> createState() => _HomePageByPlatformState();
+}
+
+class _HomePageByPlatformState extends State<HomePageByPlatform> {
+  @override
+  void initState() {
+    super.initState();
+    Firebase.initializeApp();
+  }
 
   @override
   Widget build(BuildContext context) {

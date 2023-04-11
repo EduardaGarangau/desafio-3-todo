@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1055938620504",
+    "project_id": "todo-823d2",
+    "storage_bucket": "todo-823d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055938620504:android:f9baf9a0e17dba590aee2d",
+        "android_client_info": {
+          "package_name": "br.com.eduardagarangau.todo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1055938620504-1r0nurbji4290q7m9b9563qf06ea371e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwlVaVy9cHNyStigy5cL9Bm8mkAdVAFrg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1055938620504-1r0nurbji4290q7m9b9563qf06ea371e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
