@@ -42,11 +42,6 @@ class TodoModel {
     return completeDate.isBefore(DateTime.now());
   }
 
-  @override
-  String toString() {
-    return 'Title: $title, Date: $getDate, Time: $getTime';
-  }
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,

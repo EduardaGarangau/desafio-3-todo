@@ -8,6 +8,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'desafio_4/stores/theme_store.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   // No Flutter Modular precisamos que o ModularApp seja o primeiro widget do projeto, ele que faz a configuração inicial.
   // Ele nos obriga a adicionar um módulo principal e um widget principal.
   runApp(ModularApp(module: AppModule(), child: const MyApp()));
