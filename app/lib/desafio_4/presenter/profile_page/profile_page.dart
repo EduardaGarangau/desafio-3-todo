@@ -1,7 +1,4 @@
 import 'package:app/desafio_4/domain/entities/task_entity.dart';
-import 'package:app/desafio_4/external/datasources/task_datasource_impl.dart';
-import 'package:app/desafio_4/external/services/firestore_service.dart';
-import 'package:app/desafio_4/infra/repositories/task_repository_impl.dart';
 import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/profile_card_widget.dart';
 import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/todo_form_widget.dart';
 import 'package:app/desafio_4/presenter/stores/tasks_store.dart';
@@ -25,20 +22,21 @@ class _ProfilePageState extends State<ProfilePage> {
     context.read<TasksStore>().getAllTasks();
   }
 
+  void _openTodoFormModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return const TodoFormWidget();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
+    // TODO: fazer essa store por injeção
     final store = context.watch<TasksStore>();
-
-    void _openTodoFormModal(BuildContext context) {
-      showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return const TodoFormWidget();
-        },
-      );
-    }
 
     return Scaffold(
       body: Column(
@@ -46,12 +44,14 @@ class _ProfilePageState extends State<ProfilePage> {
           const ProfileCardWidget(),
           ScopedBuilder<TasksStore, List<TaskEntity>>(
             store: store,
-            onLoading: (context) => Center(
-              child: CircularProgressIndicator(
-                color: themeColors.profileBGColor,
+            onLoading: (context) => Expanded(
+              child: Center(
+                child: CircularProgressIndicator(
+                  color: themeColors.profileBGColor,
+                ),
               ),
             ),
-            onError: (context, error) => Text(error.toString()),
+            onError: (context, error) => Text(error),
             onState: (context, state) => Expanded(
               child: ListView.builder(
                 itemCount: state.length,
@@ -72,7 +72,10 @@ class _ProfilePageState extends State<ProfilePage> {
                       isLate: task.isLate,
                       height: size.height * 0.08,
                       width: size.width * 0.86,
-                      onTap: () {},
+                      onTap: () {
+                        final updatedTask = task.copyWith(done: !task.done);
+                        store.doneTask(updatedTask.id, updatedTask.done);
+                      },
                     ),
                   );
                 },

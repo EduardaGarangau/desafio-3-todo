@@ -1,8 +1,6 @@
 import 'package:app/desafio_4/external/services/database_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../document_dto.dart';
-
 class FirestoreService implements DatabaseService {
   @override
   Future<void> add(String collection, Map<String, dynamic> data) async {
@@ -11,15 +9,14 @@ class FirestoreService implements DatabaseService {
   }
 
   @override
-  Future<List<DocumentDTO>> getAll(String collection) async {
-    final documents = <DocumentDTO>[];
+  Future<QuerySnapshot<Map<String, dynamic>>> getAll(String collection) async {
     final firestore = FirebaseFirestore.instance;
-    final querySnapshot = await firestore.collection(collection).get();
+    return firestore.collection(collection).get();
+  }
 
-    for (final doc in querySnapshot.docs) {
-      final dto = DocumentDTO(id: doc.id, data: doc.data());
-      documents.add(dto);
-    }
-    return documents;
+  @override
+  Future<void> doneTask(String collection, String taskId, bool isDone) async {
+    final firestore = FirebaseFirestore.instance;
+    await firestore.collection(collection).doc(taskId).update({'done': isDone});
   }
 }

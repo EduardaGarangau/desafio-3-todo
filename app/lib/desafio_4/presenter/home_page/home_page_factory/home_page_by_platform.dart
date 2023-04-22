@@ -14,7 +14,7 @@ class _HomePageByPlatformState extends State<HomePageByPlatform> {
   @override
   void initState() {
     super.initState();
-    Firebase.initializeApp();
+    //Firebase.initializeApp();
   }
 
   @override

@@ -1,30 +1,26 @@
+import 'package:app/desafio_4/domain/DTOs/task_dto.dart';
 import 'package:app/desafio_4/domain/entities/task_entity.dart';
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TaskEntityMapper {
   TaskEntityMapper._();
 
-  static TaskEntity fromMap(Map<String, dynamic> map) {
-    final dateTime = DateFormat('HH:mm').parse(map['time']);
-    final time = TimeOfDay(hour: dateTime.hour, minute: dateTime.minute);
+  static TaskEntity fromMap(DocumentSnapshot document) {
+    final documentData = document.data() as Map;
 
     return TaskEntity(
-      id: map['id'] as String,
-      title: map['title'] as String,
-      time: time,
-      date: DateTime.parse(map['date']),
-      done: map['done'] as bool,
+      id: document.id,
+      title: documentData['title'] as String,
+      date: DateTime.parse(documentData['date']),
+      done: documentData['done'] as bool,
     );
   }
 
-  static Map<String, dynamic> toMap(TaskEntity entity) {
+  static Map<String, dynamic> toMap(TaskDTO task) {
     return <String, dynamic>{
-      'id': entity.id,
-      'title': entity.title,
-      'time': '${entity.time.hour}:${entity.time.minute}',
-      'date': entity.date.toIso8601String(),
-      'done': entity.done,
+      'title': task.title,
+      'date': task.date.toIso8601String(),
+      'done': task.done,
     };
   }
 }
