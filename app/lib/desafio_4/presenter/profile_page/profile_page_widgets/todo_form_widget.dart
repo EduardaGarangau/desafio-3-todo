@@ -1,14 +1,12 @@
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'dart:math';
-import 'package:app/desafio_4/domain/entities/task_entity.dart';
+import 'package:app/desafio_4/domain/DTOs/task_dto.dart';
+import 'package:app/desafio_4/presenter/stores/tasks_store.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-
-import '../../../../desafio_3/stores/todos_store.dart';
-import '../../../domain/models/todo_model.dart';
+import '../../../domain/entities/task_entity.dart';
 
 class TodoFormWidget extends StatefulWidget {
   const TodoFormWidget({super.key});
@@ -73,16 +71,15 @@ class _TodoFormWidgetState extends State<TodoFormWidget> {
     }
 
     _formKey.currentState!.save();
-    final todo = TodoModel(
-      id: Random().nextInt(500),
+    final task = TaskDTO(
       title: _title,
-      time: _time!,
-      date: _date!,
+      date: taskDate,
+      done: false,
     );
 
     await context
-        .read<TodosStore>()
-        .addTodo(todo)
+        .read<TasksStore>()
+        .addTask(task)
         .then((value) => Navigator.of(context).pop());
   }
 

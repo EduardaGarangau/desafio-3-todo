@@ -2,13 +2,21 @@
 
 import 'package:app/app_module.dart';
 import 'package:design_system/design_system.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-
 import 'desafio_4/stores/theme_store.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: 'AIzaSyC4NB5gmDCVllTiwMN7k24tvXzRa3pLezs',
+      appId: '1:1055938620504:web:72ba1d3cd8f5e4140aee2d',
+      messagingSenderId: '1055938620504',
+      projectId: 'todo-823d2',
+    ),
+  );
   // No Flutter Modular precisamos que o ModularApp seja o primeiro widget do projeto, ele que faz a configuração inicial.
   // Ele nos obriga a adicionar um módulo principal e um widget principal.
   runApp(ModularApp(module: AppModule(), child: const MyApp()));
@@ -32,23 +40,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// ANTERIOR DO MODULAR:
-// @override
-//   Widget build(BuildContext context) {
-//     return MultiProvider(
-//       providers: [
-//         Provider(create: (context) => SharedPreferencesTodoService()),
-//         ChangeNotifierProvider(
-//           create: (context) =>
-//               TodosStore(context.read<SharedPreferencesTodoService>()),
-//         ),
-//       ],
-//       child: MaterialApp(
-//         debugShowCheckedModeBanner: false,
-//         title: 'Chat and To-do App',
-//         theme: CustomTheme.theme,
-//         home: const HomePageByPlatform(),
-//       ),
-//     );
-//   }

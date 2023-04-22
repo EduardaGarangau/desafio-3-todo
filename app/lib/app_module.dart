@@ -1,4 +1,6 @@
-import 'package:app/desafio_3/services/shared_preferences_todo_service.dart';
+import 'package:app/desafio_4/domain/usecases/add_task_usecase.dart';
+import 'package:app/desafio_4/domain/usecases/done_task_usecase.dart';
+import 'package:app/desafio_4/domain/usecases/get_tasks_usecase.dart';
 import 'package:app/desafio_4/external/datasources/task_datasource_impl.dart';
 import 'package:app/desafio_4/external/services/firestore_service.dart';
 import 'package:app/desafio_4/infra/repositories/task_repository_impl.dart';
@@ -18,11 +20,14 @@ class AppModule extends Module {
         Bind.lazySingleton((i) => FirestoreService()),
         Bind.lazySingleton((i) => TaskDatasourceImpl(i())),
         Bind.lazySingleton((i) => TaskRepositoryImpl(i())),
-        Bind.lazySingleton((i) => TasksStore(i())),
-        // Bind.lazySingleton((i) => SharedPreferencesTodoService()),
-        // Bind.lazySingleton((i) => TodosStore(i())),
+        Bind.lazySingleton((i) => AddTaskUsecase(i())),
+        Bind.lazySingleton((i) => GetTasksUsecase(i())),
+        Bind.lazySingleton((i) => DoneTaskUsecase(i())),
+        Bind.lazySingleton((i) => TasksStore(i(), i(), i())),
       ];
 
+  // TODO: RouterOutlet - estudar
+  // ROTAS AQUI
   @override
   List<ModularRoute> get routes => [
         ModuleRoute('/', module: HomeModule()),

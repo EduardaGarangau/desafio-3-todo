@@ -2,10 +2,13 @@ import 'package:design_system/shared/theme/extensions/theme_colors_extension.dar
 import 'package:design_system/widgets/todo_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_triple/flutter_triple.dart';
 
 import '../../../../../desafio_3/stores/todos_state.dart';
 import '../../../../../desafio_3/stores/todos_store.dart';
+import '../../../../domain/entities/task_entity.dart';
 import '../../../profile_page/profile_page_widgets/todo_form_widget.dart';
+import '../../../stores/tasks_store.dart';
 
 class TodosWebWidget extends StatefulWidget {
   const TodosWebWidget({super.key});
@@ -18,32 +21,39 @@ class _TodosWebWidgetState extends State<TodosWebWidget> {
   @override
   void initState() {
     super.initState();
-    context.read<TodosStore>().fetchTodos();
+    context.read<TasksStore>().getAllTasks();
+  }
+
+  void _openTodoFormModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return const TodoFormWidget();
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
-    final store = context.watch<TodosStore>();
-    final state = store.value;
-    late Widget child;
+    final store = context.watch<TasksStore>();
 
-    void _openTodoFormModal(BuildContext context) {
-      showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return const TodoFormWidget();
-        },
-      );
-    }
-
-    if (state is SuccessTodosState) {
-      child = Expanded(
+    return ScopedBuilder<TasksStore, List<TaskEntity>>(
+      store: store,
+      onLoading: (context) => Expanded(
+        child: Center(
+          child: CircularProgressIndicator(
+            color: themeColors.profileBGColor,
+          ),
+        ),
+      ),
+      onError: (context, error) => Text(error.toString()),
+      onState: (context, state) => Expanded(
         child: ListView.builder(
-          itemCount: state.todos.length,
+          itemCount: state.length,
           itemBuilder: (context, index) {
-            final todo = state.todos[index];
+            final task = state[index];
 
             return Padding(
               padding: const EdgeInsets.only(
@@ -52,27 +62,22 @@ class _TodosWebWidgetState extends State<TodosWebWidget> {
                 left: 20,
               ),
               child: TodoCardWidget(
-                title: todo.title,
-                date: todo.getDate,
-                time: todo.getTime,
-                isDone: todo.done,
-                isLate: todo.isLate,
+                title: task.title,
+                date: task.getDate,
+                time: task.getTime,
+                isDone: task.done,
+                isLate: task.isLate,
                 height: size.height * 0.08,
                 width: size.width * 0.2,
-                onTap: () => store.doneTodo(todo.id),
+                onTap: () {
+                  final updatedTask = task.copyWith(done: !task.done);
+                  store.doneTask(updatedTask.id, updatedTask.done);
+                },
               ),
             );
           },
         ),
-      );
-    } else {
-      child = Center(
-        child: CircularProgressIndicator(
-          color: themeColors.profileBGColor,
-        ),
-      );
-    }
-
-    return child;
+      ),
+    );
   }
 }

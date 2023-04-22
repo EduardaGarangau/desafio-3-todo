@@ -1,34 +1,48 @@
 import 'package:app/desafio_4/domain/entities/task_entity.dart';
-import 'package:app/desafio_4/domain/repositories/task_repository.dart';
+import 'package:app/desafio_4/domain/usecases/add_task_usecase.dart';
+import 'package:app/desafio_4/domain/usecases/done_task_usecase.dart';
+import 'package:app/desafio_4/domain/usecases/get_tasks_usecase.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 
-class TasksStore extends Store<List<TaskEntity>> {
-  final TaskRepository _repository;
+import '../../domain/DTOs/task_dto.dart';
 
-  TasksStore(this._repository) : super([]);
+class TasksStore extends Store<List<TaskEntity>> {
+  final AddTaskUsecase _addTaskUsecase;
+  final GetTasksUsecase _getTasksUsecase;
+  final DoneTaskUsecase _doneTaskUsecase;
+
+  TasksStore(
+    this._addTaskUsecase,
+    this._getTasksUsecase,
+    this._doneTaskUsecase,
+  ) : super([]);
 
   Future<void> getAllTasks() async {
     setLoading(true);
-    try {
-      final tasks = await _repository.getAllTasks();
-      state
-        ..clear()
-        ..addAll(tasks);
-      update(tasks);
-      setLoading(false);
-    } catch (e) {
-      setError(Exception(e.toString()));
-    }
+
+    final tasks = await _getTasksUsecase();
+    tasks.fold(
+      (l) => setError(l.message),
+      (r) {
+        r.sort((a, b) => a.date.compareTo(b.date));
+        update(r);
+      },
+    );
   }
 
-  Future<void> addTask(TaskEntity taskEntity) async {
+  Future<void> addTask(TaskDTO task) async {
     setLoading(true);
-    try {
-      await _repository.addTask(taskEntity);
+    final result = await _addTaskUsecase(task);
+    result.fold((l) => setError(l.message), (r) async {
       await getAllTasks();
-      setLoading(false);
-    } catch (e) {
-      setError(Exception(e.toString()));
-    }
+    });
+  }
+
+  Future<void> doneTask(String taskId, bool isDone) async {
+    setLoading(true);
+    final result = await _doneTaskUsecase(taskId, isDone);
+    result.fold((l) => setError(l.message), (r) async {
+      await getAllTasks();
+    });
   }
 }

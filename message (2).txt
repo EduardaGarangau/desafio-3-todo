@@ -83,17 +83,17 @@ Dicas:
 - Embora pareça muito diferente, grande parte, ja foi feito, só não se tinha essa percepção, ao analisar os desafios anteriores, 
 algumas partes foram abordadas separadamente.
 
-## Passo 7
+## Passo 7 - OK
 
 Insira o firebase no projeto. 
 
-## Passo 8
+## Passo 8 - OK
 
 Substitua seu Datasource, para outro que utilize Firestore como fonte de dados.
 
 Fazendo a inserção e consulta pelo Firestore.
 
-## Passo 9
+## Passo 9 - OK
 
 Na camada de presenter deve ser usado o Triple.
 
