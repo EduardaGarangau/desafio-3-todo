@@ -34,6 +34,8 @@ void main() {
 
   group('GetTasksUsecase <TaskError>', () {
     test('should return TaskFirestoreError', () async {
+      //TODO: repositorio retorna left ou right, porque usecase tem conhecimento da dependencia nao implementação
+      // usar thenAswer
       final task = TaskDTO(title: 'Teste', date: DateTime.now(), done: false);
 
       when(() => repository.addTask(task))

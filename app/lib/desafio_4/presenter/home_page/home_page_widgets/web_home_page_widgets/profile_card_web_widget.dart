@@ -14,7 +14,7 @@ class ProfileCardWebWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
-    final user = UserMock.user;
+    final user = UserMock.user1;
 
     return Padding(
       padding: const EdgeInsets.only(

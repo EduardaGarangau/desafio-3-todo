@@ -22,7 +22,7 @@ class TasksStore extends Store<List<TaskEntity>> {
 
     final tasks = await _getTasksUsecase();
     tasks.fold(
-      (l) => setError(l.message),
+      setError,
       (r) {
         r.sort((a, b) => a.date.compareTo(b.date));
         update(r);
@@ -33,7 +33,7 @@ class TasksStore extends Store<List<TaskEntity>> {
   Future<void> addTask(TaskDTO task) async {
     setLoading(true);
     final result = await _addTaskUsecase(task);
-    result.fold((l) => setError(l.message), (r) async {
+    result.fold(setError, (r) async {
       await getAllTasks();
     });
   }
@@ -41,7 +41,7 @@ class TasksStore extends Store<List<TaskEntity>> {
   Future<void> doneTask(String taskId, bool isDone) async {
     setLoading(true);
     final result = await _doneTaskUsecase(taskId, isDone);
-    result.fold((l) => setError(l.message), (r) async {
+    result.fold(setError, (r) async {
       await getAllTasks();
     });
   }

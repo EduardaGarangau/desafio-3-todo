@@ -107,9 +107,9 @@ Faça um Fluxo de Clean Arch sobre o envio e recebimento de mensagens.
 A parte de chat deve funcionar, servindo para de fato estabelecer um comunicação com um usuário. 
 
 Sugestão:
-  - Não é necessário realizar o login, use `userIDs` mockados, para você conseguir visualizar de ambos os lados
-  - Faça um especie de `UserStore` que contenha apenas um id em seu estado.
-  - Adicione um botão na `AppBar` que faça o `toggle`, entre usuários.
-  - Sempre que o `ID` é atualizado, a tela pode se atualizar por completo.
+  - Não é necessário realizar o login, use `userIDs` mockados, para você conseguir visualizar de ambos os lados. - OK
+  - Faça um especie de `UserStore` que contenha apenas um id em seu estado. - OK
+  - Adicione um botão na `AppBar` que faça o `toggle`, entre usuários. - OK
+  - Sempre que o `ID` é atualizado, a tela pode se atualizar por completo. - OK
   - Utilize esse `ID` para vincular a mensagem que vai ser enviada e exibir as mensagens do `lado certo`.  
   - Seria interessante que as `tarefas` fossem vinculadas com esse mesmo `ID` rs.

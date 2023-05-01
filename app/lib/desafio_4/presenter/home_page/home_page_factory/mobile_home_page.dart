@@ -3,7 +3,7 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../profile_page/profile_page.dart';
+import '../home_page_widgets/change_user_button_widget.dart';
 import '../home_page_widgets/filters_section_widget.dart';
 
 class MobileHomePage extends StatelessWidget {
@@ -14,6 +14,13 @@ class MobileHomePage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 35,
+        backgroundColor: AppColors.darkGrey,
+        actions: const [
+          ChangeUserButtonWidget(),
+        ],
+      ),
       body: Column(
         children: [
           Padding(

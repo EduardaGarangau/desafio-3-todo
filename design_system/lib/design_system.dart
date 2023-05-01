@@ -16,7 +16,6 @@ export 'package:design_system/widgets/input_and_todo_container.dart';
 export 'package:design_system/widgets/message_bubble_details_widget.dart';
 export 'package:design_system/widgets/message_bubble_widget.dart';
 export 'package:design_system/widgets/message_card_widget.dart';
-export 'package:design_system/widgets/message_input_widget.dart';
 export 'package:design_system/widgets/online_flag_widget.dart';
 export 'package:design_system/widgets/profile_button_widget.dart';
 export 'package:design_system/widgets/search_message_widget.dart';

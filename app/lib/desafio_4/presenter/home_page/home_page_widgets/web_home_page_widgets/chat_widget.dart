@@ -2,6 +2,8 @@ import 'package:app/desafio_4/presenter/chat_page/chat_page_widgets/messages_wid
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
+import '../../../chat_page/chat_page_widgets/message_input_widget.dart';
+
 class ChatWidget extends StatelessWidget {
   final String userName;
   final String userImageUrl;
@@ -40,10 +42,10 @@ class ChatWidget extends StatelessWidget {
               titleHeight: size.height * 0.04,
               buttonWidth: size.width * 0.1,
             ),
-            MessagesWidget(
-              userImageUrl: userImageUrl,
-              name: userName,
-            ),
+            // MessagesWidget(
+            //   userImageUrl: userImageUrl,
+            //   name: userName,
+            // ),
             Padding(
               padding: const EdgeInsets.only(
                 top: 20,

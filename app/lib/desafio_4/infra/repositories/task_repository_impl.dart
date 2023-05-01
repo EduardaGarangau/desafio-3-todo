@@ -42,12 +42,17 @@ class TaskRepositoryImpl implements TaskRepository {
     try {
       await _datasource.doneTask(taskId, isDone);
       return right(unit);
+      //TODO: try catch deve ser feito no service (FirebaseException) - GIT EXEMPLO
+      // datasource não tem conhecimento disso
     } on FirebaseException catch (e) {
       if (e.code == 'not-found') {
         return left(TaskNotFoundError('Task não encontrada'));
       }
       return left(TaskFirestoreError(e.code));
+    } on TaskError catch (e) {
+      return left(e);
     } catch (e) {
+      //TODO: não usar catch genérico
       return left(TaskUnknownError(e.toString()));
     }
   }

@@ -1,8 +1,14 @@
+import 'package:app/desafio_4/domain/entities/message_entity.dart';
+import 'package:app/desafio_4/presenter/chat_page/chat_page_widgets/message_text_field_widget.dart';
 import 'package:app/desafio_4/presenter/chat_page/chat_page_widgets/messages_widget.dart';
+import 'package:app/desafio_4/presenter/stores/chat_store.dart';
+import 'package:app/desafio_4/presenter/stores/user_store.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_triple/flutter_triple.dart';
 
-class ChatPage extends StatelessWidget {
+class ChatPage extends StatefulWidget {
   final String userName;
   final String userImageUrl;
 
@@ -13,13 +19,26 @@ class ChatPage extends StatelessWidget {
   });
 
   @override
+  State<ChatPage> createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<ChatStore>().getMessages();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final store = Modular.get<UserStore>();
+    final currentUser = store.currentUser;
 
     return Scaffold(
       appBar: ChatAppBarWidget.mobile(
-        userName: userName,
-        userImageUrl: userImageUrl,
+        userName: currentUser.name,
+        userImageUrl: currentUser.imageUrl,
         toolBarHeight: size.height * 0.1,
         contentHeight: size.height * 0.05,
         buttonHeight: size.height * 0.05,
@@ -28,19 +47,24 @@ class ChatPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          MessagesWidget(
-            userImageUrl: userImageUrl,
-            name: userName,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 20,
-              bottom: 20,
+          ScopedBuilder<ChatStore, List<MessageEntity>>(
+            store: Modular.get<ChatStore>(),
+            onLoading: (context) => const Expanded(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
             ),
-            child: MessageInputWidget(
-              width: size.width * 0.9,
-            ),
+            onError: (context, error) => Text(error),
+            onState: (context, state) {
+              return MessagesWidget(
+                userImageUrl: currentUser.imageUrl,
+                name: currentUser.name,
+                userId: currentUser.userId,
+                messages: state,
+              );
+            },
           ),
+          const MessageTextFieldWidget(),
         ],
       ),
     );
