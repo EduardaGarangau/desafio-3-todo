@@ -2,23 +2,26 @@ import 'package:app/desafio_4/domain/DTOs/message_dto.dart';
 import 'package:app/desafio_4/infra/repositories/chat_repository_impl.dart';
 import 'package:app/desafio_4/presenter/stores/chat_store.dart';
 import 'package:app/desafio_4/presenter/stores/user_store.dart';
-import 'package:design_system/shared/theme/extensions/text_style_extension.dart';
 import 'package:design_system/shared/theme/extensions/theme_colors_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-class MessageTextFieldWidget extends StatelessWidget {
+class MessageTextFieldWidget extends StatefulWidget {
   const MessageTextFieldWidget({super.key});
 
+  @override
+  State<MessageTextFieldWidget> createState() => _MessageTextFieldWidgetState();
+}
+
+class _MessageTextFieldWidgetState extends State<MessageTextFieldWidget> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final _controller = TextEditingController();
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
-    final themeTextStyles = Theme.of(context).extension<TextStyleExtension>()!;
     final userStore = Modular.get<UserStore>();
-    final repo = Modular.get<ChatRepositoryImpl>();
-    final currentUser = userStore.currentUser;
+    final chatStore = Modular.get<ChatStore>();
+    final currentUser = userStore.senderUser;
 
     OutlineInputBorder _textFieldBorder() {
       return OutlineInputBorder(
@@ -42,8 +45,7 @@ class MessageTextFieldWidget extends StatelessWidget {
         sendedAt: DateTime.now(),
       );
 
-      repo.createMessage(message);
-      _controller.text = '';
+      chatStore.createMessage(message).then((value) => _controller.text = '');
     }
 
     return Row(

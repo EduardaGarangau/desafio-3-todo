@@ -33,12 +33,12 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final store = Modular.get<UserStore>();
-    final currentUser = store.currentUser;
+    final receiverUser = store.receiverUser;
 
     return Scaffold(
       appBar: ChatAppBarWidget.mobile(
-        userName: currentUser.name,
-        userImageUrl: currentUser.imageUrl,
+        userName: receiverUser.name,
+        userImageUrl: receiverUser.imageUrl,
         toolBarHeight: size.height * 0.1,
         contentHeight: size.height * 0.05,
         buttonHeight: size.height * 0.05,
@@ -57,9 +57,9 @@ class _ChatPageState extends State<ChatPage> {
             onError: (context, error) => Text(error),
             onState: (context, state) {
               return MessagesWidget(
-                userImageUrl: currentUser.imageUrl,
-                name: currentUser.name,
-                userId: currentUser.userId,
+                userImageUrl: receiverUser.imageUrl,
+                name: receiverUser.name,
+                userId: receiverUser.userId,
                 messages: state,
               );
             },

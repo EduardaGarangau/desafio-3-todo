@@ -16,7 +16,11 @@ class UserStore extends ValueNotifier<String> {
     }
   }
 
-  UserEntity get currentUser {
+  UserEntity get senderUser {
     return users.firstWhere((user) => user.userId == value);
+  }
+
+  UserEntity get receiverUser {
+    return users.firstWhere((user) => user.userId != value);
   }
 }

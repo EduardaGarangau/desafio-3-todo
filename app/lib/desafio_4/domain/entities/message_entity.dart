@@ -21,7 +21,7 @@ class MessageEntity {
     return DateFormat.Hm('en_US').format(sendedAt);
   }
 
-  bool isMessageReceived(String id) {
-    return userId != id;
+  bool isMessageReceived(String receiverId) {
+    return userId == receiverId;
   }
 }
