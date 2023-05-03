@@ -4,15 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class ChangeUserButtonWidget extends StatefulWidget {
-  const ChangeUserButtonWidget({super.key});
+  final Function() onTap;
+
+  const ChangeUserButtonWidget({
+    super.key,
+    required this.onTap,
+  });
 
   @override
   State<ChangeUserButtonWidget> createState() => _ChangeUserButtonWidgetState();
 }
 
 class _ChangeUserButtonWidgetState extends State<ChangeUserButtonWidget> {
-  final store = Modular.get<UserStore>();
-
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -20,10 +23,7 @@ class _ChangeUserButtonWidgetState extends State<ChangeUserButtonWidget> {
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.purple,
       ),
-      onPressed: () {
-        store.changeUser();
-        setState(() {});
-      },
+      onPressed: widget.onTap,
     );
   }
 }

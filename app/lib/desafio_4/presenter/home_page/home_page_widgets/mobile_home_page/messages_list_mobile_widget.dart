@@ -1,6 +1,8 @@
 import 'package:app/desafio_4/domain/models/messages_card_model.dart';
 import 'package:app/desafio_4/presenter/chat_page/chat_page.dart';
 import 'package:app/desafio_4/presenter/home_page/home_page_widgets/messages_list_widget.dart';
+import 'package:app/desafio_4/presenter/stores/chat_store.dart';
+import 'package:app/desafio_4/presenter/stores/user_store.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -28,6 +30,9 @@ class MessagesListMobileWidget extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
+    final userStore = Modular.get<UserStore>();
+    final chatStore = Modular.get<ChatStore>();
+
     return SizedBox(
       height: messages.length * height,
       child: ListView.separated(
@@ -42,16 +47,19 @@ class MessagesListMobileWidget extends StatelessWidget
             onTap: () {
               Modular.to.pushNamed(
                 '/chat/',
-                arguments: [message.name, message.userImageUrl],
+                arguments: [
+                  userStore.receiverUser,
+                  userStore.receiverUser.imageUrl
+                ],
               );
             },
             child: MessageCardWidget(
-              userImageUrl: message.userImageUrl,
-              name: message.name,
+              userImageUrl: userStore.receiverUser.imageUrl,
+              name: userStore.receiverUser.name,
               badgeNumber: message.badgeNumber,
               number: message.number,
-              messageContent: message.messageContent,
-              messageHour: message.messageHour,
+              messageContent: chatStore.state.last.text,
+              messageHour: chatStore.state.last.getTime,
               hasOnlineFlag: message.hasOnlineFlag,
               isMuted: message.isMuted,
               height: messageCardHeight,

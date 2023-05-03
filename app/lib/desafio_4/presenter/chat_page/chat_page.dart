@@ -37,8 +37,8 @@ class _ChatPageState extends State<ChatPage> {
 
     return Scaffold(
       appBar: ChatAppBarWidget.mobile(
-        userName: receiverUser.name,
-        userImageUrl: receiverUser.imageUrl,
+        userName: widget.userName,
+        userImageUrl: widget.userImageUrl,
         toolBarHeight: size.height * 0.1,
         contentHeight: size.height * 0.05,
         buttonHeight: size.height * 0.05,

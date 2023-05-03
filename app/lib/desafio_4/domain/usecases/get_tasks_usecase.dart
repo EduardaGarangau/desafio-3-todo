@@ -10,11 +10,6 @@ class GetTasksUsecase {
   GetTasksUsecase(this._repository);
 
   Future<Either<TaskError, List<TaskEntity>>> call() async {
-    try {
-      final tasks = await _repository.getAllTasks();
-      return tasks.fold(left, right);
-    } on TaskError catch (e) {
-      return left(e);
-    }
+    return _repository.getAllTasks();
   }
 }

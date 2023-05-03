@@ -57,7 +57,7 @@ class MessageCardWidget extends StatelessWidget {
             hasBadge: true,
             positionedSize: positionedImage,
           ),
-          SizedBox(width: imageSpacing),
+          SizedBox(width: 18),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -77,7 +77,7 @@ class MessageCardWidget extends StatelessWidget {
                 ),
                 child: Text(
                   messageContent,
-                  overflow: TextOverflow.ellipsis,
+                  overflow: TextOverflow.fade,
                   softWrap: true,
                   style: themeTextStyle.messageContentTextStyle,
                 ),

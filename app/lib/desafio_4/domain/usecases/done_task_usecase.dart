@@ -9,11 +9,6 @@ class DoneTaskUsecase {
   DoneTaskUsecase(this._repository);
 
   Future<Either<TaskError, Unit>> call(String taskId, bool isDone) async {
-    try {
-      await _repository.doneTask(taskId, isDone);
-      return right(unit);
-    } on TaskError catch (e) {
-      return left(e);
-    }
+    return _repository.doneTask(taskId, isDone);
   }
 }
