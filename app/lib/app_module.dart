@@ -4,7 +4,6 @@ import 'package:app/desafio_4/domain/usecases/done_task_usecase.dart';
 import 'package:app/desafio_4/domain/usecases/get_tasks_usecase.dart';
 import 'package:app/desafio_4/external/datasources/chat_datasource_impl.dart';
 import 'package:app/desafio_4/external/datasources/task_datasource_impl.dart';
-import 'package:app/desafio_4/external/services/chat_service.dart';
 import 'package:app/desafio_4/external/services/firestore_service.dart';
 import 'package:app/desafio_4/infra/repositories/chat_repository_impl.dart';
 import 'package:app/desafio_4/infra/repositories/task_repository_impl.dart';
@@ -32,7 +31,6 @@ class AppModule extends Module {
         Bind.lazySingleton((i) => DoneTaskUsecase(i())),
         Bind.lazySingleton((i) => TasksStore(i(), i(), i())),
         Bind.singleton((i) => UserStore()),
-        Bind.lazySingleton((i) => ChatService()),
         Bind.lazySingleton((i) => ChatDatasourceImpl(i())),
         Bind.lazySingleton((i) => ChatRepositoryImpl(i())),
         Bind.lazySingleton((i) => CreateMessageUsecase(i())),

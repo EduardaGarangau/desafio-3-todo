@@ -1,9 +1,9 @@
-import 'package:app/desafio_4/external/services/chat_service.dart';
+import 'package:app/desafio_4/external/services/database_service.dart';
 import 'package:app/desafio_4/infra/datasources/chat_datasource.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ChatDatasourceImpl implements ChatDatasource {
-  final ChatService _service;
+  final DatabaseService _service;
 
   ChatDatasourceImpl(this._service);
 

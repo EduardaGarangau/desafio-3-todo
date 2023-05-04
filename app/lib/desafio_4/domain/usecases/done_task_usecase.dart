@@ -8,7 +8,8 @@ class DoneTaskUsecase {
 
   DoneTaskUsecase(this._repository);
 
-  Future<Either<TaskError, Unit>> call(String taskId, bool isDone) async {
-    return _repository.doneTask(taskId, isDone);
+  Future<Either<TaskError, Unit>> call(
+      String taskId, bool isDone, String userId) async {
+    return _repository.doneTask(taskId, isDone, userId);
   }
 }

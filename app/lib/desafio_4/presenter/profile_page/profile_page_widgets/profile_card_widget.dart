@@ -3,8 +3,10 @@ import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/bio_ca
 import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/profile_abilities_card.dart';
 import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/profile_buttons_list_widget.dart';
 import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/profile_header_widget.dart';
+import 'package:app/desafio_4/presenter/stores/user_store.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class ProfileCardWidget extends StatelessWidget {
   const ProfileCardWidget({super.key});
@@ -13,6 +15,8 @@ class ProfileCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
+    final userStore = Modular.get<UserStore>();
+    final senderUser = userStore.senderUser;
     final user = UserMock.user1;
 
     return Material(
@@ -35,10 +39,10 @@ class ProfileCardWidget extends StatelessWidget {
         child: Column(
           children: [
             ProfileHeaderWidget.mobile(
-              imageUrl: user.imageUrl,
-              name: user.name,
-              phone: user.phone,
-              isOnline: user.isOnline,
+              imageUrl: senderUser.imageUrl,
+              name: senderUser.name,
+              phone: '123-456-9877',
+              isOnline: true,
               height: size.height * 0.17,
             ),
             SizedBox(height: size.height * 0.002),

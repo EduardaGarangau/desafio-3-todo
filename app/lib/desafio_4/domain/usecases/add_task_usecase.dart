@@ -9,8 +9,8 @@ class AddTaskUsecase {
 
   AddTaskUsecase(this._repository);
 
-  Future<Either<TaskError, Unit>> call(TaskDTO task) async {
+  Future<Either<TaskError, Unit>> call(TaskDTO task, String userId) async {
     //TODO: fazer validações
-    return _repository.addTask(task);
+    return _repository.addTask(task, userId);
   }
 }

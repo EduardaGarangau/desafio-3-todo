@@ -2,6 +2,7 @@ import 'package:app/desafio_4/domain/entities/task_entity.dart';
 import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/profile_card_widget.dart';
 import 'package:app/desafio_4/presenter/profile_page/profile_page_widgets/todo_form_widget.dart';
 import 'package:app/desafio_4/presenter/stores/tasks_store.dart';
+import 'package:app/desafio_4/presenter/stores/user_store.dart';
 import 'package:design_system/design_system.dart';
 import 'package:design_system/widgets/todo_card_widget.dart';
 import 'package:flutter/material.dart';
@@ -16,10 +17,12 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final userStore = Modular.get<UserStore>();
+
   @override
   void initState() {
     super.initState();
-    context.read<TasksStore>().getAllTasks();
+    context.read<TasksStore>().getAllTasks(userStore.senderUser.userId);
   }
 
   void _openTodoFormModal(BuildContext context) {
@@ -74,7 +77,11 @@ class _ProfilePageState extends State<ProfilePage> {
                       width: size.width * 0.86,
                       onTap: () {
                         final updatedTask = task.copyWith(done: !task.done);
-                        store.doneTask(updatedTask.id, updatedTask.done);
+                        store.doneTask(
+                          updatedTask.id,
+                          updatedTask.done,
+                          userStore.senderUser.userId,
+                        );
                       },
                     ),
                   );

@@ -13,10 +13,10 @@ class TaskRepositoryImpl implements TaskRepository {
   TaskRepositoryImpl(this._datasource);
 
   @override
-  Future<Either<TaskError, Unit>> addTask(TaskDTO task) async {
+  Future<Either<TaskError, Unit>> addTask(TaskDTO task, String userId) async {
     try {
       final entityAsMap = TaskEntityMapper.toMap(task);
-      await _datasource.addTask(entityAsMap);
+      await _datasource.addTask(entityAsMap, userId);
       return right(unit);
     } on FirebaseException catch (e) {
       return left(TaskFirestoreError(e.code));
@@ -26,9 +26,9 @@ class TaskRepositoryImpl implements TaskRepository {
   }
 
   @override
-  Future<Either<TaskError, List<TaskEntity>>> getAllTasks() async {
+  Future<Either<TaskError, List<TaskEntity>>> getAllTasks(String userId) async {
     try {
-      final documents = await _datasource.getAll();
+      final documents = await _datasource.getAll(userId);
       return right(documents.docs.map(TaskEntityMapper.fromMap).toList());
     } on FirebaseException catch (e) {
       return left(TaskFirestoreError(e.code));
@@ -38,9 +38,10 @@ class TaskRepositoryImpl implements TaskRepository {
   }
 
   @override
-  Future<Either<TaskError, Unit>> doneTask(String taskId, bool isDone) async {
+  Future<Either<TaskError, Unit>> doneTask(
+      String taskId, bool isDone, String userId) async {
     try {
-      await _datasource.doneTask(taskId, isDone);
+      await _datasource.doneTask(taskId, isDone, userId);
       return right(unit);
       //TODO: try catch deve ser feito no service (FirebaseException) - GIT EXEMPLO
       // datasource não tem conhecimento disso

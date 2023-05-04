@@ -5,9 +5,10 @@ import '../DTOs/task_dto.dart';
 import '../errors/task_error.dart';
 
 abstract class TaskRepository {
-  Future<Either<TaskError, Unit>> addTask(TaskDTO task);
+  Future<Either<TaskError, Unit>> addTask(TaskDTO task, String userId);
 
-  Future<Either<TaskError, List<TaskEntity>>> getAllTasks();
+  Future<Either<TaskError, List<TaskEntity>>> getAllTasks(String userId);
 
-  Future<Either<TaskError, Unit>> doneTask(String taskId, bool isDone);
+  Future<Either<TaskError, Unit>> doneTask(
+      String taskId, bool isDone, String userId);
 }

@@ -2,11 +2,11 @@
 
 import 'package:app/desafio_4/domain/DTOs/task_dto.dart';
 import 'package:app/desafio_4/presenter/stores/tasks_store.dart';
+import 'package:app/desafio_4/presenter/stores/user_store.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-import '../../../domain/entities/task_entity.dart';
 
 class TodoFormWidget extends StatefulWidget {
   const TodoFormWidget({super.key});
@@ -16,6 +16,7 @@ class TodoFormWidget extends StatefulWidget {
 }
 
 class _TodoFormWidgetState extends State<TodoFormWidget> {
+  final userStore = Modular.get<UserStore>();
   final _formKey = GlobalKey<FormState>();
   String _title = '';
   TimeOfDay? _time;
@@ -79,7 +80,7 @@ class _TodoFormWidgetState extends State<TodoFormWidget> {
 
     await context
         .read<TasksStore>()
-        .addTask(task)
+        .addTask(task, userStore.senderUser.userId)
         .then((value) => Navigator.of(context).pop());
   }
 

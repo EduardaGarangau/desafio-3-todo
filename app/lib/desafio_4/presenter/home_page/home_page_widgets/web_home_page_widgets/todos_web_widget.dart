@@ -21,7 +21,7 @@ class _TodosWebWidgetState extends State<TodosWebWidget> {
   @override
   void initState() {
     super.initState();
-    context.read<TasksStore>().getAllTasks();
+    //context.read<TasksStore>().getAllTasks();
   }
 
   void _openTodoFormModal(BuildContext context) {
@@ -71,7 +71,7 @@ class _TodosWebWidgetState extends State<TodosWebWidget> {
                 width: size.width * 0.2,
                 onTap: () {
                   final updatedTask = task.copyWith(done: !task.done);
-                  store.doneTask(updatedTask.id, updatedTask.done);
+                  //store.doneTask(updatedTask.id, updatedTask.done);
                 },
               ),
             );

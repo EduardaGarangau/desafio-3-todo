@@ -8,17 +8,17 @@ class TaskDatasourceImpl implements TaskDatasource {
   TaskDatasourceImpl(this._service);
 
   @override
-  Future<void> addTask(Map<String, dynamic> task) async {
-    await _service.add('tasks', task);
+  Future<void> addTask(Map<String, dynamic> task, String userId) async {
+    await _service.add(userId, task);
   }
 
   @override
-  Future<QuerySnapshot<Map<String, dynamic>>> getAll() async {
-    return _service.getAll('tasks');
+  Future<QuerySnapshot<Map<String, dynamic>>> getAll(String userId) async {
+    return _service.getAll(userId);
   }
 
   @override
-  Future<void> doneTask(String taskId, bool isDone) async {
-    await _service.doneTask('tasks', taskId, isDone);
+  Future<void> doneTask(String taskId, bool isDone, String userId) async {
+    await _service.doneTask(userId, taskId, isDone);
   }
 }

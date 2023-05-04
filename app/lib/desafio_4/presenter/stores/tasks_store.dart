@@ -17,10 +17,10 @@ class TasksStore extends Store<List<TaskEntity>> {
     this._doneTaskUsecase,
   ) : super([]);
 
-  Future<void> getAllTasks() async {
+  Future<void> getAllTasks(String userId) async {
     setLoading(true);
 
-    final tasks = await _getTasksUsecase();
+    final tasks = await _getTasksUsecase(userId);
     tasks.fold(
       setError,
       (r) {
@@ -30,19 +30,19 @@ class TasksStore extends Store<List<TaskEntity>> {
     );
   }
 
-  Future<void> addTask(TaskDTO task) async {
+  Future<void> addTask(TaskDTO task, String userId) async {
     setLoading(true);
-    final result = await _addTaskUsecase(task);
+    final result = await _addTaskUsecase(task, userId);
     result.fold(setError, (r) async {
-      await getAllTasks();
+      await getAllTasks(userId);
     });
   }
 
-  Future<void> doneTask(String taskId, bool isDone) async {
+  Future<void> doneTask(String taskId, bool isDone, String userId) async {
     setLoading(true);
-    final result = await _doneTaskUsecase(taskId, isDone);
+    final result = await _doneTaskUsecase(taskId, isDone, userId);
     result.fold(setError, (r) async {
-      await getAllTasks();
+      await getAllTasks(userId);
     });
   }
 }
