@@ -1,10 +1,12 @@
 import 'package:app/desafio_4/domain/DTOs/message_dto.dart';
-import 'package:app/desafio_4/infra/repositories/chat_repository_impl.dart';
+
 import 'package:app/desafio_4/presenter/stores/chat_store.dart';
 import 'package:app/desafio_4/presenter/stores/user_store.dart';
 import 'package:design_system/shared/theme/extensions/theme_colors_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../../domain/value_objects/text_vo.dart';
 
 class MessageTextFieldWidget extends StatefulWidget {
   const MessageTextFieldWidget({super.key});
@@ -41,7 +43,7 @@ class _MessageTextFieldWidgetState extends State<MessageTextFieldWidget> {
         userId: currentUser.userId,
         userName: currentUser.name,
         userImage: currentUser.imageUrl,
-        text: _controller.text,
+        text: TextVO(_controller.text),
         sendedAt: DateTime.now(),
       );
 

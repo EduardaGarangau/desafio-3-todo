@@ -1,5 +1,4 @@
 import 'package:app/desafio_4/domain/models/messages_card_model.dart';
-import 'package:app/desafio_4/presenter/chat_page/chat_page.dart';
 import 'package:app/desafio_4/presenter/home_page/home_page_widgets/messages_list_widget.dart';
 import 'package:app/desafio_4/presenter/stores/chat_store.dart';
 import 'package:app/desafio_4/presenter/stores/user_store.dart';

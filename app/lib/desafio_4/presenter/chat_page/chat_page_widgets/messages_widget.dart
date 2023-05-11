@@ -1,5 +1,4 @@
 import 'package:app/desafio_4/domain/entities/message_entity.dart';
-import 'package:app/desafio_4/mocks/messages_mock.dart';
 import 'package:app/desafio_4/presenter/chat_page/chat_page_widgets/message_widget.dart';
 import 'package:flutter/material.dart';
 

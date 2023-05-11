@@ -5,6 +5,7 @@ abstract class DatabaseService {
 
   Future<QuerySnapshot<Map<String, dynamic>>> getAll(String userId);
 
+  // ignore: avoid_positional_boolean_parameters
   Future<void> doneTask(String userId, String taskId, bool isDone);
 
   Future<void> addMessage(String collection, Map<String, dynamic> data);

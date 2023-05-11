@@ -3,15 +3,3 @@ class TaskError implements Exception {
 
   TaskError(this.message);
 }
-
-class TaskUnknownError extends TaskError {
-  TaskUnknownError(super.message);
-}
-
-class TaskFirestoreError extends TaskError {
-  TaskFirestoreError(super.message);
-}
-
-class TaskNotFoundError extends TaskError {
-  TaskNotFoundError(super.message);
-}

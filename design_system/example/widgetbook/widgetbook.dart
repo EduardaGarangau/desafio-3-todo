@@ -86,6 +86,7 @@ class WidgetbookHotReload extends StatelessWidget {
                       icon: Icons.chat_outlined,
                       title: 'All',
                       selected: true,
+                      badgeNumber: '1',
                     );
                   },
                 ),
@@ -96,6 +97,7 @@ class WidgetbookHotReload extends StatelessWidget {
                       icon: Icons.video_chat_outlined,
                       title: 'Live Chat',
                       selected: false,
+                      badgeNumber: '1',
                     );
                   },
                 ),
@@ -157,7 +159,6 @@ class WidgetbookHotReload extends StatelessWidget {
                       radiusSize: 28,
                       badgeNumber: '5',
                       hasBadge: true,
-                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -168,7 +169,6 @@ class WidgetbookHotReload extends StatelessWidget {
                       userImageUrl: null,
                       radiusSize: 40,
                       hasBadge: false,
-                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -224,7 +224,6 @@ class WidgetbookHotReload extends StatelessWidget {
                       messageHour: '12:30',
                       hasOnlineFlag: true,
                       isMuted: true,
-                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -240,7 +239,6 @@ class WidgetbookHotReload extends StatelessWidget {
                       messageHour: '11:29',
                       hasOnlineFlag: false,
                       isMuted: false,
-                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -256,7 +254,6 @@ class WidgetbookHotReload extends StatelessWidget {
                       messageHour: '11:29',
                       hasOnlineFlag: false,
                       isMuted: false,
-                      isWebPlatform: true,
                     );
                   },
                 ),
@@ -329,7 +326,6 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const ProfileButtonWidget(
                       icon: Icons.phone_in_talk_outlined,
                       isAvailable: true,
-                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -339,7 +335,6 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const ProfileButtonWidget(
                       icon: Icons.video_camera_front_rounded,
                       isAvailable: false,
-                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -354,7 +349,6 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const AbilityCardWidget(
                       ability: 'Project Manager',
                       cardColor: AppColors.mediumPurple,
-                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -364,7 +358,6 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const AbilityCardWidget(
                       ability: 'Java Script Manager',
                       cardColor: AppColors.lightPink,
-                      isWebPlatform: false,
                     );
                   },
                 ),
@@ -374,28 +367,12 @@ class WidgetbookHotReload extends StatelessWidget {
                     return const AbilityCardWidget(
                       ability: 'QA',
                       cardColor: AppColors.darkGreen,
-                      isWebPlatform: false,
                     );
                   },
                 ),
               ],
             ),
 
-            WidgetbookComponent(
-              name: 'AppBar',
-              useCases: [
-                WidgetbookUseCase(
-                  name: 'AppBar',
-                  builder: (context) {
-                    return AppBarWidget(
-                      name: 'Russel Hue',
-                      userImageUrl: null,
-                      isWebPlatform: true,
-                    );
-                  },
-                ),
-              ],
-            ),
             WidgetbookComponent(
               name: 'Message Bubble Details',
               useCases: [
@@ -456,27 +433,7 @@ class WidgetbookHotReload extends StatelessWidget {
                 ),
               ],
             ),
-            WidgetbookComponent(
-              name: 'Message Input Card',
-              useCases: [
-                WidgetbookUseCase(
-                  name: 'Message Input Card - Desktop',
-                  builder: (context) {
-                    return const MessageInputWidget(
-                      isWebPlatform: true,
-                    );
-                  },
-                ),
-                WidgetbookUseCase(
-                  name: 'Message Input Card - Mobile',
-                  builder: (context) {
-                    return const MessageInputWidget(
-                      isWebPlatform: false,
-                    );
-                  },
-                ),
-              ],
-            ),
+
             WidgetbookComponent(
               name: 'Web Header Icon',
               useCases: [
@@ -537,7 +494,7 @@ class WidgetbookHotReload extends StatelessWidget {
       themes: [
         WidgetbookTheme(
           name: 'Dark',
-          data: CustomTheme.theme,
+          data: CustomTheme.darkTheme,
         ),
       ],
     );

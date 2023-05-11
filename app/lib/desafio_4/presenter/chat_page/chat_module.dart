@@ -4,8 +4,10 @@ import 'package:flutter_modular/flutter_modular.dart';
 class ChatModule extends Module {
   @override
   List<ModularRoute> get routes => [
-        ChildRoute('/',
-            child: (context, args) =>
-                ChatPage(userName: args.data[0], userImageUrl: args.data[1])),
+        ChildRoute(
+          '/',
+          child: (context, args) =>
+              ChatPage(userName: args.data[0], userImageUrl: args.data[1]),
+        ),
       ];
 }

@@ -14,7 +14,7 @@ class FirestoreService implements DatabaseService {
           .collection('tasks')
           .add(data);
     } on FirebaseException catch (e, stackTrace) {
-      throw ServiceException(
+      throw CustomException(
         'Erro ao adicionar tarefa!',
         stackTrace,
       );
@@ -31,7 +31,7 @@ class FirestoreService implements DatabaseService {
           .collection('tasks')
           .get();
     } on FirebaseException catch (e, stackTrace) {
-      throw ServiceException(
+      throw CustomException(
         'Erro ao carregar tarefas!',
         stackTrace,
       );
@@ -49,7 +49,7 @@ class FirestoreService implements DatabaseService {
           .doc(taskId)
           .update({'done': isDone});
     } on FirebaseException catch (e, stackTrace) {
-      throw ServiceException(
+      throw CustomException(
         'Erro ao atualizar tarefa!',
         stackTrace,
       );
@@ -62,7 +62,7 @@ class FirestoreService implements DatabaseService {
       final firestore = FirebaseFirestore.instance;
       await firestore.collection(collection).add(data);
     } on FirebaseException catch (e, stackTrace) {
-      throw ServiceException(
+      throw CustomException(
         'Erro ao enviar mensagem!',
         stackTrace,
       );
@@ -71,12 +71,13 @@ class FirestoreService implements DatabaseService {
 
   @override
   Future<QuerySnapshot<Map<String, dynamic>>> getMessages(
-      String collection) async {
+    String collection,
+  ) async {
     try {
       final firestore = FirebaseFirestore.instance;
       return firestore.collection(collection).get();
     } on FirebaseException catch (e, stackTrace) {
-      throw ServiceException(
+      throw CustomException(
         'Erro ao carregar mensagens!',
         stackTrace,
       );

@@ -1,6 +1,10 @@
-class ServiceException implements Exception {
+class CustomException implements Exception {
   final String message;
   final StackTrace? stackTrace;
 
-  ServiceException(this.message, this.stackTrace);
+  CustomException(this.message, [this.stackTrace]);
+}
+
+class InvalidParamsException extends CustomException {
+  InvalidParamsException(super.message, [super.stackTrace]);
 }

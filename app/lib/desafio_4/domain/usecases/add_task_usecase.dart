@@ -8,8 +8,13 @@ class AddTaskUsecase {
 
   AddTaskUsecase(this._repository);
 
-  Future<Either<ServiceException, Unit>> call(
-      TaskDTO task, String userId) async {
-    return _repository.addTask(task, userId);
+  Future<Either<CustomException, Unit>> call(
+    TaskDTO task,
+    String userId,
+  ) async {
+    return task.validator().fold(
+          (l) => left(InvalidParamsException(l)),
+          (r) => _repository.addTask(task, userId),
+        );
   }
 }

@@ -17,13 +17,15 @@ class ChatStore extends Store<List<MessageEntity>> {
     setLoading(true);
 
     final messages = await _getMessagesUsecase();
-    messages.sort((a, b) => a.sendedAt.compareTo(b.sendedAt));
-    update(messages);
+    messages.fold((l) => setError, (r) {
+      r.sort((a, b) => a.sendedAt.compareTo(b.sendedAt));
+      update(r);
+    });
   }
 
   Future<void> createMessage(MessageDTO message) async {
     setLoading(true);
-    await _createMessageUsecase(message);
-    await getMessages();
+    final result = await _createMessageUsecase(message);
+    result.fold((l) => setError, (r) async => getMessages());
   }
 }

@@ -12,35 +12,41 @@ class TaskRepositoryImpl implements TaskRepository {
   TaskRepositoryImpl(this._datasource);
 
   @override
-  Future<Either<ServiceException, Unit>> addTask(
-      TaskDTO task, String userId) async {
+  Future<Either<CustomException, Unit>> addTask(
+    TaskDTO task,
+    String userId,
+  ) async {
     try {
       final entityAsMap = TaskEntityMapper.toMap(task);
       await _datasource.addTask(entityAsMap, userId);
       return right(unit);
-    } on ServiceException catch (e) {
+    } on CustomException catch (e) {
       return left(e);
     }
   }
 
   @override
-  Future<Either<ServiceException, List<TaskEntity>>> getAllTasks(
-      String userId) async {
+  Future<Either<CustomException, List<TaskEntity>>> getAllTasks(
+    String userId,
+  ) async {
     try {
       final documents = await _datasource.getAll(userId);
       return right(documents.docs.map(TaskEntityMapper.fromMap).toList());
-    } on ServiceException catch (e) {
+    } on CustomException catch (e) {
       return left(e);
     }
   }
 
   @override
-  Future<Either<ServiceException, Unit>> doneTask(
-      String taskId, bool isDone, String userId) async {
+  Future<Either<CustomException, Unit>> doneTask(
+    String taskId,
+    bool isDone,
+    String userId,
+  ) async {
     try {
       await _datasource.doneTask(taskId, isDone, userId);
       return right(unit);
-    } on ServiceException catch (e) {
+    } on CustomException catch (e) {
       return left(e);
     }
   }

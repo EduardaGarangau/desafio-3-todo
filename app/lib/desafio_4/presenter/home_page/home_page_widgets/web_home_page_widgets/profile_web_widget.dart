@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_redundant_argument_values
+
 import 'package:app/desafio_4/presenter/home_page/home_page_widgets/web_home_page_widgets/profile_card_web_widget.dart';
 import 'package:app/desafio_4/presenter/home_page/home_page_widgets/web_home_page_widgets/todos_web_widget.dart';
 import 'package:flutter/material.dart';

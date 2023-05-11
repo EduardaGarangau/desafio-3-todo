@@ -6,6 +6,7 @@ class TaskEntityMapper {
   TaskEntityMapper._();
 
   static TaskEntity fromMap(DocumentSnapshot document) {
+    // ignore: cast_nullable_to_non_nullable
     final documentData = document.data() as Map;
 
     return TaskEntity(
@@ -18,7 +19,7 @@ class TaskEntityMapper {
 
   static Map<String, dynamic> toMap(TaskDTO task) {
     return <String, dynamic>{
-      'title': task.title,
+      'title': task.title.value,
       'date': task.date.toIso8601String(),
       'done': task.done,
     };

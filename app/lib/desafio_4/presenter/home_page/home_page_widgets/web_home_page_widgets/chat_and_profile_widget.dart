@@ -1,6 +1,5 @@
 import 'package:app/desafio_4/presenter/home_page/home_page_widgets/web_home_page_widgets/chat_list_web_widget.dart';
 import 'package:app/desafio_4/presenter/home_page/home_page_widgets/web_home_page_widgets/chat_widget.dart';
-import 'package:app/desafio_4/presenter/home_page/home_page_widgets/web_home_page_widgets/messages_list_web_widget.dart';
 import 'package:app/desafio_4/presenter/home_page/home_page_widgets/web_home_page_widgets/profile_web_widget.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';

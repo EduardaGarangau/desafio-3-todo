@@ -8,7 +8,7 @@ class GetTasksUsecase {
 
   GetTasksUsecase(this._repository);
 
-  Future<Either<ServiceException, List<TaskEntity>>> call(String userId) async {
+  Future<Either<CustomException, List<TaskEntity>>> call(String userId) async {
     return _repository.getAllTasks(userId);
   }
 }

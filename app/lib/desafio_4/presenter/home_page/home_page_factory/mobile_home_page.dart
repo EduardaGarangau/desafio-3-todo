@@ -8,7 +8,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 
 import '../home_page_widgets/change_user_button_widget.dart';
-import '../home_page_widgets/filters_section_widget.dart';
 
 class MobileHomePage extends StatefulWidget {
   const MobileHomePage({super.key});

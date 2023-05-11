@@ -53,17 +53,3 @@ class _WebHomePageState extends State<WebHomePage> {
     );
   }
 }
-
-// Scaffold(
-//       backgroundColor: AppColors.black,
-//       appBar: const AppBarWebWidget(
-//         buttonsWidget: AppBarButtonsWidget(),
-//         switchTheme: ThemeSwitchWidget(),
-//       ),
-//       body: Row(
-//         children: [
-//           const FilterButtonsWebWidget(),
-//           ChatAndProfileWidget(),
-//         ],
-//       ),
-//     );

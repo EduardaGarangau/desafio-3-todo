@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 
+import '../../../domain/value_objects/title_vo.dart';
+
 class TodoFormWidget extends StatefulWidget {
   const TodoFormWidget({super.key});
 
@@ -73,7 +75,7 @@ class _TodoFormWidgetState extends State<TodoFormWidget> {
 
     _formKey.currentState!.save();
     final task = TaskDTO(
-      title: _title,
+      title: TitleVO(_title),
       date: taskDate,
       done: false,
     );

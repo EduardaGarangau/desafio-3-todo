@@ -6,6 +6,7 @@ class MessageEntityMapper {
   MessageEntityMapper._();
 
   static MessageEntity fromMap(DocumentSnapshot document) {
+    // ignore: cast_nullable_to_non_nullable
     final documentData = document.data() as Map;
 
     return MessageEntity(
@@ -23,7 +24,7 @@ class MessageEntityMapper {
       'userId': message.userId,
       'userName': message.userName,
       'userImage': message.userImage,
-      'text': message.text,
+      'text': message.text.value,
       'sendedAt': message.sendedAt.toIso8601String(),
     };
   }

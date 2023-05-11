@@ -37,16 +37,16 @@ void main() {
     });
   });
 
-  group('GetTasksUsecase <ServiceException>', () {
-    test('should return ServiceException', () async {
+  group('GetTasksUsecase <CustomException>', () {
+    test('should return CustomException', () async {
       when(() => repository.getAllTasks('1')).thenAnswer(
-          (_) async => left(ServiceException('Erro!', StackTrace.current)));
+          (_) async => left(CustomException('Erro!', StackTrace.current)));
 
       final tasks = await usecase('1');
 
       tasks.fold(
         (l) {
-          expect(l, isA<ServiceException>());
+          expect(l, isA<CustomException>());
           expect(l.message, equals('Erro!'));
         },
         (r) => null,

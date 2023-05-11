@@ -1,6 +1,5 @@
 import 'package:app/desafio_4/presenter/home_page/home_page_factory/mobile_home_page.dart';
 import 'package:app/desafio_4/presenter/home_page/home_page_factory/web_home_page.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class HomePageByPlatform extends StatefulWidget {
@@ -23,7 +22,6 @@ class _HomePageByPlatformState extends State<HomePageByPlatform> {
       builder: (context, constraints) {
         final maxWidth = constraints.maxWidth;
 
-        //TODO: colocar a lógica em um widget separado
         if (maxWidth < 2000.0 && maxWidth > 637) {
           return const WebHomePage();
         } else {

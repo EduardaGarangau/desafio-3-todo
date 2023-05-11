@@ -1,5 +1,8 @@
+import 'package:app/desafio_4/domain/value_objects/title_vo.dart';
+import 'package:dartz/dartz.dart';
+
 class TaskDTO {
-  final String title;
+  final TitleVO title;
   final DateTime date;
   final bool done;
 
@@ -8,4 +11,8 @@ class TaskDTO {
     required this.date,
     required this.done,
   });
+
+  Either<String, Unit> validator() {
+    return title.validator();
+  }
 }

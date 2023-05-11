@@ -1,11 +1,11 @@
+// ignore_for_file: unused_element
+
 import 'package:design_system/shared/theme/extensions/theme_colors_extension.dart';
 import 'package:design_system/widgets/todo_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 
-import '../../../../../desafio_3/stores/todos_state.dart';
-import '../../../../../desafio_3/stores/todos_store.dart';
 import '../../../../domain/entities/task_entity.dart';
 import '../../../profile_page/profile_page_widgets/todo_form_widget.dart';
 import '../../../stores/tasks_store.dart';
