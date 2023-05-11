@@ -1,5 +1,5 @@
-import 'package:app/desafio_4/domain/errors/task_error.dart';
 import 'package:app/desafio_4/domain/usecases/done_task_usecase.dart';
+import 'package:app/desafio_4/external/services/errors/custom_exceptions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -17,10 +17,10 @@ void main() {
 
   group('DoneTaskUsecase <Unit>', () {
     test('should return unit', () async {
-      when(() => repository.doneTask('1', true))
+      when(() => repository.doneTask('1', true, '1'))
           .thenAnswer((_) async => right(unit));
 
-      final result = await usecase('1', true);
+      final result = await usecase('1', true, '1');
 
       result.fold((l) {
         expect(l, null);
@@ -30,47 +30,18 @@ void main() {
     });
   });
 
-  group('DoneTaskUsecase <TaskError>', () {
-    test('should return TaskFirestoreError', () async {
-      when(() => repository.doneTask('1', true))
-          .thenThrow(TaskFirestoreError('Erro no Firestore'));
-
-      final result = await usecase('1', true);
-
-      result.fold(
-        (l) {
-          expect(l, isA<TaskFirestoreError>());
-          expect(l.message, equals('Erro no Firestore'));
-        },
-        (r) => null,
+  group('DoneTaskUsecase <ServiceException>', () {
+    test('should return ServiceException', () async {
+      when(() => repository.doneTask('1', true, '1')).thenAnswer(
+        (_) async => left(ServiceException('Erro!', StackTrace.current)),
       );
-    });
 
-    test('should return TaskNotFoundError', () async {
-      when(() => repository.doneTask('1', true))
-          .thenThrow(TaskNotFoundError('Task não encontrada'));
-
-      final result = await usecase('1', true);
+      final result = await usecase('1', true, '1');
 
       result.fold(
         (l) {
-          expect(l, isA<TaskNotFoundError>());
-          expect(l.message, equals('Task não encontrada'));
-        },
-        (r) => null,
-      );
-    });
-
-    test('should return TaskUnknownError', () async {
-      when(() => repository.doneTask('1', true))
-          .thenThrow(TaskUnknownError('Erro desconhecido'));
-
-      final result = await usecase('1', true);
-
-      result.fold(
-        (l) {
-          expect(l, isA<TaskUnknownError>());
-          expect(l.message, equals('Erro desconhecido'));
+          expect(l, isA<ServiceException>());
+          expect(l.message, equals('Erro!'));
         },
         (r) => null,
       );

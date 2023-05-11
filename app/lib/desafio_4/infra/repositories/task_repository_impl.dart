@@ -1,10 +1,9 @@
 import 'package:app/desafio_4/domain/entities/task_entity.dart';
+import 'package:app/desafio_4/external/services/errors/custom_exceptions.dart';
 import 'package:app/desafio_4/infra/datasources/task_datasource.dart';
 import 'package:app/desafio_4/infra/mappers/task_entity_mapper.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import '../../domain/DTOs/task_dto.dart';
-import '../../domain/errors/task_error.dart';
 import '../../domain/repositories/task_repository.dart';
 
 class TaskRepositoryImpl implements TaskRepository {
@@ -13,48 +12,36 @@ class TaskRepositoryImpl implements TaskRepository {
   TaskRepositoryImpl(this._datasource);
 
   @override
-  Future<Either<TaskError, Unit>> addTask(TaskDTO task, String userId) async {
+  Future<Either<ServiceException, Unit>> addTask(
+      TaskDTO task, String userId) async {
     try {
       final entityAsMap = TaskEntityMapper.toMap(task);
       await _datasource.addTask(entityAsMap, userId);
       return right(unit);
-    } on FirebaseException catch (e) {
-      return left(TaskFirestoreError(e.code));
-    } catch (e) {
-      return left(TaskUnknownError(e.toString()));
+    } on ServiceException catch (e) {
+      return left(e);
     }
   }
 
   @override
-  Future<Either<TaskError, List<TaskEntity>>> getAllTasks(String userId) async {
+  Future<Either<ServiceException, List<TaskEntity>>> getAllTasks(
+      String userId) async {
     try {
       final documents = await _datasource.getAll(userId);
       return right(documents.docs.map(TaskEntityMapper.fromMap).toList());
-    } on FirebaseException catch (e) {
-      return left(TaskFirestoreError(e.code));
-    } catch (e) {
-      return left(TaskUnknownError(e.toString()));
+    } on ServiceException catch (e) {
+      return left(e);
     }
   }
 
   @override
-  Future<Either<TaskError, Unit>> doneTask(
+  Future<Either<ServiceException, Unit>> doneTask(
       String taskId, bool isDone, String userId) async {
     try {
       await _datasource.doneTask(taskId, isDone, userId);
       return right(unit);
-      //TODO: try catch deve ser feito no service (FirebaseException) - GIT EXEMPLO
-      // datasource não tem conhecimento disso
-    } on FirebaseException catch (e) {
-      if (e.code == 'not-found') {
-        return left(TaskNotFoundError('Task não encontrada'));
-      }
-      return left(TaskFirestoreError(e.code));
-    } on TaskError catch (e) {
+    } on ServiceException catch (e) {
       return left(e);
-    } catch (e) {
-      //TODO: não usar catch genérico
-      return left(TaskUnknownError(e.toString()));
     }
   }
 }

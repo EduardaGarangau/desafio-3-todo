@@ -1,7 +1,6 @@
 import 'package:app/desafio_4/domain/entities/task_entity.dart';
 import 'package:dartz/dartz.dart';
-
-import '../errors/task_error.dart';
+import '../../external/services/errors/custom_exceptions.dart';
 import '../repositories/task_repository.dart';
 
 class GetTasksUsecase {
@@ -9,7 +8,7 @@ class GetTasksUsecase {
 
   GetTasksUsecase(this._repository);
 
-  Future<Either<TaskError, List<TaskEntity>>> call(String userId) async {
+  Future<Either<ServiceException, List<TaskEntity>>> call(String userId) async {
     return _repository.getAllTasks(userId);
   }
 }

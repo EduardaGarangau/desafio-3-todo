@@ -1,6 +1,6 @@
 import 'package:app/desafio_4/domain/entities/task_entity.dart';
-import 'package:app/desafio_4/domain/errors/task_error.dart';
 import 'package:app/desafio_4/domain/usecases/get_tasks_usecase.dart';
+import 'package:app/desafio_4/external/services/errors/custom_exceptions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -22,10 +22,10 @@ void main() {
         TaskEntity(id: '1', title: 'Teste', date: DateTime.now(), done: false)
       ];
 
-      when(() => repository.getAllTasks())
+      when(() => repository.getAllTasks('1'))
           .thenAnswer((_) async => right(tasksList));
 
-      final tasks = await usecase();
+      final tasks = await usecase('1');
 
       tasks.fold((l) {
         expect(l, null);
@@ -37,32 +37,17 @@ void main() {
     });
   });
 
-  group('GetTasksUsecase <TaskError>', () {
-    test('should return TaskFirestoreError', () async {
-      when(() => repository.getAllTasks())
-          .thenThrow(TaskFirestoreError('Erro no Firestore'));
+  group('GetTasksUsecase <ServiceException>', () {
+    test('should return ServiceException', () async {
+      when(() => repository.getAllTasks('1')).thenAnswer(
+          (_) async => left(ServiceException('Erro!', StackTrace.current)));
 
-      final tasks = await usecase();
-
-      tasks.fold(
-        (l) {
-          expect(l, isA<TaskFirestoreError>());
-          expect(l.message, equals('Erro no Firestore'));
-        },
-        (r) => null,
-      );
-    });
-
-    test('should return TaskUnknownError', () async {
-      when(() => repository.getAllTasks())
-          .thenThrow(TaskUnknownError('Erro desconhecido!'));
-
-      final tasks = await usecase();
+      final tasks = await usecase('1');
 
       tasks.fold(
         (l) {
-          expect(l, isA<TaskUnknownError>());
-          expect(l.message, equals('Erro desconhecido!'));
+          expect(l, isA<ServiceException>());
+          expect(l.message, equals('Erro!'));
         },
         (r) => null,
       );

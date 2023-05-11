@@ -1,16 +1,15 @@
 import 'package:app/desafio_4/domain/repositories/task_repository.dart';
 import 'package:dartz/dartz.dart';
-
+import '../../external/services/errors/custom_exceptions.dart';
 import '../DTOs/task_dto.dart';
-import '../errors/task_error.dart';
 
 class AddTaskUsecase {
   final TaskRepository _repository;
 
   AddTaskUsecase(this._repository);
 
-  Future<Either<TaskError, Unit>> call(TaskDTO task, String userId) async {
-    //TODO: fazer validações
+  Future<Either<ServiceException, Unit>> call(
+      TaskDTO task, String userId) async {
     return _repository.addTask(task, userId);
   }
 }
