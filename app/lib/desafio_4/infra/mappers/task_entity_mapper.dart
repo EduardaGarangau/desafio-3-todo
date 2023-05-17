@@ -1,19 +1,15 @@
 import 'package:app/desafio_4/domain/DTOs/task_dto.dart';
 import 'package:app/desafio_4/domain/entities/task_entity.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TaskEntityMapper {
   TaskEntityMapper._();
 
-  static TaskEntity fromMap(DocumentSnapshot document) {
-    // ignore: cast_nullable_to_non_nullable
-    final documentData = document.data() as Map;
-
+  static TaskEntity fromMap(Map<String, dynamic> map) {
     return TaskEntity(
-      id: document.id,
-      title: documentData['title'] as String,
-      date: DateTime.parse(documentData['date']),
-      done: documentData['done'] as bool,
+      id: map['id'] as String,
+      title: map['title'] as String,
+      date: DateTime.parse(map['date']),
+      done: map['done'] as bool,
     );
   }
 

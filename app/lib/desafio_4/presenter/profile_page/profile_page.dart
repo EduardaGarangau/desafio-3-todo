@@ -38,7 +38,6 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final themeColors = Theme.of(context).extension<ThemeColorsExtension>()!;
-    // TODO: fazer essa store por injeção
     final store = context.watch<TasksStore>();
 
     return Scaffold(

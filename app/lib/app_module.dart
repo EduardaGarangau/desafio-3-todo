@@ -23,7 +23,7 @@ class AppModule extends Module {
   @override
   List<Bind<Object>> get binds => [
         Bind.singleton((i) => ThemeStore()),
-        Bind.lazySingleton((i) => FirestoreService()),
+        Bind.lazySingleton((i) => FirestoreDatabaseService()),
         Bind.lazySingleton((i) => TaskDatasourceImpl(i())),
         Bind.lazySingleton((i) => TaskRepositoryImpl(i())),
         Bind.lazySingleton((i) => AddTaskUsecase(i())),

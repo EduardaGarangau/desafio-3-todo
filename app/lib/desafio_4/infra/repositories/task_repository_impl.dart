@@ -31,7 +31,7 @@ class TaskRepositoryImpl implements TaskRepository {
   ) async {
     try {
       final documents = await _datasource.getAll(userId);
-      return right(documents.docs.map(TaskEntityMapper.fromMap).toList());
+      return right(documents.map(TaskEntityMapper.fromMap).toList());
     } on CustomException catch (e) {
       return left(e);
     }

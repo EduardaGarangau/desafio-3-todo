@@ -73,6 +73,8 @@ class _MobileHomePageState extends State<MobileHomePage> {
                   onState: (context, state) {
                     return FilterSectionWidget(
                       title: 'Unread',
+                      height: size.height * 0.03,
+                      width: size.width,
                       content: InkWell(
                         onTap: () {
                           Modular.to.pushNamed(
@@ -98,8 +100,6 @@ class _MobileHomePageState extends State<MobileHomePage> {
                           imageSpacing: size.width * 0.03,
                         ),
                       ),
-                      height: size.height * 0.03,
-                      width: size.width,
                     );
                   },
                 ),

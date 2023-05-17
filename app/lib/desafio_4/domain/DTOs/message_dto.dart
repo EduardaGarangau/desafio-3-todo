@@ -8,7 +8,7 @@ class MessageDTO {
   final TextVO text;
   final DateTime sendedAt;
 
-  MessageDTO({
+  const MessageDTO({
     required this.userId,
     required this.userName,
     required this.userImage,

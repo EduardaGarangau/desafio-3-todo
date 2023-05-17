@@ -29,7 +29,7 @@ class ChatRepositoryImpl implements ChatRepository {
   Future<Either<CustomException, List<MessageEntity>>> getMessages() async {
     try {
       final documents = await _datasource.getMessages();
-      return right(documents.docs.map(MessageEntityMapper.fromMap).toList());
+      return right(documents.map(MessageEntityMapper.fromMap).toList());
     } on CustomException catch (e) {
       return left(e);
     }

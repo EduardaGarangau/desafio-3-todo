@@ -5,17 +5,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class MessageEntityMapper {
   MessageEntityMapper._();
 
-  static MessageEntity fromMap(DocumentSnapshot document) {
+  static MessageEntity fromMap(Map<String, dynamic> map) {
     // ignore: cast_nullable_to_non_nullable
-    final documentData = document.data() as Map;
 
     return MessageEntity(
-      id: document.id,
-      userId: documentData['userId'] as String,
-      userName: documentData['userName'] as String,
-      userImage: documentData['userImage'] as String,
-      text: documentData['text'] as String,
-      sendedAt: DateTime.parse(documentData['sendedAt']),
+      id: map['id'] as String,
+      userId: map['userId'] as String,
+      userName: map['userName'] as String,
+      userImage: map['userImage'] as String,
+      text: map['text'] as String,
+      sendedAt: DateTime.parse(map['sendedAt']),
     );
   }
 

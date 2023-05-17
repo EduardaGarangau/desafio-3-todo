@@ -4,6 +4,7 @@ import '../../domain/entities/user_entity.dart';
 import '../../mocks/user_mock.dart';
 
 class UserStore extends ValueNotifier<String> {
+  //TODO: usar a entidade como value porque tem mais info
   List<UserEntity> users = [UserMock.user1, UserMock.user2];
 
   UserStore() : super('russelhue');

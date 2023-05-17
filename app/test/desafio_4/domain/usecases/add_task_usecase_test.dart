@@ -35,7 +35,7 @@ void main() {
   });
 
   group('GetTasksUsecase <CustomException>', () {
-    test('should return CustomException', () async {
+    test('should return CustomException if...', () async {
       final task =
           TaskDTO(title: TitleVO('teste'), date: DateTime.now(), done: false);
 
