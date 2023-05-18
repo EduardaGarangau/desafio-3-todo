@@ -4,7 +4,7 @@ import 'package:app/desafio_4/infra/datasources/task_datasource.dart';
 class TaskDatasourceImpl implements TaskDatasource {
   final DatabaseService _service;
 
-  TaskDatasourceImpl(this._service);
+  const TaskDatasourceImpl(this._service);
 
   @override
   Future<void> addTask(Map<String, dynamic> task, String userId) async {

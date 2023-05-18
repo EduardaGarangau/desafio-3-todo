@@ -1,6 +1,5 @@
 import 'package:app/desafio_4/domain/DTOs/message_dto.dart';
 import 'package:app/desafio_4/domain/entities/message_entity.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MessageEntityMapper {
   MessageEntityMapper._();

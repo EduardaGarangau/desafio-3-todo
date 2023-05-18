@@ -9,7 +9,7 @@ import '../../domain/repositories/task_repository.dart';
 class TaskRepositoryImpl implements TaskRepository {
   final TaskDatasource _datasource;
 
-  TaskRepositoryImpl(this._datasource);
+  const TaskRepositoryImpl(this._datasource);
 
   @override
   Future<Either<CustomException, Unit>> addTask(

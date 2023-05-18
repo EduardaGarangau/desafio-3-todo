@@ -10,7 +10,7 @@ import '../mappers/message_entity_mapper.dart';
 class ChatRepositoryImpl implements ChatRepository {
   final ChatDatasource _datasource;
 
-  ChatRepositoryImpl(this._datasource);
+  const ChatRepositoryImpl(this._datasource);
 
   @override
   Future<Either<CustomException, Unit>> createMessage(

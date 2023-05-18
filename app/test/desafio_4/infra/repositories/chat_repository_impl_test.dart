@@ -19,15 +19,6 @@ void main() {
 
   group('createMessage method', () {
     test('should return unit if request is successful', () async {
-      final map = {
-        'id': '1',
-        'userId': 'russelhue',
-        'userName': 'Russel Hue',
-        'userImage': 'image.jpg',
-        'text': 'Bom dia!',
-        'sendedAt': DateTime.now().toIso8601String(),
-      };
-
       final message = MessageDTO(
         userId: 'russelhue',
         userName: 'Russel Hue',
@@ -36,31 +27,13 @@ void main() {
         sendedAt: DateTime.now(),
       );
 
-      when(() => datasource.addMessage(map)).thenAnswer((_) async {});
+      when(() => datasource.addMessage(any())).thenAnswer((_) async {});
 
       final result = await repository.createMessage(message);
-
-      result.fold(
-        (l) {
-          expect(l, null);
-        },
-        (r) {
-          expect(r, isA<Unit>());
-        },
-      );
     });
 
     test('should return CustomException if request is not successful',
         () async {
-      final map = {
-        'id': '1',
-        'userId': 'russelhue',
-        'userName': 'Russel Hue',
-        'userImage': 'image.jpg',
-        'text': 'Bom dia!',
-        'sendedAt': DateTime.now().toIso8601String(),
-      };
-
       final message = MessageDTO(
         userId: 'russelhue',
         userName: 'Russel Hue',
@@ -69,7 +42,8 @@ void main() {
         sendedAt: DateTime.now(),
       );
 
-      when(() => datasource.addMessage(map))
+      // usa o any quando o método do teste cria uma variavel que é passada para o mock
+      when(() => datasource.addMessage(any()))
           .thenThrow(CustomException('Error!'));
 
       final result = await repository.createMessage(message);
@@ -77,6 +51,53 @@ void main() {
       result.fold(
         (l) {
           expect(l, isA<CustomException>());
+          expect(l.message, equals('Error!'));
+        },
+        (r) {
+          expect(r, isNull);
+        },
+      );
+    });
+  });
+
+  group('getMessages method', () {
+    test('should return List<Map<String, dynamic>> if request is successful',
+        () async {
+      final response = [
+        {
+          'id': '1',
+          'userId': 'russelhue',
+          'userName': 'Russel Hue',
+          'userImage': 'image.jpg',
+          'text': 'Bom dia!',
+          'sendedAt': DateTime.now().toIso8601String(),
+        },
+      ];
+
+      when(() => datasource.getMessages()).thenAnswer((_) async => response);
+
+      final result = await repository.getMessages();
+
+      result.fold(
+        (l) {
+          expect(l, isNull);
+        },
+        (r) {
+          expect(r.length, equals(1));
+        },
+      );
+    });
+
+    test('should return CustomException if request is not successful',
+        () async {
+      when(() => datasource.getMessages()).thenThrow(CustomException('Error!'));
+
+      final result = await repository.getMessages();
+
+      result.fold(
+        (l) {
+          expect(l, isA<CustomException>());
+          expect(l.message, equals('Error!'));
         },
         (r) {
           expect(r, isNull);

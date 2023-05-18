@@ -32,8 +32,11 @@ class FirestoreDatabaseService implements DatabaseService {
     }
   }
 
-  Future<List<Map<String, dynamic>>> get(String collection,
-      [String? userId]) async {
+  @override
+  Future<List<Map<String, dynamic>>> get(
+    String collection, [
+    String? userId,
+  ]) async {
     final firestore = FirebaseFirestore.instance;
     try {
       if (userId != null) {
@@ -43,10 +46,10 @@ class FirestoreDatabaseService implements DatabaseService {
             .collection(collection)
             .get();
 
-        return documents.docs.map(DocumentMapper.fromDocumentTask).toList();
+        return documents.docs.map(DocumentMapper.fromDocument).toList();
       } else {
         final documents = await firestore.collection(collection).get();
-        return documents.docs.map(DocumentMapper.fromDocumentMessage).toList();
+        return documents.docs.map(DocumentMapper.fromDocument).toList();
       }
     } on FirebaseException catch (e, stackTrace) {
       throw CustomException(

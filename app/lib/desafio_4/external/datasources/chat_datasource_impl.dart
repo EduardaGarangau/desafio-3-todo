@@ -4,7 +4,7 @@ import 'package:app/desafio_4/infra/datasources/chat_datasource.dart';
 class ChatDatasourceImpl implements ChatDatasource {
   final DatabaseService _service;
 
-  ChatDatasourceImpl(this._service);
+  const ChatDatasourceImpl(this._service);
 
   @override
   Future<void> addMessage(Map<String, dynamic> message) async {

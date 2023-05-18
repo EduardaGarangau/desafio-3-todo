@@ -36,91 +36,95 @@ class _MobileHomePageState extends State<MobileHomePage> {
           ChangeUserButtonWidget(
             onTap: () {
               userStore.changeUser();
-              setState(() {});
             },
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 30,
-              bottom: 20,
-              left: 20,
-              right: 20,
-            ),
-            child: SearchMessageWidget(
-              width: size.width * 0.9,
-              height: size.height * 0.07,
-            ),
-          ),
-          FiltersMobileWidget(
-            height: size.height * 0.05,
-          ),
-          SizedBox(height: size.height * 0.015),
-          Expanded(
-            child: Column(
-              children: [
-                ScopedBuilder<ChatStore, List<MessageEntity>>(
-                  store: Modular.get<ChatStore>(),
-                  onLoading: (context) => const Expanded(
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  ),
-                  onError: (context, error) => Text(error),
-                  onState: (context, state) {
-                    return FilterSectionWidget(
-                      title: 'Unread',
-                      height: size.height * 0.03,
-                      width: size.width,
-                      content: InkWell(
-                        onTap: () {
-                          Modular.to.pushNamed(
-                            '/chat/',
-                            arguments: [
-                              userStore.receiverUser.name,
-                              userStore.receiverUser.imageUrl
-                            ],
-                          );
-                        },
-                        child: MessageCardWidget(
-                          userImageUrl: userStore.receiverUser.imageUrl,
-                          name: userStore.receiverUser.name,
-                          badgeNumber: '1',
-                          number: '123-456-9877',
-                          messageContent: state.last.text,
-                          messageHour: state.last.getTime,
-                          hasOnlineFlag: true,
-                          isMuted: false,
-                          height: 88,
-                          width: size.width,
-                          positionedImage: 24,
-                          imageSpacing: size.width * 0.03,
+      body: ValueListenableBuilder(
+        valueListenable: userStore,
+        builder: (_, value, __) {
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 30,
+                  bottom: 20,
+                  left: 20,
+                  right: 20,
+                ),
+                child: SearchMessageWidget(
+                  width: size.width * 0.9,
+                  height: size.height * 0.07,
+                ),
+              ),
+              FiltersMobileWidget(
+                height: size.height * 0.05,
+              ),
+              SizedBox(height: size.height * 0.015),
+              Expanded(
+                child: Column(
+                  children: [
+                    ScopedBuilder<ChatStore, List<MessageEntity>>(
+                      store: Modular.get<ChatStore>(),
+                      onLoading: (context) => const Expanded(
+                        child: Center(
+                          child: CircularProgressIndicator(),
                         ),
                       ),
-                    );
-                  },
+                      onError: (context, error) => Text(error),
+                      onState: (context, state) {
+                        return FilterSectionWidget(
+                          title: 'Unread',
+                          height: size.height * 0.03,
+                          width: size.width,
+                          content: InkWell(
+                            onTap: () {
+                              Modular.to.pushNamed(
+                                '/chat/',
+                                arguments: [
+                                  userStore.receiverUser.name,
+                                  userStore.receiverUser.imageUrl
+                                ],
+                              );
+                            },
+                            child: MessageCardWidget(
+                              userImageUrl: userStore.receiverUser.imageUrl,
+                              name: userStore.receiverUser.name,
+                              badgeNumber: '1',
+                              number: '123-456-9877',
+                              messageContent: state.last.text,
+                              messageHour: state.last.getTime,
+                              hasOnlineFlag: true,
+                              isMuted: false,
+                              height: 88,
+                              width: size.width,
+                              positionedImage: 24,
+                              imageSpacing: size.width * 0.03,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ),
-          // FiltersSectionWidget.mobile(
-          //   height: size.height * 0.03,
-          //   width: size.width,
-          //   messagesHeight: 105,
-          //   imageSpacing: size.width * 0.03,
-          //   messageCardHeight: 88,
-          //   positionedImage: 24,
-          // ),
-          InkWell(
-            onTap: () => Modular.to.pushNamed('/profile/'),
-            child: BottomNavigatorWidget(
-              height: size.height * 0.11,
-            ),
-          ),
-        ],
+              ),
+              // FiltersSectionWidget.mobile(
+              //   height: size.height * 0.03,
+              //   width: size.width,
+              //   messagesHeight: 105,
+              //   imageSpacing: size.width * 0.03,
+              //   messageCardHeight: 88,
+              //   positionedImage: 24,
+              // ),
+              InkWell(
+                onTap: () => Modular.to.pushNamed('/profile/'),
+                child: BottomNavigatorWidget(
+                  height: size.height * 0.11,
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
